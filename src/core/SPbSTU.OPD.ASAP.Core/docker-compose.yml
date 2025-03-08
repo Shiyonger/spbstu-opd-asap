@@ -1,0 +1,54 @@
+﻿version: "3.8"
+
+services:
+  spbstu.opd.asap.core.presentation:
+    image: spbstu.opd.asap.core.presentation
+    build:
+      context: .
+      dockerfile: SPbSTU.OPD.ASAP.Core.Presentation/Dockerfile
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5431:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: asap
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    command: -c log_statement=all
+  
+  kafka:
+    image: wurstmeister/kafka:latest
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9093,OUTSIDE://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_CREATE_TOPICS: СДЕЛАТЬ ТОПИКИ!!!!!!!!!!
+    ports:
+      - 9092:9092
+    expose:
+      - 9093
+      - 9092
+    volumes:
+      - kafkadata:/kafka
+  zookeeper:
+    image: zookeeper:latest
+    ports:
+      - 2181:2181
+    volumes:
+      - zkdata:/data
+      - zkdatalog:/datalog
+      - zklogs:/logs
+
+volumes:
+  dbdata:
+  kafkadata:
+  zkdata:
+  zkdatalog:
+  zklogs:
