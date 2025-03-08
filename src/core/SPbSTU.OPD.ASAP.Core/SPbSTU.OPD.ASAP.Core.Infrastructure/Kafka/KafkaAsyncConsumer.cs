@@ -88,17 +88,8 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
                 var retryPolicy = Policy
                     .Handle<Exception>()
                     .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromMilliseconds(20));
-
-                try
-                {
-                    await _handler.Handle(consumeResults, token);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Unhandled exception occured");
-                    await retryPolicy.ExecuteAsync(() => _handler.Handle(consumeResults, token));
-                    continue;
-                }
+                
+                await retryPolicy.ExecuteAsync(() => _handler.Handle(consumeResults, token));
 
                 var partitionLastOffsets = consumeResults
                     .GroupBy(
