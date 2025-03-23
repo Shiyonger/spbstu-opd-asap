@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "SPbSTU.OPD.ASAP.Google.Presentation";
+
+package google_grpc;
+
+service SpreadSheetsService {
+  rpc CreateSpreadSheets (CreateSpreadSheetsRequest) returns (CreateSpreadSheetsResponse);
+}
+
+message StudentGrpc {
+  int64 id = 1;
+  string name = 2;
+}
+
+message AssignmentGrpc {
+  int64 id = 1;
+  string title = 2;
+}
+
+message CreateSpreadSheetsRequest {
+  repeated StudentGrpc student_list = 1;
+  repeated AssignmentGrpc assignment_list = 2;
+}
+
+message CreateSpreadSheetsResponse {
+  bool success = 1;
+}

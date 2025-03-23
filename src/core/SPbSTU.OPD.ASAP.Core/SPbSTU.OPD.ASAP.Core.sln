@@ -4,19 +4,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Core.Presen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{AF32D927-A57A-4DE8-8ED3-EA1B9159BD66}"
 	ProjectSection(SolutionItems) = preProject
-		.gitignore = .gitignore
 		docker-compose.yml = docker-compose.yml
 		.dockerignore = .dockerignore
+		..\..\..\.gitignore = ..\..\..\.gitignore
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Core.Domain", "SPbSTU.OPD.ASAP.Core.Domain\SPbSTU.OPD.ASAP.Core.Domain.csproj", "{6CD403BC-5F84-4F4B-98B9-897FDDCFD886}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Core.Infrastructure", "SPbSTU.OPD.ASAP.Core.Infrastructure\SPbSTU.OPD.ASAP.Core.Infrastructure.csproj", "{A83625CF-2994-4F20-B9E9-463AF0F932A3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7602FA4B-D62F-4BAB-AAE5-F59D10C68D7B}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
