@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
             provider =>
             {
                 var scopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
-                var options = provider.GetRequiredService<IOptionsSnapshot<KafkaOptions>>().Get(topic);
+                var options = provider.GetRequiredService<IOptionsMonitor<KafkaOptions>>().Get(topic);
                 var logger = provider.GetRequiredService<ILogger<KafkaAsyncConsumer<TKey, TValue>>>();
 
                 return new KafkaAsyncConsumer<TKey, TValue>(
