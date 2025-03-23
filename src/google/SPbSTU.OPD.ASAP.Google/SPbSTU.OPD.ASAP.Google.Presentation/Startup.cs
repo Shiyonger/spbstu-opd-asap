@@ -1,4 +1,7 @@
 ﻿using Confluent.Kafka;
+using SPbSTU.OPD.ASAP.Google.Infrastructure.Common;
+using SPbSTU.OPD.ASAP.Google.Infrastructure.Settings;
+using SPbSTU.OPD.ASAP.Google.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Google;
 
@@ -10,11 +13,23 @@ public sealed class Startup(IConfiguration configuration)
             .AddLogging();
         services.AddGrpc();
 
-        services.AddScoped<ItemHandler>();
-        services.AddKafkaHandler<Ignore, string, ItemHandler>(
-            configuration,
+        services.Configure<KafkaOptions>(KafkaOptions.Points,
+            configuration.GetSection("KafkaOptions:Points"));
+        services.Configure<KafkaOptions>(KafkaOptions.Queue,
+            configuration.GetSection("KafkaOptions:Queue"));
+
+        services.AddScoped<PointsHandler>();
+        services.AddKafkaHandler<Ignore, string>(
+            KafkaOptions.Points,
             null,
             null);
+
+        services.AddScoped<QueueHandler>();
+        services.AddKafkaHandler<Ignore, string>(
+            KafkaOptions.Queue,
+            null,
+            null);
+
         services.AddHostedService<KafkaBackgroundService>();
     }
 

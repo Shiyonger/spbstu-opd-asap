@@ -9,6 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{7C26D2
 		..\..\..\.gitignore = ..\..\..\.gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Google.Domain", "SPbSTU.OPD.ASAP.Google.Domain\SPbSTU.OPD.ASAP.Google.Domain.csproj", "{EB047979-5305-461A-8AA4-C31AB4D26464}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Google.Infrastructure", "SPbSTU.OPD.ASAP.Google.Infrastructure\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj", "{13F306C3-9CE5-4431-8566-59B6D233A4E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Google.Application", "SPbSTU.OPD.ASAP.Google.Application\SPbSTU.OPD.ASAP.Google.Application.csproj", "{99F60A89-48DE-494C-B91D-5AF853BBAAF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +25,17 @@ Global
 		{1DF22C43-F691-4A5C-8B23-D18E8FCDF8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF22C43-F691-4A5C-8B23-D18E8FCDF8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DF22C43-F691-4A5C-8B23-D18E8FCDF8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB047979-5305-461A-8AA4-C31AB4D26464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB047979-5305-461A-8AA4-C31AB4D26464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB047979-5305-461A-8AA4-C31AB4D26464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB047979-5305-461A-8AA4-C31AB4D26464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F306C3-9CE5-4431-8566-59B6D233A4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F306C3-9CE5-4431-8566-59B6D233A4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F306C3-9CE5-4431-8566-59B6D233A4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F306C3-9CE5-4431-8566-59B6D233A4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F60A89-48DE-494C-B91D-5AF853BBAAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F60A89-48DE-494C-B91D-5AF853BBAAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F60A89-48DE-494C-B91D-5AF853BBAAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F60A89-48DE-494C-B91D-5AF853BBAAF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
