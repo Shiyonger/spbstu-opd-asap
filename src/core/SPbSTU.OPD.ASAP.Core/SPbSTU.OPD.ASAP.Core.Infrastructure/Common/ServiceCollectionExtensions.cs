@@ -47,12 +47,12 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<KafkaAsyncConsumer<TKey, TValue>>(
             provider =>
             {
-                var handler = provider.GetRequiredService<THandler>();
+                var scopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
                 var options = provider.GetRequiredService<IOptions<KafkaOptions>>();
                 var logger = provider.GetRequiredService<ILogger<KafkaAsyncConsumer<TKey, TValue>>>();
 
                 return new KafkaAsyncConsumer<TKey, TValue>(
-                    handler,
+                    scopeFactory,
                     options.Value,
                     keyDeserializer,
                     valueDeserializer,
