@@ -1,5 +1,6 @@
 ﻿using Confluent.Kafka;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
+using SPbSTU.OPD.ASAP.Core.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Core;
 
@@ -13,6 +14,7 @@ public sealed class Startup(IConfiguration configuration)
 
         var connectionString = configuration["PostgresConnectionString"]!;
 
+        services.MapCompositeTypes();
         services
             .AddFluentMigrator(
                 connectionString,

@@ -1,0 +1,34 @@
+﻿using FluentMigrator;
+using SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
+
+namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Migrations;
+
+[Migration(20250324105600, TransactionBehavior.None)]
+public class AddOutboxQueueEntityV1 : SqlMigration {
+    protected override string GetUpSql(IServiceProvider services) =>
+        """
+        DO $$
+            BEGIN
+                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typename = 'outbox_queue_v1') THEN
+                    CREATE TYPE orders_v1 as
+                    (
+                          link varchar
+                        , mentor_id bigint
+                        , assignment_id bigint
+                        , submission_id bigint
+                        , is_sent boolean
+                    );
+                END IF;
+            END
+        $$;
+        """;
+
+    protected override string GetDownSql(IServiceProvider services) =>
+        """
+        DO $$
+            BEGIN
+                DROP TYPE IF EXISTS outbox_queue_v1;
+            END
+        $$;
+        """;
+}
