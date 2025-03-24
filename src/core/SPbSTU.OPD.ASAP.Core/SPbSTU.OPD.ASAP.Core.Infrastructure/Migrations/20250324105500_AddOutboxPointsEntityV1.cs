@@ -9,8 +9,8 @@ public class AddOutboxPointsEntityV1 : SqlMigration {
         """
         DO $$
             BEGIN
-                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typename = 'outbox_points_v1') THEN
-                    CREATE TYPE orders_v1 as
+                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'outbox_points_v1') THEN
+                    CREATE TYPE outbox_points_v1 as
                     (
                           id bigint
                         , points integer

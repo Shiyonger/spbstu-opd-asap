@@ -8,15 +8,18 @@ public class Initial : SqlMigration
 {
     protected override string GetUpSql(IServiceProvider services) =>
         """
-        create table submissions (
+        create table subjects (
             id serial primary key,
-            student_id bigint references students (id),
-            assignment_id bigint references assignments (id),
-            repository_id bigint references repositories (id),
-            created_at timestamp with time zone not null,
-            updated_at timestamp with time zone not null
+            title varchar not null
         );
-
+        
+        create table courses (
+            id serial primary key,
+            title varchar not null,
+            subject_id bigint references subjects (id),
+            github_organization varchar not null
+        );
+        
         create table assignments (
             id serial primary key,
             course_id bigint references courses (id),
@@ -24,43 +27,11 @@ public class Initial : SqlMigration
             description varchar,
             created_at timestamp without time zone
         );
-
-        create table subjects (
-            id serial primary key,
-            title varchar not null
-        );
-
-        create table courses (
-            id serial primary key,
-            title varchar not null,
-            subject_id bigint references subjects (id),
-            github_organization varchar not null
-        );
-
+        
         create table groups (
             id bigint primary key
         );
-
-        create table students (
-            id bigint primary key,
-            name varchar not null,
-            group_id bigint references groups (id),
-            user_id bigint references users (id)
-        );
-
-        create table subject_course_groups (
-            id serial primary key,
-            course_id bigint references courses (id),
-            group_id bigint references groups (id),
-            mentor_id bigint references mentors (id)
-        );
-
-        create table mentors (
-            id serial primary key,
-            name varchar not null,
-            user_id bigint references users (id)
-        );
-
+        
         create table users (
             id serial primary key,
             login varchar not null,
@@ -68,7 +39,27 @@ public class Initial : SqlMigration
             role varchar not null,
             github_link varchar not null
         );
-
+        
+        create table students (
+            id bigint primary key,
+            name varchar not null,
+            group_id bigint references groups (id),
+            user_id bigint references users (id)
+        );
+        
+        create table mentors (
+            id serial primary key,
+            name varchar not null,
+            user_id bigint references users (id)
+        );
+        
+        create table subject_course_groups (
+            id serial primary key,
+            course_id bigint references courses (id),
+            group_id bigint references groups (id),
+            mentor_id bigint references mentors (id)
+        );
+        
         create table google (
             id serial primary key,
             student_id bigint references students (id),
@@ -77,12 +68,21 @@ public class Initial : SqlMigration
             student_position varchar not null,
             assignment_position varchar not null
         );
-
+        
         create table repositories (
             id serial primary key,
             student_id bigint references students (id),
             assignment_id bigint references assignments (id),
             link varchar not null
+        );
+
+        create table submissions (
+            id serial primary key,
+            student_id bigint references students (id),
+            assignment_id bigint references assignments (id),
+            repository_id bigint references repositories (id),
+            created_at timestamp with time zone not null,
+            updated_at timestamp with time zone not null
         );
 
         create table student_courses (

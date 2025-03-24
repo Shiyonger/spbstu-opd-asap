@@ -30,7 +30,10 @@ public sealed class Startup(IConfiguration configuration)
                 typeof(SqlMigration).Assembly);
 
         services.Configure<KafkaConsumerOptions>(configuration.GetSection(nameof(KafkaConsumerOptions)));
-        services.Configure<KafkaPublisherOptions>(configuration.GetSection(nameof(KafkaPublisherOptions)));
+        services.Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Points,
+            configuration.GetSection("KafkaPublisherOptions:Points"));
+        services.Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Queue,
+            configuration.GetSection("KafkaPublisherOptions:Queue"));
 
         services.AddScoped<ItemHandler>();
         services.AddKafkaHandler<Ignore, string, ItemHandler>(
@@ -38,8 +41,10 @@ public sealed class Startup(IConfiguration configuration)
             null);
         services.AddHostedService<KafkaBackgroundService>();
 
-        services.AddScoped<IOutboxPointsRepository, OutboxPointsRepository>();
-        services.AddScoped<IOutboxQueueRepository, OutboxQueueRepository>();
+        services.AddScoped<IOutboxPointsRepository, OutboxPointsRepository>(_ =>
+            new OutboxPointsRepository(connectionString));
+        services.AddScoped<IOutboxQueueRepository, OutboxQueueRepository>(_ =>
+            new OutboxQueueRepository(connectionString));
         services.AddScoped<IOutboxService, OutboxService>();
 
         services.AddKafkaPublisher<long, PointsKafka>(

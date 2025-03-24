@@ -8,7 +8,7 @@ namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
 
 public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
 {
-    protected OutboxPointsRepository(string connectionString) : base(connectionString)
+    public OutboxPointsRepository(string connectionString) : base(connectionString)
     {
     }
 
@@ -73,12 +73,12 @@ public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
         if (sentPointsIds.Count != 0)
         {
             sentPointsIds.Sort();
-            conditions.Add($"id = ANY(@SentIds)");
+            conditions.Add($"id = ANY(@SentIds) WHERE ");
             @params.Add($"SentIds", sentPointsIds);
         }
 
         var cmd = new CommandDefinition(
-            sqlQuery + $" WHERE {string.Join(" AND ", conditions)} ",
+            sqlQuery + $"{string.Join(" AND ", conditions)} ",
             @params,
             commandTimeout: DefaultTimeoutInSeconds,
             cancellationToken: token);
@@ -89,8 +89,13 @@ public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
 
     private static OutboxPointsEntityV1 MapToEntity(OutboxPointsCreateModel pointsCreateModel)
     {
-        return new OutboxPointsEntityV1(0, pointsCreateModel.Points, pointsCreateModel.Date, pointsCreateModel.CourseId, pointsCreateModel.StudentPosition.Cell,
-            pointsCreateModel.AssignmentPosition.Cell, false);
+        return new OutboxPointsEntityV1
+        {
+            Id = 0, Points = pointsCreateModel.Points, Date = pointsCreateModel.Date,
+            CourseId = pointsCreateModel.CourseId,
+            StudentPosition = pointsCreateModel.StudentPosition.Cell,
+            AssignmentPosition = pointsCreateModel.AssignmentPosition.Cell, IsSent = false
+        };
     }
 
     private static OutboxPointsGetModel MapToModel(OutboxPointsEntityV1 points)

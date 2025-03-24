@@ -9,15 +9,15 @@ public class AddOutboxQueueEntityV1 : SqlMigration {
         """
         DO $$
             BEGIN
-                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typename = 'outbox_queue_v1') THEN
-                    CREATE TYPE orders_v1 as
+                IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'outbox_queue_v1') THEN
+                    CREATE TYPE outbox_queue_v1 as
                     (
                           id bigint
                         , link varchar
                         , mentor_id bigint
                         , assignment_id bigint
                         , submission_id bigint
-                        , int action
+                        , action integer
                         , is_sent boolean
                     );
                 END IF;

@@ -7,7 +7,7 @@ namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
 
 public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
 {
-    protected OutboxQueueRepository(string connectionString) : base(connectionString)
+    public OutboxQueueRepository(string connectionString) : base(connectionString)
     {
     }
 
@@ -77,12 +77,12 @@ public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
         if (queueQueryIds.Count != 0)
         {
             queueQueryIds.Sort();
-            conditions.Add($"id = ANY(@SentIds)");
+            conditions.Add($"id = ANY(@SentIds) WHERE ");
             @params.Add($"SentIds", queueQueryIds);
         }
 
         var cmd = new CommandDefinition(
-            sqlQuery + $" WHERE {string.Join(" AND ", conditions)} ",
+            sqlQuery + $"{string.Join(" AND ", conditions)} ",
             @params,
             commandTimeout: DefaultTimeoutInSeconds,
             cancellationToken: token);
@@ -93,7 +93,11 @@ public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
 
     private static OutboxQueueEntityV1 MapToEntity(OutboxQueueCreateModel queueCreateModelQuery)
     {
-        return new OutboxQueueEntityV1(0, queueCreateModelQuery.Link, queueCreateModelQuery.MentorId, queueCreateModelQuery.AssignmentId,
-            queueCreateModelQuery.SubmissionId, (int)queueCreateModelQuery.Action, false);
+        return new OutboxQueueEntityV1
+        {
+            Id = 0, Link = queueCreateModelQuery.Link, MentorId = queueCreateModelQuery.MentorId,
+            AssignmentId = queueCreateModelQuery.AssignmentId, SubmissionId = queueCreateModelQuery.SubmissionId,
+            Action = (int)queueCreateModelQuery.Action, IsSent = false
+        };
     }
 }
