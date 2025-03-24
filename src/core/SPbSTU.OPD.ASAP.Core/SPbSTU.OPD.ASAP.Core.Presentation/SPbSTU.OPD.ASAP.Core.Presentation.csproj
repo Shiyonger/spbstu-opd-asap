@@ -27,6 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SPbSTU.OPD.ASAP.Core.Application\SPbSTU.OPD.ASAP.Core.Application.csproj" />
       <ProjectReference Include="..\SPbSTU.OPD.ASAP.Core.Infrastructure\SPbSTU.OPD.ASAP.Core.Infrastructure.csproj" />
     </ItemGroup>
 

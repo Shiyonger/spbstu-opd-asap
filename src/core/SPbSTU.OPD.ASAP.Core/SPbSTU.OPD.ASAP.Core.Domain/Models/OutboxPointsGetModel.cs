@@ -2,7 +2,8 @@
 
 namespace SPbSTU.OPD.ASAP.Core.Domain.Models;
 
-public record OutboxPoints(
+public record OutboxPointsGetModel(
+    long Id,
     int Points,
     DateTime Date,
     long CourseId,

@@ -21,7 +21,7 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
 
     public KafkaAsyncConsumer(
         IServiceScopeFactory scopeFactory,
-        KafkaOptions options,
+        KafkaConsumerOptions consumerOptions,
         IDeserializer<TKey>? keyDeserializer,
         IDeserializer<TValue>? valueDeserializer,
         ILogger<KafkaAsyncConsumer<TKey, TValue>> logger)
@@ -29,8 +29,8 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
         var builder = new ConsumerBuilder<TKey, TValue>(
             new ConsumerConfig
             {
-                BootstrapServers = options.BootstrapServers,
-                GroupId = options.GroupId,
+                BootstrapServers = consumerOptions.BootstrapServers,
+                GroupId = consumerOptions.GroupId,
                 AutoOffsetReset = AutoOffsetReset.Earliest,
                 EnableAutoCommit = true,
                 EnableAutoOffsetStore = false
@@ -46,8 +46,8 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
             builder.SetValueDeserializer(valueDeserializer);
         }
 
-        _bufferDelay = TimeSpan.FromSeconds(options.BufferDelaySeconds);
-        _channelCapacity = options.ChannelCapacity;
+        _bufferDelay = TimeSpan.FromSeconds(consumerOptions.BufferDelaySeconds);
+        _channelCapacity = consumerOptions.ChannelCapacity;
 
         _scopeFactory = scopeFactory;
         _logger = logger;
@@ -62,7 +62,7 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
             });
 
         _consumer = builder.Build();
-        _consumer.Subscribe(options.Topic);
+        _consumer.Subscribe(consumerOptions.Topic);
     }
 
     public Task Consume(CancellationToken token)

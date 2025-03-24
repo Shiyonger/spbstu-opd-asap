@@ -1,6 +1,6 @@
 ﻿namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Settings;
 
-public record KafkaOptions()
+public record KafkaConsumerOptions()
 {
     public required string BootstrapServers { get; init; } = string.Empty;
     public required string GroupId { get; init; } = string.Empty;

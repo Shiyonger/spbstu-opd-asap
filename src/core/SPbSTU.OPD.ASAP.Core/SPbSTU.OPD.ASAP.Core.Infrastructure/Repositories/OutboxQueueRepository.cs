@@ -11,7 +11,7 @@ public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
     {
     }
 
-    public async Task<List<long>> Create(List<OutboxQueue> queueQuery, CancellationToken token)
+    public async Task<List<long>> Create(List<OutboxQueueCreateModel> queueQuery, CancellationToken token)
     {
         const string sqlQuery =
             """
@@ -35,25 +35,32 @@ public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
         return ids.ToList();
     }
 
-    public async Task<List<OutboxQueue>> GetNotSent(CancellationToken token)
+    public async Task<List<OutboxQueueGetModel>> GetNotSent(CancellationToken token)
     {
         const string sqlQuery =
             """
-            select link
-                 , mentor_id
-                 , assignment_id
-                 , submission_id
-                 , is_sent
-              from outbox_queue
+            select q.id as id
+                 , q.link as link
+                 , q.mentor_id as mentor_id
+                 , m.name as mentor_name
+                 , q.assignment_id as assignment_id
+                 , a.title as assignment_title
+                 , q.submission_id as submission_id
+                 , s.updated_at as submission_date
+                 , q.action
+              from outbox_queue q
+              join mentors m on q.mentor_id = m.id
+              join assignments a on q.assignment_id = a.id
+              join submissions s on q.submission_id = s.id
              where is_sent = false;
             """;
 
         await using var connection = await GetConnection();
-        var points = await connection.QueryAsync<OutboxQueueEntityV1>(
+        var points = await connection.QueryAsync<OutboxQueueGetModel>(
             new CommandDefinition(
                 sqlQuery,
                 cancellationToken: token));
-        return points.Select(MapToModel).ToList();
+        return points.ToList();
     }
 
     public async Task UpdateSent(List<long> queueQueryIds, CancellationToken token)
@@ -69,6 +76,7 @@ public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
 
         if (queueQueryIds.Count != 0)
         {
+            queueQueryIds.Sort();
             conditions.Add($"id = ANY(@SentIds)");
             @params.Add($"SentIds", queueQueryIds);
         }
@@ -83,14 +91,9 @@ public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
         await connection.ExecuteAsync(cmd);
     }
 
-    private static OutboxQueueEntityV1 MapToEntity(OutboxQueue queueQuery)
+    private static OutboxQueueEntityV1 MapToEntity(OutboxQueueCreateModel queueCreateModelQuery)
     {
-        return new OutboxQueueEntityV1(queueQuery.Link, queueQuery.MentorId, queueQuery.AssignmentId,
-            queueQuery.SubmissionId, false);
-    }
-
-    private static OutboxQueue MapToModel(OutboxQueueEntityV1 queueQuery)
-    {
-        return new OutboxQueue(queueQuery.Link, queueQuery.MentorId, queueQuery.AssignmentId, queueQuery.SubmissionId);
+        return new OutboxQueueEntityV1(0, queueCreateModelQuery.Link, queueCreateModelQuery.MentorId, queueCreateModelQuery.AssignmentId,
+            queueCreateModelQuery.SubmissionId, (int)queueCreateModelQuery.Action, false);
     }
 }

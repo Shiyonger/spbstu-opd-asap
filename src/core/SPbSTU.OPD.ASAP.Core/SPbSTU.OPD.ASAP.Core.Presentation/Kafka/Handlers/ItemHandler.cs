@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Kafka;
 
-namespace SPbSTU.OPD.ASAP.Core;
+namespace SPbSTU.OPD.ASAP.Core.Kafka;
 
 public class ItemHandler(ILogger<ItemHandler> logger) : IHandler<Ignore, string>
 {

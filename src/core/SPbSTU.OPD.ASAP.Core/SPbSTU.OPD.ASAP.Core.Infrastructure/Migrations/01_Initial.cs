@@ -10,16 +10,16 @@ public class Initial : SqlMigration
         """
         create table submissions (
             id serial primary key,
-            student_id bigint,
-            assignment_id bigint,
-            repository_id bigint,
+            student_id bigint references students (id),
+            assignment_id bigint references assignments (id),
+            repository_id bigint references repositories (id),
             created_at timestamp with time zone not null,
             updated_at timestamp with time zone not null
         );
 
         create table assignments (
             id serial primary key,
-            course_id bigint,
+            course_id bigint references courses (id),
             title varchar not null,
             description varchar,
             created_at timestamp without time zone
@@ -33,7 +33,7 @@ public class Initial : SqlMigration
         create table courses (
             id serial primary key,
             title varchar not null,
-            subject_id bigint,
+            subject_id bigint references subjects (id),
             github_organization varchar not null
         );
 
@@ -44,21 +44,21 @@ public class Initial : SqlMigration
         create table students (
             id bigint primary key,
             name varchar not null,
-            group_id bigint,
-            user_id bigint
+            group_id bigint references groups (id),
+            user_id bigint references users (id)
         );
 
         create table subject_course_groups (
             id serial primary key,
-            course_id bigint,
-            group_id bigint,
-            mentor_id bigint
+            course_id bigint references courses (id),
+            group_id bigint references groups (id),
+            mentor_id bigint references mentors (id)
         );
 
         create table mentors (
             id serial primary key,
             name varchar not null,
-            user_id bigint
+            user_id bigint references users (id)
         );
 
         create table users (
@@ -71,24 +71,24 @@ public class Initial : SqlMigration
 
         create table google (
             id serial primary key,
-            student_id bigint,
-            course_id bigint,
-            assignment_id bigint,
+            student_id bigint references students (id),
+            course_id bigint references courses (id),
+            assignment_id bigint references assignments (id),
             student_position varchar not null,
             assignment_position varchar not null
         );
 
         create table repositories (
             id serial primary key,
-            student_id bigint,
-            assignment_id bigint,
+            student_id bigint references students (id),
+            assignment_id bigint references assignments (id),
             link varchar not null
         );
 
         create table student_courses (
             id serial primary key,
-            student_id bigint,
-            course_id bigint,
+            student_id bigint references students (id),
+            course_id bigint references courses (id),
             is_invited boolean not null
         );
 
@@ -96,7 +96,7 @@ public class Initial : SqlMigration
             id serial primary key,
             points integer not null,
             date timestamp with time zone,
-            course_id bigint,
+            course_id bigint references courses (id),
             student_position varchar not null,
             assignment_position varchar not null,
             is_sent boolean not null
@@ -105,10 +105,16 @@ public class Initial : SqlMigration
         create table outbox_queue (
             id serial primary key,
             link varchar not null,
-            mentor_id bigint,
-            assignment_id bigint,
-            submission_id bigint,
+            mentor_id bigint references mentors (id),
+            assignment_id bigint references assignments (id),
+            submission_id bigint references submissions (id),
+            action integer not null,
             is_sent boolean not null
+        );
+
+        create table actions (
+            id integer unique primary key,
+            name varchar not null
         );
         """;
 

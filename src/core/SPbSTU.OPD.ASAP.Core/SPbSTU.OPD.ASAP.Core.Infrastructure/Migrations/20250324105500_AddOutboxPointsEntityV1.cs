@@ -3,7 +3,7 @@ using SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
 
 namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Migrations;
 
-[Migration(20250324105500, TransactionBehavior.None)]
+[Migration(20250324105500, "Add outbox points entity v1 migration")]
 public class AddOutboxPointsEntityV1 : SqlMigration {
     protected override string GetUpSql(IServiceProvider services) =>
         """
@@ -12,7 +12,8 @@ public class AddOutboxPointsEntityV1 : SqlMigration {
                 IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typename = 'outbox_points_v1') THEN
                     CREATE TYPE orders_v1 as
                     (
-                          points integer
+                          id bigint
+                        , points integer
                         , date timestamp with time zone
                         , course_id bigint
                         , student_position varchar

@@ -12,7 +12,7 @@ public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
     {
     }
 
-    public async Task<List<long>> Create(List<OutboxPoints> points, CancellationToken token)
+    public async Task<List<long>> Create(List<OutboxPointsCreateModel> points, CancellationToken token)
     {
         const string sqlQuery =
             """
@@ -36,11 +36,12 @@ public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
         return ids.ToList();
     }
 
-    public async Task<List<OutboxPoints>> GetNotSent(CancellationToken token)
+    public async Task<List<OutboxPointsGetModel>> GetNotSent(CancellationToken token)
     {
         const string sqlQuery =
             """
-            select points
+            select id
+                 , points
                  , date
                  , course_id
                  , student_position
@@ -71,6 +72,7 @@ public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
 
         if (sentPointsIds.Count != 0)
         {
+            sentPointsIds.Sort();
             conditions.Add($"id = ANY(@SentIds)");
             @params.Add($"SentIds", sentPointsIds);
         }
@@ -85,15 +87,15 @@ public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
         await connection.ExecuteAsync(cmd);
     }
 
-    private static OutboxPointsEntityV1 MapToEntity(OutboxPoints points)
+    private static OutboxPointsEntityV1 MapToEntity(OutboxPointsCreateModel pointsCreateModel)
     {
-        return new OutboxPointsEntityV1(points.Points, points.Date, points.CourseId, points.StudentPosition.Cell,
-            points.AssignmentPosition.Cell, false);
+        return new OutboxPointsEntityV1(0, pointsCreateModel.Points, pointsCreateModel.Date, pointsCreateModel.CourseId, pointsCreateModel.StudentPosition.Cell,
+            pointsCreateModel.AssignmentPosition.Cell, false);
     }
 
-    private static OutboxPoints MapToModel(OutboxPointsEntityV1 points)
+    private static OutboxPointsGetModel MapToModel(OutboxPointsEntityV1 points)
     {
-        return new OutboxPoints(points.Points, points.Date, points.CourseId,
+        return new OutboxPointsGetModel(points.Id, points.Points, points.Date, points.CourseId,
             new Position(points.StudentPosition, points.CourseId),
             new Position(points.AssignmentPosition, points.CourseId));
     }
