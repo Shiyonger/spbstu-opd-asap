@@ -1,5 +1,9 @@
-﻿using Confluent.Kafka;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Confluent.Kafka;
 using SPbSTU.OPD.ASAP.Google.Infrastructure.Common;
+using SPbSTU.OPD.ASAP.Google.Infrastructure.Contracts;
+using SPbSTU.OPD.ASAP.Google.Infrastructure.Kafka;
 using SPbSTU.OPD.ASAP.Google.Infrastructure.Settings;
 using SPbSTU.OPD.ASAP.Google.Kafka;
 
@@ -19,16 +23,17 @@ public sealed class Startup(IConfiguration configuration)
             configuration.GetSection("KafkaOptions:Queue"));
 
         services.AddScoped<PointsHandler>();
-        services.AddKafkaHandler<Ignore, string>(
+        services.AddKafkaHandler<Ignore, PointsKafka>(
             KafkaOptions.Points,
             null,
-            null);
+            new SystemTextJsonSerializer<PointsKafka>());
 
         services.AddScoped<QueueHandler>();
-        services.AddKafkaHandler<Ignore, string>(
+        services.AddKafkaHandler<Ignore, QueueKafka>(
             KafkaOptions.Queue,
             null,
-            null);
+            new SystemTextJsonSerializer<QueueKafka>(new JsonSerializerOptions
+                { Converters = { new JsonStringEnumConverter() } }));
 
         services.AddHostedService<KafkaBackgroundService>();
     }

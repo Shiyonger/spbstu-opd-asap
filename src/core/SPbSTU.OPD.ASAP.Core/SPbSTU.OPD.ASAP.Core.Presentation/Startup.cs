@@ -50,8 +50,7 @@ public sealed class Startup(IConfiguration configuration)
         services.AddKafkaPublisher<long, PointsKafka>(
             KafkaPublisherOptions.Points,
             null,
-            new SystemTextJsonSerializer<PointsKafka>(new JsonSerializerOptions
-                { Converters = { new JsonStringEnumConverter() } }));
+            new SystemTextJsonSerializer<PointsKafka>());
         services.AddKafkaPublisher<long, QueueKafka>(
             KafkaPublisherOptions.Queue,
             null,

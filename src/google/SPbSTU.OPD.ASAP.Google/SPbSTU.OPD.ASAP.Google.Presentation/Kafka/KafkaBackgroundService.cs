@@ -1,14 +1,19 @@
 ﻿using Confluent.Kafka;
+using SPbSTU.OPD.ASAP.Google.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Google.Infrastructure.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Google.Kafka;
 
-public class KafkaBackgroundService(KafkaAsyncConsumer<Ignore, string> kafkaConsumer, ILogger<KafkaBackgroundService> logger)
+public class KafkaBackgroundService(
+    KafkaAsyncConsumer<Ignore, PointsKafka> pointsConsumer,
+    KafkaAsyncConsumer<Ignore, QueueKafka> queueConsumer,
+    ILogger<KafkaBackgroundService> logger)
     : BackgroundService
 {
     public override Task StopAsync(CancellationToken cancellationToken)
     {
-        kafkaConsumer.Dispose();
+        pointsConsumer.Dispose();
+        queueConsumer.Dispose();
 
         return Task.CompletedTask;
     }
@@ -17,7 +22,9 @@ public class KafkaBackgroundService(KafkaAsyncConsumer<Ignore, string> kafkaCons
     {
         try
         {
-            await kafkaConsumer.Consume(stoppingToken);
+            var points = pointsConsumer.Consume(stoppingToken);
+            var queue = queueConsumer.Consume(stoppingToken);
+            await Task.WhenAll(points, queue);
         }
         catch (Exception ex)
         {
