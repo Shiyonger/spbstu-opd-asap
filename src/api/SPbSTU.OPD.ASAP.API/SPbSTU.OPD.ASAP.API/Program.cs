@@ -1,16 +1,8 @@
-var builder = WebApplication.CreateBuilder(args);
+using SPbSTU.OPD.ASAP.API;
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+var host = Host
+    .CreateDefaultBuilder(args)
+    .ConfigureWebHostDefaults(builder => builder.UseStartup<Startup>())
+    .Build();
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.Run();
+host.Run();

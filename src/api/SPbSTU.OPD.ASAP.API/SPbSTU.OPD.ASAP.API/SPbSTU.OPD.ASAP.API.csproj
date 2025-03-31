@@ -8,14 +8,25 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.57.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.14"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.14"/>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+        <Protobuf Include="**\*.proto"/>
+        <Protobuf Include="..\SPbSTU.OPD.ASAP.API.Infrastructure\Protos\users.proto" ProtoRoot="..\SPbSTU.OPD.ASAP.API.Infrastructure" GrpcServices="Client"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\SPbSTU.OPD.ASAP.API.Application\SPbSTU.OPD.ASAP.API.Application.csproj" />
+        <ProjectReference Include="..\SPbSTU.OPD.ASAP.API.Domain\SPbSTU.OPD.ASAP.API.Domain.csproj"/>
+        <ProjectReference Include="..\SPbSTU.OPD.ASAP.API.Infrastructure\SPbSTU.OPD.ASAP.API.Infrastructure.csproj"/>
     </ItemGroup>
 
 </Project>
