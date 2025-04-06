@@ -15,20 +15,18 @@
         <PackageReference Include="FluentMigrator.Runner" Version="6.2.0" />
         <PackageReference Include="FluentMigrator.Runner.Postgres" Version="6.2.0" />
         <PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
+        <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.70.0" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
         <PackageReference Include="Npgsql" Version="9.0.3" />
         <PackageReference Include="Polly" Version="8.5.2" />
         <PackageReference Include="System.Linq.Async" Version="6.0.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Protos\" />
-      <Folder Include="Services\" />
+        <Protobuf Include="**\*.proto"/>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\SPbSTU.OPD.ASAP.Core.Application\SPbSTU.OPD.ASAP.Core.Application.csproj" />
       <ProjectReference Include="..\SPbSTU.OPD.ASAP.Core.Infrastructure\SPbSTU.OPD.ASAP.Core.Infrastructure.csproj" />
+      <ProjectReference Include="..\SPbSTU.OPD.ASAP.Core.Persistence\SPbSTU.OPD.ASAP.Core.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>

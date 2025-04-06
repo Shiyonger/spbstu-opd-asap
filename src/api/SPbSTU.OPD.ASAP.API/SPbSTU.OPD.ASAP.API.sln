@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.API", "SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.csproj", "{7B813E6A-14D5-4F36-9BE6-99968F1348EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{AA732415-EA25-4588-B8FC-B81EEC8A2396}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		.dockerignore = .dockerignore
+		..\..\..\.gitignore = ..\..\..\.gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.API.Infrastructure", "SPbSTU.OPD.ASAP.API.Infrastructure\SPbSTU.OPD.ASAP.API.Infrastructure.csproj", "{DBEAE925-EA88-400E-94FF-5EE90B824DEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.API.Domain", "SPbSTU.OPD.ASAP.API.Domain\SPbSTU.OPD.ASAP.API.Domain.csproj", "{3504B47E-27C8-4BF6-BAA4-F74746DF8FBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.API.Application", "SPbSTU.OPD.ASAP.API.Application\SPbSTU.OPD.ASAP.API.Application.csproj", "{801EEEEE-7C82-474F-A140-F2DC09C253E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B813E6A-14D5-4F36-9BE6-99968F1348EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B813E6A-14D5-4F36-9BE6-99968F1348EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B813E6A-14D5-4F36-9BE6-99968F1348EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B813E6A-14D5-4F36-9BE6-99968F1348EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEAE925-EA88-400E-94FF-5EE90B824DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEAE925-EA88-400E-94FF-5EE90B824DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEAE925-EA88-400E-94FF-5EE90B824DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEAE925-EA88-400E-94FF-5EE90B824DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3504B47E-27C8-4BF6-BAA4-F74746DF8FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3504B47E-27C8-4BF6-BAA4-F74746DF8FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3504B47E-27C8-4BF6-BAA4-F74746DF8FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3504B47E-27C8-4BF6-BAA4-F74746DF8FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801EEEEE-7C82-474F-A140-F2DC09C253E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801EEEEE-7C82-474F-A140-F2DC09C253E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801EEEEE-7C82-474F-A140-F2DC09C253E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801EEEEE-7C82-474F-A140-F2DC09C253E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

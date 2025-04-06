@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "SPbSTU.OPD.ASAP.Core.Presentation";
+
+package users_grpc;
+
+service UsersService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+enum Role {
+  MENTOR = 0;
+  STUDENT = 1;
+}
+
+message User {
+  string name = 1;
+  string login = 2;
+  string password = 3;
+  string email = 4;
+  Role role = 5;
+  string github_link = 6;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserResponse {
+  int64 user_id = 1;
+}
+
+message GetUserRequest {
+  string login = 1;
+}
+
+message GetUserResponse {
+  bool is_found = 1;
+  int64 user_id = 2;
+  User user = 3;
+}

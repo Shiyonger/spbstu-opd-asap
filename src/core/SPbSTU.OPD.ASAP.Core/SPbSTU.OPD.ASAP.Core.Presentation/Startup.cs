@@ -3,13 +3,17 @@ using System.Text.Json.Serialization;
 using Confluent.Kafka;
 using SPbSTU.OPD.ASAP.Core.Application.Services;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
-using SPbSTU.OPD.ASAP.Core.Domain.Models;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Kafka;
-using SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Settings;
 using SPbSTU.OPD.ASAP.Core.Kafka;
+using SPbSTU.OPD.ASAP.Core.Persistence.Common;
+using SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
+using SPbSTU.OPD.ASAP.Core.Presentation;
+using SPbSTU.OPD.ASAP.Core.Services;
 
 namespace SPbSTU.OPD.ASAP.Core;
 
@@ -57,6 +61,8 @@ public sealed class Startup(IConfiguration configuration)
             new SystemTextJsonSerializer<QueueKafka>(new JsonSerializerOptions
                 { Converters = { new JsonStringEnumConverter() } }));
         services.AddHostedService<OutboxBackgroundService>();
+
+        services.AddGrpcReflection();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -64,9 +70,8 @@ public sealed class Startup(IConfiguration configuration)
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapGet("/",
-                () =>
-                    "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+            endpoints.MapGrpcService<UsersGrpcService>();
+            endpoints.MapGrpcReflectionService();
         });
     }
 }

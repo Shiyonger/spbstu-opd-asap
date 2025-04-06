@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>SPbSTU.OPD.ASAP.API.Infrastucture</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.57.0"/>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.14" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+        <Protobuf Include="**\*.proto"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SPbSTU.OPD.ASAP.API.Domain\SPbSTU.OPD.ASAP.API.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

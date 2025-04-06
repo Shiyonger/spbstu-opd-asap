@@ -1,19 +1,16 @@
 ﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
 
 namespace SPbSTU.OPD.ASAP.Core.Application.Services;
 
 // Может потом заменить, сделать частью другого сервиса
-public class OutboxService : IOutboxService
+public class OutboxService(IOutboxPointsRepository pointsRepository, IOutboxQueueRepository queueRepository)
+    : IOutboxService
 {
-    private readonly IOutboxPointsRepository _pointsRepository;
-    private readonly IOutboxQueueRepository _queueRepository;
-
-    public OutboxService(IOutboxPointsRepository pointsRepository, IOutboxQueueRepository queueRepository)
-    {
-        _pointsRepository = pointsRepository;
-        _queueRepository = queueRepository;
-    }
+    private readonly IOutboxPointsRepository _pointsRepository = pointsRepository;
+    private readonly IOutboxQueueRepository _queueRepository = queueRepository;
 
     public Task<List<long>> CreatePoints(List<OutboxPointsCreateModel> points, CancellationToken token)
     {

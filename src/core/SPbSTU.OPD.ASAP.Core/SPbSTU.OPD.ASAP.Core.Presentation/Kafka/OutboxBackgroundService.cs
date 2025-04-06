@@ -1,24 +1,21 @@
 ﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Core.Kafka;
 
-public class OutboxBackgroundService : IHostedService, IDisposable
+public class OutboxBackgroundService(
+    IServiceScopeFactory scopeFactory,
+    KafkaPublisher<long, PointsKafka> pointsPublisher,
+    KafkaPublisher<long, QueueKafka> queuePublisher)
+    : IHostedService, IDisposable
 {
     private Timer? _timer;
-    private readonly IServiceScopeFactory _scopeFactory;
-    private readonly KafkaPublisher<long, PointsKafka> _pointsPublisher;
-    private readonly KafkaPublisher<long, QueueKafka> _queuePublisher;
-
-    public OutboxBackgroundService(IServiceScopeFactory scopeFactory, KafkaPublisher<long, PointsKafka> pointsPublisher,
-        KafkaPublisher<long, QueueKafka> queuePublisher)
-    {
-        _scopeFactory = scopeFactory;
-        _pointsPublisher = pointsPublisher;
-        _queuePublisher = queuePublisher;
-    }
+    private readonly IServiceScopeFactory _scopeFactory = scopeFactory;
+    private readonly KafkaPublisher<long, PointsKafka> _pointsPublisher = pointsPublisher;
+    private readonly KafkaPublisher<long, QueueKafka> _queuePublisher = queuePublisher;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
