@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
 using SPbSTU.OPD.ASAP.Core.Domain.ValueObjects;
 using SPbSTU.OPD.ASAP.Core.Persistence.Entities;

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
 using SPbSTU.OPD.ASAP.Core.Persistence.Entities;
 
@@ -73,12 +74,12 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
         if (queueQueryIds.Count != 0)
         {
             queueQueryIds.Sort();
-            conditions.Add($"id = ANY(@SentIds) WHERE ");
+            conditions.Add($"id = ANY(@SentIds) ");
             @params.Add($"SentIds", queueQueryIds);
         }
 
         var cmd = new CommandDefinition(
-            sqlQuery + $"{string.Join(" AND ", conditions)} ",
+            sqlQuery + $"WHERE {string.Join(" AND ", conditions)} ",
             @params,
             commandTimeout: DefaultTimeoutInSeconds,
             cancellationToken: token);

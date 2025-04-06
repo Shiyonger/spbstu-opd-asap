@@ -1,6 +1,7 @@
 ﻿using System.Transactions;
 using Npgsql;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 
 namespace SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 

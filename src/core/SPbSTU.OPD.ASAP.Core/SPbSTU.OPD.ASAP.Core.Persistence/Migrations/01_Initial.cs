@@ -34,8 +34,10 @@ public class Initial : SqlMigration
         
         create table users (
             id serial primary key,
+            name varchar not null,
             login varchar not null,
             password varchar not null,
+            email varchar not null,
             role varchar not null,
             github_link varchar not null
         );
