@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.CookiePolicy;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.Extensions.Options;
 using SPbSTU.OPD.ASAP.API.Application.Extensions;
 using SPbSTU.OPD.ASAP.API.Extensions;
@@ -30,6 +31,8 @@ public sealed class Startup(IConfiguration configuration)
             .AddApplicationsServices();
 
         services.AddControllers();
+        
+        services.AddValidatorsFromAssemblyContaining<Program>();
 
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
