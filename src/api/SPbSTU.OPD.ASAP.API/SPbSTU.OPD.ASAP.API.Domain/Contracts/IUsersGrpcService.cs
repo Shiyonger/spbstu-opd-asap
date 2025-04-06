@@ -4,7 +4,7 @@ namespace SPbSTU.OPD.ASAP.API.Domain.Contracts;
 
 public interface IUsersGrpcService
 {
-    Task<long> CreateUser(User user);
+    Task<long> CreateUser(User user, CancellationToken ct);
     
-    Task<User> GetUser(string login);
+    Task<GrpcGetUserResult> GetUser(string login, CancellationToken ct);
 }

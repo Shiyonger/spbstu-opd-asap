@@ -19,20 +19,23 @@ public class UsersController(IUsersService userService) : Controller
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> Register(UserRegisterDto userRegister)
+    public async Task<IActionResult> Register(UserRegisterDto userRegister, CancellationToken ct)
     {
         await _userService.Register(userRegister.Name, userRegister.Login, userRegister.Password, userRegister.Email,
-            userRegister.Role, userRegister.GithubLink);
+            userRegister.Role, userRegister.GithubLink, ct);
 
         return Ok();
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> Login(UserLoginDto userLogin)
+    public async Task<IActionResult> Login(UserLoginDto userLogin, CancellationToken ct)
     {
-        var token = await _userService.Login(userLogin.Login, userLogin.Password);
+        var result = await _userService.Login(userLogin.Login, userLogin.Password, ct);
         
-        HttpContext.Response.Cookies.Append("tasty-cookies", token);
+        if (!result.IsSuccessful)
+            return BadRequest(new { message = result.ErrorMessage });
+        
+        HttpContext.Response.Cookies.Append("tasty-cookies", result.Token);
         
         return Ok();
     }

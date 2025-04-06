@@ -36,5 +36,7 @@ message GetUserRequest {
 }
 
 message GetUserResponse {
-  User user = 1;
+  bool is_found = 1;
+  int64 user_id = 2;
+  User user = 3;
 }
