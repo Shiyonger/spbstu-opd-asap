@@ -1,7 +1,7 @@
 ﻿using FluentMigrator;
-using SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
+using SPbSTU.OPD.ASAP.Core.Persistence.Common;
 
-namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Migrations;
+namespace SPbSTU.OPD.ASAP.Core.Persistence.Migrations;
 
 [Migration(20250324105500, "Add outbox points entity v1 migration")]
 public class AddOutboxPointsEntityV1 : SqlMigration {

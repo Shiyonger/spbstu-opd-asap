@@ -2,16 +2,12 @@
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
 using SPbSTU.OPD.ASAP.Core.Domain.ValueObjects;
-using SPbSTU.OPD.ASAP.Core.Infrastructure.Entities;
+using SPbSTU.OPD.ASAP.Core.Persistence.Entities;
 
-namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
+namespace SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 
-public class OutboxPointsRepository : PgRepository, IOutboxPointsRepository
+public class OutboxPointsRepository(string connectionString) : PgRepository(connectionString), IOutboxPointsRepository
 {
-    public OutboxPointsRepository(string connectionString) : base(connectionString)
-    {
-    }
-
     public async Task<List<long>> Create(List<OutboxPointsCreateModel> points, CancellationToken token)
     {
         const string sqlQuery =

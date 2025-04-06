@@ -1,16 +1,12 @@
 ﻿using Dapper;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
-using SPbSTU.OPD.ASAP.Core.Infrastructure.Entities;
+using SPbSTU.OPD.ASAP.Core.Persistence.Entities;
 
-namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
+namespace SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 
-public class OutboxQueueRepository : PgRepository, IOutboxQueueRepository
+public class OutboxQueueRepository(string connectionString) : PgRepository(connectionString), IOutboxQueueRepository
 {
-    public OutboxQueueRepository(string connectionString) : base(connectionString)
-    {
-    }
-
     public async Task<List<long>> Create(List<OutboxQueueCreateModel> queueQuery, CancellationToken token)
     {
         const string sqlQuery =

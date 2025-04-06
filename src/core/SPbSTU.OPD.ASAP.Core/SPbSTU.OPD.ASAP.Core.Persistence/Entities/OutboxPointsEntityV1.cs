@@ -1,4 +1,4 @@
-﻿namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Entities;
+﻿namespace SPbSTU.OPD.ASAP.Core.Persistence.Entities;
 
 public record OutboxPointsEntityV1()
 {

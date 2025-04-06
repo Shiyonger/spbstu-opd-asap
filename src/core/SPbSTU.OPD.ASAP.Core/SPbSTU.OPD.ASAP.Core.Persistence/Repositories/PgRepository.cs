@@ -2,7 +2,7 @@
 using Npgsql;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
 
-namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
+namespace SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 
 public class PgRepository : IPgRepository
 {

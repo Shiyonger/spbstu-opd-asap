@@ -3,13 +3,13 @@ using System.Text.Json.Serialization;
 using Confluent.Kafka;
 using SPbSTU.OPD.ASAP.Core.Application.Services;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
-using SPbSTU.OPD.ASAP.Core.Domain.Models;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Kafka;
-using SPbSTU.OPD.ASAP.Core.Infrastructure.Repositories;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Settings;
 using SPbSTU.OPD.ASAP.Core.Kafka;
+using SPbSTU.OPD.ASAP.Core.Persistence.Common;
+using SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 
 namespace SPbSTU.OPD.ASAP.Core;
 

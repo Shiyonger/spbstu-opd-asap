@@ -2,7 +2,7 @@
 using FluentMigrator.Expressions;
 using FluentMigrator.Infrastructure;
 
-namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
+namespace SPbSTU.OPD.ASAP.Core.Persistence.Common;
 
 public abstract class SqlMigration : IMigration
 {
