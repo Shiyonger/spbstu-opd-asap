@@ -6,15 +6,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-// Добавить подобные классы для событий
 public class GitHubPushEvent {
 
     @JsonProperty("ref")
-    private String ref;  // Например, "refs/heads/main"
+    private String ref;
 
     @JsonProperty("repository")
     private Repository repository;
-
 
     @Getter
     @Setter
@@ -24,7 +22,6 @@ public class GitHubPushEvent {
 
         @JsonProperty("owner")
         private Owner owner;
-
     }
 
     @Getter
@@ -32,7 +29,5 @@ public class GitHubPushEvent {
     public static class Owner {
         @JsonProperty("login")
         private String login;
-
     }
-
 }
