@@ -1,5 +1,7 @@
 ﻿using SPbSTU.OPD.ASAP.API.Domain.Contracts;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Grpc;
 using SPbSTU.OPD.ASAP.API.Domain.Models;
+using SPbSTU.OPD.ASAP.API.Domain.Results;
 
 namespace SPbSTU.OPD.ASAP.API.Infrastructure.Grpc;
 

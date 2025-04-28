@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "SPbSTU.OPD.ASAP.API.Infrastructure";
+
+package assignments_grpc;
+
+import "google/protobuf/timestamp.proto";
+import "Protos/users.proto";
+
+service AssignmentsService {
+  rpc GetAssignments (GetAssignmentsRequest) returns (GetAssignmentsResponse);
+}
+
+message Assignment {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  int32 max_points = 4;
+  google.protobuf.Timestamp due_to = 5;
+  string link = 6;
+}
+
+message GetAssignmentsRequest {
+  int64 user_id = 1;
+  int64 course_id = 2;
+  users_grpc.Role role = 3;
+}
+
+message GetAssignmentsResponse {
+  repeated Assignment assignments_list = 1;
+}

@@ -9,23 +9,25 @@ public class Initial : SqlMigration
     protected override string GetUpSql(IServiceProvider services) =>
         """
         create table subjects (
-            id serial primary key,
+            id bigserial primary key,
             title varchar not null
         );
         
         create table courses (
-            id serial primary key,
+            id bigserial primary key,
             title varchar not null,
             subject_id bigint references subjects (id),
-            github_organization varchar not null
+            github_organization varchar not null,
+            google_spreadsheet varchar not null
         );
         
         create table assignments (
-            id serial primary key,
+            id bigserial primary key,
             course_id bigint references courses (id),
             title varchar not null,
             description varchar,
-            created_at timestamp without time zone
+            max_points int not null,
+            due_to timestamptz not null
         );
         
         create table groups (
@@ -33,7 +35,7 @@ public class Initial : SqlMigration
         );
         
         create table users (
-            id serial primary key,
+            id bigserial primary key,
             name varchar not null,
             login varchar not null,
             password varchar not null,
@@ -50,20 +52,20 @@ public class Initial : SqlMigration
         );
         
         create table mentors (
-            id serial primary key,
+            id bigserial primary key,
             name varchar not null,
             user_id bigint references users (id)
         );
         
         create table subject_course_groups (
-            id serial primary key,
+            id bigserial primary key,
             course_id bigint references courses (id),
             group_id bigint references groups (id),
             mentor_id bigint references mentors (id)
         );
         
         create table google (
-            id serial primary key,
+            id bigserial primary key,
             student_id bigint references students (id),
             course_id bigint references courses (id),
             assignment_id bigint references assignments (id),
@@ -72,30 +74,30 @@ public class Initial : SqlMigration
         );
         
         create table repositories (
-            id serial primary key,
+            id bigserial primary key,
             student_id bigint references students (id),
             assignment_id bigint references assignments (id),
             link varchar not null
         );
 
         create table submissions (
-            id serial primary key,
+            id bigserial primary key,
             student_id bigint references students (id),
             assignment_id bigint references assignments (id),
             repository_id bigint references repositories (id),
-            created_at timestamp with time zone not null,
-            updated_at timestamp with time zone not null
+            created_at timestamptz not null,
+            updated_at timestamptz not null
         );
 
         create table student_courses (
-            id serial primary key,
+            id bigserial primary key,
             student_id bigint references students (id),
             course_id bigint references courses (id),
             is_invited boolean not null
         );
 
         create table outbox_points (
-            id serial primary key,
+            id bigserial primary key,
             points integer not null,
             date timestamp with time zone,
             course_id bigint references courses (id),
@@ -105,7 +107,7 @@ public class Initial : SqlMigration
         );
 
         create table outbox_queue (
-            id serial primary key,
+            id bigserial primary key,
             link varchar not null,
             mentor_id bigint references mentors (id),
             assignment_id bigint references assignments (id),

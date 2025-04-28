@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SPbSTU.OPD.ASAP.API.Application.Services;
 using SPbSTU.OPD.ASAP.API.Domain.Contracts;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Services;
 
 namespace SPbSTU.OPD.ASAP.API.Application.Extensions;
 

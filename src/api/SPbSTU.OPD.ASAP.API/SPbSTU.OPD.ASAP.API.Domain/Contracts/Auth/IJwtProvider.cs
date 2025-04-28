@@ -1,6 +1,6 @@
 ﻿using SPbSTU.OPD.ASAP.API.Domain.Models;
 
-namespace SPbSTU.OPD.ASAP.API.Domain.Contracts;
+namespace SPbSTU.OPD.ASAP.API.Domain.Contracts.Auth;
 
 public interface IJwtProvider
 {
