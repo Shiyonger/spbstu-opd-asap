@@ -1,6 +1,10 @@
 ﻿using SPbSTU.OPD.ASAP.API.Domain.Contracts;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Auth;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Grpc;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.API.Domain.Enums;
 using SPbSTU.OPD.ASAP.API.Domain.Models;
+using SPbSTU.OPD.ASAP.API.Domain.Results;
 
 namespace SPbSTU.OPD.ASAP.API.Application.Services;
 

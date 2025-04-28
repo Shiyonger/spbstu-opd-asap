@@ -1,4 +1,5 @@
 ﻿using SPbSTU.OPD.ASAP.API.Domain.Contracts;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Auth;
 
 namespace SPbSTU.OPD.ASAP.API.Infrastructure.Authorization;
 

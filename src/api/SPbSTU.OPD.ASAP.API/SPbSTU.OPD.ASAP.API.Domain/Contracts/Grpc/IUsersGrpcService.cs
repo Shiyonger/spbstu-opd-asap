@@ -1,6 +1,7 @@
 ﻿using SPbSTU.OPD.ASAP.API.Domain.Models;
+using SPbSTU.OPD.ASAP.API.Domain.Results;
 
-namespace SPbSTU.OPD.ASAP.API.Domain.Contracts;
+namespace SPbSTU.OPD.ASAP.API.Domain.Contracts.Grpc;
 
 public interface IUsersGrpcService
 {

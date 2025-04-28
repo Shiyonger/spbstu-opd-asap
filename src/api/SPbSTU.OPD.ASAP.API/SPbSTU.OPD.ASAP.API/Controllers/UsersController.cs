@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SPbSTU.OPD.ASAP.API.Domain.Contracts;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.API.Dto;
+using SPbSTU.OPD.ASAP.API.Validators;
 
 namespace SPbSTU.OPD.ASAP.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UsersController(IUsersService userService) : Controller
+public class UsersController(IUsersService userService, UserRegisterValidator registerValidator) : Controller
 {
     private readonly IUsersService _userService = userService;
+    private readonly UserRegisterValidator _registerValidator = registerValidator;
 
     [HttpGet]
     [Authorize]
@@ -21,6 +24,10 @@ public class UsersController(IUsersService userService) : Controller
     [HttpPost("[action]")]
     public async Task<IActionResult> Register(UserRegisterDto userRegister, CancellationToken ct)
     {
+        var validationResult = await _registerValidator.ValidateAsync(userRegister, ct);
+        if (!validationResult.IsValid)
+            return BadRequest(validationResult.Errors.Select(error => error.ErrorMessage));
+        
         await _userService.Register(userRegister.Name, userRegister.Login, userRegister.Password, userRegister.Email,
             userRegister.Role, userRegister.GithubLink, ct);
 

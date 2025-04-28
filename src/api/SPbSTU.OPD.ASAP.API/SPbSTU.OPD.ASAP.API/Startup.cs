@@ -20,6 +20,12 @@ public sealed class Startup(IConfiguration configuration)
         services.AddGrpcClient<UsersService.UsersServiceClient>(
                 o => { o.Address = new Uri(configuration["GrpcUri"]!); })
             .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
+        services.AddGrpcClient<CoursesService.CoursesServiceClient>(
+                o => { o.Address = new Uri(configuration["GrpcUri"]!); })
+            .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
+        services.AddGrpcClient<AssignmentsService.AssignmentsServiceClient>(
+                o => { o.Address = new Uri(configuration["GrpcUri"]!); })
+            .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
 
         services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
         services.AddApiAuthentication(

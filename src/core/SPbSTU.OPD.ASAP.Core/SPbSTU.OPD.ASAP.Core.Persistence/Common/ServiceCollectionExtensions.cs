@@ -4,7 +4,9 @@ using FluentMigrator.Runner.Processors;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using Npgsql.NameTranslation;
+using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Persistence.Entities;
+using SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 
 namespace SPbSTU.OPD.ASAP.Core.Persistence.Common;
 
@@ -40,6 +42,22 @@ public static class ServiceCollectionExtensions
                     options.Timeout = TimeSpan.FromMinutes(10);
                     options.ConnectionString = connectionString;
                 });
+
+        return services;
+    }
+
+    public static IServiceCollection AddPersistence(this IServiceCollection services, string connectionString)
+    {
+        services.AddScoped<IOutboxPointsRepository, OutboxPointsRepository>(_ =>
+            new OutboxPointsRepository(connectionString));
+        services.AddScoped<IOutboxQueueRepository, OutboxQueueRepository>(_ =>
+            new OutboxQueueRepository(connectionString));
+        services.AddScoped<IUsersRepository, UsersRepository>(_ => 
+            new UsersRepository(connectionString));
+        services.AddScoped<IAssignmentsRepository, AssignmentsRepository>(_ => 
+            new AssignmentsRepository(connectionString));
+        services.AddScoped<ICoursesRepository, CoursesRepository>(_ => 
+            new CoursesRepository(connectionString));
 
         return services;
     }

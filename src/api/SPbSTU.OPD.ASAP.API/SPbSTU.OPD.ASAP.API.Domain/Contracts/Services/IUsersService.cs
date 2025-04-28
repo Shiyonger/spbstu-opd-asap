@@ -1,7 +1,6 @@
-﻿using SPbSTU.OPD.ASAP.API.Domain.Enums;
-using SPbSTU.OPD.ASAP.API.Domain.Models;
+﻿using SPbSTU.OPD.ASAP.API.Domain.Results;
 
-namespace SPbSTU.OPD.ASAP.API.Domain.Contracts;
+namespace SPbSTU.OPD.ASAP.API.Domain.Contracts.Services;
 
 public interface IUsersService
 {

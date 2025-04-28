@@ -1,4 +1,6 @@
-﻿namespace SPbSTU.OPD.ASAP.API.Domain.Models;
+﻿using SPbSTU.OPD.ASAP.API.Domain.Models;
+
+namespace SPbSTU.OPD.ASAP.API.Domain.Results;
 
 public class GrpcGetUserResult
 {
