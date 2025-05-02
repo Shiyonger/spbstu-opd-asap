@@ -5,26 +5,18 @@ body {
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #495057;
 }
 
-.app {
+/*.app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
+}*/
 
 /* Header */
 .app-header {
-    background: #24292e;
+    background: #495057;
     color: white;
     padding: 15px 20px;
 }

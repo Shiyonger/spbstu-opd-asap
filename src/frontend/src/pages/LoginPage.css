@@ -43,9 +43,9 @@
 
 .input-group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.05rem;
     color: #495057;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .input-field {
@@ -60,7 +60,7 @@
 }
 
 .input-field:focus {
-    border-color: #adbbfa;
+    border-color: #495057;
     box-shadow: 0 0 0 3px rgba(75, 100, 205, 0.2);
     outline: none;
 }
@@ -68,7 +68,7 @@
 .login-btn {
     width: 100%;
     padding: 0.9rem 1rem;
-    background: linear-gradient(45deg, #a3a9cf, #b7cce6);
+    background: #495057;
     color: white;
     border: none;
     border-radius: 10px;
