@@ -1,9 +1,15 @@
 .login-container {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    overflow: auto;
     /*padding: 2rem;*/
 }
 
@@ -54,15 +60,15 @@
 }
 
 .input-field:focus {
-    border-color: #4361ee;
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    border-color: #adbbfa;
+    box-shadow: 0 0 0 3px rgba(75, 100, 205, 0.2);
     outline: none;
 }
 
 .login-btn {
     width: 100%;
     padding: 0.9rem 1rem;
-    background: linear-gradient(45deg, #4361ee, #4895ef);
+    background: linear-gradient(45deg, #a3a9cf, #b7cce6);
     color: white;
     border: none;
     border-radius: 10px;
@@ -76,7 +82,7 @@
 
 .login-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+    box-shadow: 0 10px 20px rgba(198, 205, 243, 0.3);
 }
 
 @media (max-width: 576px) {

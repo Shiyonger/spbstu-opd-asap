@@ -1,35 +1,17 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Navbar() {
-    return React.createElement(
-        'nav',
-        { className: 'navbar' },
-        React.createElement(
-            'ul',
-            { className: 'nav-list' },
-            [
-                React.createElement(
-                    'li',
-                    { key: 'home' },
-                    React.createElement(
-                        Link,
-                        { to: '/' },
-                        'Home'
-                    )
-                ),
-                React.createElement(
-                    'li',
-                    { key: 'courses' },
-                    React.createElement(
-                        Link,
-                        { to: '/courses' },
-                        'Courses'
-                    )
-                )
-            ]
-        )
+function Header() {
+    return (
+        <header className="app-header">
+            <nav>
+                <Link to="/" className="logo">CoursesApp</Link>
+                <div className="nav-links">
+                    <Link to="/courses">All Courses</Link>
+                </div>
+            </nav>
+        </header>
     );
 }
 
-export default Navbar;
+export default Header;
