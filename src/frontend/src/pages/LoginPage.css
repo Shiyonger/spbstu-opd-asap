@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #736993 100%);
     overflow: auto;
     /*padding: 2rem;*/
 }
@@ -51,7 +51,7 @@
 .input-field {
     width: 100%;
     padding: 0.9rem 1rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid #e1e4e8;
     border-radius: 10px;
     font-size: 1rem;
     box-sizing: border-box;

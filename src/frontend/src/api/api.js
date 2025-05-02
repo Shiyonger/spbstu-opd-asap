@@ -13,6 +13,11 @@ const coursesData = [
         description: 'Full-stack development with React and Node.js',
         minPoints: 0,
         maxPoints: 120
+    },
+    {    id: 'data-science-2023',
+        name: 'Data Science Fundamentals',    description: 'Introduction to data analysis and machine learning',
+        minPoints: 0,
+        maxPoints: 150
     }
 ];
 

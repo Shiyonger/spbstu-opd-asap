@@ -1,4 +1,3 @@
-import './AssigmentItem.css';
 function AssignmentItem({ assignment }) {
     return (
         <div className="assignment-card">

@@ -44,6 +44,20 @@
     margin: 0 auto;
 }
 
+.assignment-card {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.assignment-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #586069;
+}
+
 .course-loading,
 .course-error {
     text-align: center;
