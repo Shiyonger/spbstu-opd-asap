@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCourses } from '../api/api';
 import CourseCard from '../components/CourseCard';
+import './CoursesPage.css';
 
 function CoursesPage() {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const loadCourses = async () => {
+        async function loadCourses() {
             try {
                 const data = await getCourses();
                 setCourses(data);
@@ -16,21 +17,32 @@ function CoursesPage() {
             } finally {
                 setLoading(false);
             }
-        };
+        }
+
         loadCourses();
     }, []);
 
-    if (loading) return <div className="loading">Loading courses...</div>;
+    if (loading) {
+        return React.createElement(
+            'div',
+            { className: 'courses-loading' },
+            'Загрузка курсов...'
+        );
+    }
 
-    return (
-        <div className="courses-page">
-            <h2>Available Courses</h2>
-            <div className="courses-grid">
-                {courses.map(course => (
-                    <CourseCard key={course.id} course={course} />
-                ))}
-            </div>
-        </div>
+    return React.createElement(
+        'div',
+        { className: 'courses-background' },
+        [
+            React.createElement('h2', { className: 'courses-title', key: 'title' }, 'Доступные курсы'),
+            React.createElement(
+                'div',
+                { className: 'courses-list', key: 'list' },
+                courses.map(course =>
+                    React.createElement(CourseCard, { key: course.id, course })
+                )
+            )
+        ]
     );
 }
 

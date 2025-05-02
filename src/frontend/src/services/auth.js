@@ -1,4 +1,4 @@
-// Mock authentication service
+/*// Mock authentication service
 export const loginWithGithub = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -10,4 +10,4 @@ export const loginWithGithub = () => {
 
 export const logout = () => {
     return Promise.resolve();
-};
+};*/

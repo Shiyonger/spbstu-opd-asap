@@ -1,4 +1,5 @@
-function AssignmentCard({ assignment }) {
+import './AssigmentItem.css';
+function AssignmentItem({ assignment }) {
     return (
         <div className="assignment-card">
             <h4>{assignment.title}</h4>
@@ -15,4 +16,4 @@ function AssignmentCard({ assignment }) {
     );
 }
 
-export default AssignmentCard;
+export default AssignmentItem;

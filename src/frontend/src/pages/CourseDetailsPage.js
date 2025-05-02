@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getCourseDetails } from '../api/api';
-import AssignmentCard from '../components/AssignmentItem';
+import AssignmentItem from '../components/AssignmentItem';
+import './CourseDetailsPage.css';
 
 function CourseDetailsPage() {
     const { courseId } = useParams();
@@ -22,25 +23,25 @@ function CourseDetailsPage() {
         loadCourse();
     }, [courseId]);
 
-    if (loading) return <div className="loading">Loading course details...</div>;
-    if (!course) return <div className="error">Course not found</div>;
+    if (loading) return <div className="course-loading">Загрузка информации о курсе...</div>;
+    if (!course) return <div className="course-error">Курс не найден</div>;
 
     return (
-        <div className="course-details">
-            <h2>{course.name}</h2>
+        <div className="course-details-background">
+            <h2 className="course-title">{course.name}</h2>
             <div className="course-links">
                 <a href={course.googleLink} target="_blank" rel="noopener noreferrer">
-                    Course Google Sheet
+                    Google Таблица курса
                 </a>
                 <a href={course.githubLink} target="_blank" rel="noopener noreferrer">
-                    GitHub Organization
+                    GitHub курса
                 </a>
             </div>
 
-            <h3>Assignments</h3>
+            <h3 className="assignments-title">Задания</h3>
             <div className="assignments-list">
-                {course.assignments.map(assignment => (
-                    <AssignmentCard key={assignment.id} assignment={assignment} />
+                {course.assignments.map((assignment) => (
+                    <AssignmentItem key={assignment.id} assignment={assignment} />
                 ))}
             </div>
         </div>
