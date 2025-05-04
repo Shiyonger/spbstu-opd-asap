@@ -9,6 +9,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddScoped<IOutboxService, OutboxService>();
+        services.AddScoped<IPointsService, PointsService>();
+        services.AddScoped<IActionService, ActionService>();
         services.AddScoped<IUsersService, UsersService>();
         services.AddScoped<IAssignmentsService, AssignmentsService>();
         services.AddScoped<ICoursesService, CoursesService>();

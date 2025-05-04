@@ -11,6 +11,7 @@ using SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Kafka;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Settings;
 using SPbSTU.OPD.ASAP.Core.Kafka;
+using SPbSTU.OPD.ASAP.Core.Kafka.Handlers;
 using SPbSTU.OPD.ASAP.Core.Persistence.Common;
 using SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 using SPbSTU.OPD.ASAP.Core.Presentation;
@@ -42,8 +43,8 @@ public sealed class Startup(IConfiguration configuration)
         services.Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Queue,
             configuration.GetSection("KafkaPublisherOptions:Queue"));
 
-        services.AddScoped<ItemHandler>();
-        services.AddKafkaHandler<Ignore, string, ItemHandler>(
+        services.AddScoped<ActionHandler>();
+        services.AddKafkaHandler<Ignore, ActionKafka, ActionHandler>(
             null,
             null);
         // services.AddHostedService<KafkaBackgroundService>();
@@ -52,10 +53,10 @@ public sealed class Startup(IConfiguration configuration)
             .AddPersistence(connectionString)
             .AddApplication();
 
-        services.AddKafkaPublisher<long, PointsKafka>(
+        services.AddKafkaPublisher<long, PointsGoogleKafka>(
             KafkaPublisherOptions.Points,
             null,
-            new SystemTextJsonSerializer<PointsKafka>());
+            new SystemTextJsonSerializer<PointsGoogleKafka>());
         services.AddKafkaPublisher<long, QueueKafka>(
             KafkaPublisherOptions.Queue,
             null,

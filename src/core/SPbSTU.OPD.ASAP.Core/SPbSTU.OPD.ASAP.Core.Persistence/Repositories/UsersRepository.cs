@@ -10,8 +10,8 @@ public class UsersRepository(string connectionString) : PgRepository(connectionS
     {
         const string sqlQuery =
             """
-            insert into users (name, login, password, email, role, github_link)
-            values (@Name, @Login, @Password, @Email, @Role, @GithubLink)
+            insert into users (name, login, password, email, role, github_username)
+            values (@Name, @Login, @Password, @Email, @Role, @GithubUsername)
             returning id;
             """;
 
@@ -26,7 +26,7 @@ public class UsersRepository(string connectionString) : PgRepository(connectionS
                     Password = user.Password,
                     Email = user.Email,
                     Role = Enum.GetName(user.Role),
-                    GithubLink = user.GithubLink
+                    GithubUsername = user.GithubUsername
                 },
                 cancellationToken: ct));
         
@@ -43,7 +43,7 @@ public class UsersRepository(string connectionString) : PgRepository(connectionS
                  , password
                  , email
                  , role
-                 , github_link
+                 , github_username
               from users
              where id = @Id;
             """;
@@ -72,7 +72,7 @@ public class UsersRepository(string connectionString) : PgRepository(connectionS
                  , password
                  , email
                  , role
-                 , github_link
+                 , github_username
               from users
              where login = @Login;
             """;

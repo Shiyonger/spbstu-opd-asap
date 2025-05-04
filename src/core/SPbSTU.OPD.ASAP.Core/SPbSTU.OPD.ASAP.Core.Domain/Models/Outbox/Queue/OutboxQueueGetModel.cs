@@ -1,4 +1,4 @@
-﻿namespace SPbSTU.OPD.ASAP.Core.Domain.Models;
+﻿namespace SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox.Queue;
 
 public record OutboxQueueGetModel
 {

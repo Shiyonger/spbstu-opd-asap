@@ -58,6 +58,10 @@ public static class ServiceCollectionExtensions
             new AssignmentsRepository(connectionString));
         services.AddScoped<ICoursesRepository, CoursesRepository>(_ => 
             new CoursesRepository(connectionString));
+        services.AddScoped<IGoogleRepository, GoogleRepository>(_ => 
+            new GoogleRepository(connectionString));
+        services.AddScoped<ISubmissionsRepository, SubmissionsRepository>(_ => 
+            new SubmissionsRepository(connectionString));
 
         return services;
     }

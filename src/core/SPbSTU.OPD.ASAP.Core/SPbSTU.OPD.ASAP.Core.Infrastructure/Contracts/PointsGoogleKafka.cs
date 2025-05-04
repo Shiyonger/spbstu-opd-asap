@@ -2,7 +2,7 @@
 
 namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 
-public sealed class PointsKafka
+public sealed class PointsGoogleKafka
 {
     [JsonPropertyName("id")]
     public long Id { get; set; }
@@ -25,6 +25,6 @@ public sealed class PointsKafka
         public string Cell { get; set; } = null!;
 
         [JsonPropertyName("spreadsheet_id")]
-        public long SpreadSheetId { get; set; }
+        public string SpreadSheetId { get; set; }
     }
 }

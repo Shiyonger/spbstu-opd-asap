@@ -1,8 +1,9 @@
 ﻿using SPbSTU.OPD.ASAP.Core.Domain.ValueObjects;
 
-namespace SPbSTU.OPD.ASAP.Core.Domain.Models;
+namespace SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox.Points;
 
-public record OutboxPointsCreateModel(
+public record OutboxPointsGetModel(
+    long Id,
     int Points,
     DateTime Date,
     long CourseId,

@@ -29,4 +29,26 @@ public class CoursesRepository(string connectionString) : PgRepository(connectio
                 cancellationToken: ct));
         return courses.ToList();
     }
+
+    public async Task<List<Course>> GetCoursesByTitles(List<string> titles, CancellationToken ct)
+    {
+        const string sqlQuery =
+            """
+            select c.id as id
+                 , c.title as title
+                 , s.title as subject_title
+                 , c.github_organization as github_organization_link
+              from courses c
+              join subjects s on s.id = c.subject_id
+             where c.title = ANY(@Titles);
+            """;
+
+        await using var connection = await GetConnection();
+        var courses = await connection.QueryAsync<Course>(
+            new CommandDefinition(
+                sqlQuery,
+                new { Titles = titles },
+                cancellationToken: ct));
+        return courses.ToList();
+    }
 }

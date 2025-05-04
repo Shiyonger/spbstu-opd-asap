@@ -14,7 +14,7 @@ public class UsersGrpcService(UsersService.UsersServiceClient usersClient) : IUs
         var userGrpc = new User
         {
             Name = user.Name, Login = user.Login, Password = user.Password, Email = user.Email,
-            Role = (Role)(int)user.Role, GithubLink = user.GithubLink
+            Role = (Role)(int)user.Role, GithubUsername = user.GithubUsername
         };
 
         var response =
@@ -32,7 +32,7 @@ public class UsersGrpcService(UsersService.UsersServiceClient usersClient) : IUs
 
         var user = new Domain.Models.User(response.UserId, response.User.Name, response.User.Login,
             response.User.Password,
-            response.User.Email, (Domain.Enums.Role)(int)response.User.Role, response.User.GithubLink);
+            response.User.Email, (Domain.Enums.Role)(int)response.User.Role, response.User.GithubUsername);
 
         return new GrpcGetUserResult { IsSuccessful = true, User = user };
     }

@@ -41,19 +41,18 @@ public class Initial : SqlMigration
             password varchar not null,
             email varchar not null,
             role varchar not null,
-            github_link varchar not null
+            github_username varchar not null
         );
         
         create table students (
             id bigint primary key,
-            name varchar not null,
             group_id bigint references groups (id),
             user_id bigint references users (id)
         );
         
         create table mentors (
             id bigserial primary key,
-            name varchar not null,
+            department varchar not null,
             user_id bigint references users (id)
         );
         
@@ -69,8 +68,14 @@ public class Initial : SqlMigration
             student_id bigint references students (id),
             course_id bigint references courses (id),
             assignment_id bigint references assignments (id),
-            student_position varchar not null,
-            assignment_position varchar not null
+            assignment_position_id bigint references google_positions (id),
+            student_position_id bigint references google_positions(id)
+        );
+
+        create table google_positions (
+            id bigserial primary key,
+            cell varchar not null,
+            spreadsheet_id varchar not null
         );
         
         create table repositories (
@@ -101,8 +106,10 @@ public class Initial : SqlMigration
             points integer not null,
             date timestamp with time zone,
             course_id bigint references courses (id),
-            student_position varchar not null,
-            assignment_position varchar not null,
+            student_position_cell varchar not null,
+            student_position_spreadsheet_id varchar not null,
+            assignment_position_cell varchar not null,
+            assignment_position_spreadsheet_id varchar not null,
             is_sent boolean not null
         );
 

@@ -2,6 +2,8 @@
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox.Points;
 using SPbSTU.OPD.ASAP.Core.Domain.ValueObjects;
 using SPbSTU.OPD.ASAP.Core.Persistence.Entities;
 
@@ -13,8 +15,8 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
     {
         const string sqlQuery =
             """
-            insert into outbox_points (points, date, course_id, student_position, assignment_position, is_sent)
-            select points, date, course_id, student_position, assignment_position, is_sent
+            insert into outbox_points (points, date, course_id, student_position_cell, student_position_spreadsheet_id, assignment_position_cell, assignment_position_spreadsheet_id, is_sent)
+            select points, date, course_id, student_position_cell, student_position_spreadsheet_id, assignment_position_cell, assignment_position_spreadsheet_id, is_sent
               from unnest(@Points)
             returning id;
             """;
@@ -90,15 +92,17 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
         {
             Id = 0, Points = pointsCreateModel.Points, Date = pointsCreateModel.Date,
             CourseId = pointsCreateModel.CourseId,
-            StudentPosition = pointsCreateModel.StudentPosition.Cell,
-            AssignmentPosition = pointsCreateModel.AssignmentPosition.Cell, IsSent = false
+            StudentPositionCell = pointsCreateModel.StudentPosition.Cell,
+            StudentPositionSpreadsheetId = pointsCreateModel.StudentPosition.SpreadSheetId,
+            AssignmentPositionCell = pointsCreateModel.AssignmentPosition.Cell,
+            AssignmentPositionSpreadsheetId = pointsCreateModel.AssignmentPosition.SpreadSheetId, IsSent = false
         };
     }
 
     private static OutboxPointsGetModel MapToModel(OutboxPointsEntityV1 points)
     {
         return new OutboxPointsGetModel(points.Id, points.Points, points.Date, points.CourseId,
-            new Position(points.StudentPosition, points.CourseId),
-            new Position(points.AssignmentPosition, points.CourseId));
+            new Position(points.StudentPositionCell, points.StudentPositionSpreadsheetId),
+            new Position(points.AssignmentPositionCell, points.AssignmentPositionSpreadsheetId));
     }
 }
