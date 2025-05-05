@@ -1,7 +1,7 @@
 ﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Domain.Enums;
-using SPbSTU.OPD.ASAP.Core.Domain.Models.Assignment;
+using SPbSTU.OPD.ASAP.Core.Domain.Models;
 
 namespace SPbSTU.OPD.ASAP.Core.Application.Services;
 

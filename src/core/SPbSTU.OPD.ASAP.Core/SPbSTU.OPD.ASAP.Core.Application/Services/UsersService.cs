@@ -1,6 +1,6 @@
 ﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
-using SPbSTU.OPD.ASAP.Core.Domain.Models.User;
+using SPbSTU.OPD.ASAP.Core.Domain.Models;
 
 namespace SPbSTU.OPD.ASAP.Core.Application.Services;
 

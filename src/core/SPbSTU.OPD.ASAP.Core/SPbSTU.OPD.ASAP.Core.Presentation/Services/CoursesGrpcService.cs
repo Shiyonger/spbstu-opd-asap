@@ -16,7 +16,7 @@ public class CoursesGrpcService(ICoursesService coursesService) : CoursesService
         return new GetCoursesResponse { CoursesList = { courses } };
     }
 
-    private static Course MapToGrpc(Domain.Models.Course.Course course)
+    private static Course MapToGrpc(Domain.Models.Course course)
     {
         return new Course
         {

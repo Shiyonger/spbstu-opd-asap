@@ -26,43 +26,59 @@ public sealed class Startup(IConfiguration configuration)
     public void ConfigureServices(IServiceCollection services)
     {
         services
-            .AddLogging();
-        services.AddGrpc();
+            .AddLogging()
+            .AddGrpc();
 
         var connectionString = configuration["PostgresConnectionString"]!;
 
         services.MapCompositeTypes();
+        services.AddFluentMigrator(
+            connectionString,
+            typeof(SqlMigration).Assembly);
+
         services
-            .AddFluentMigrator(
-                connectionString,
-                typeof(SqlMigration).Assembly);
-
-        services.Configure<KafkaConsumerOptions>(configuration.GetSection(nameof(KafkaConsumerOptions)));
-        services.Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Points,
-            configuration.GetSection("KafkaPublisherOptions:Points"));
-        services.Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Queue,
-            configuration.GetSection("KafkaPublisherOptions:Queue"));
-
-        services.AddScoped<ActionHandler>();
-        services.AddKafkaHandler<Ignore, ActionKafka, ActionHandler>(
-            null,
-            null);
-        // services.AddHostedService<KafkaBackgroundService>();
+            .Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Points,
+                configuration.GetSection("KafkaPublisherOptions:Points"))
+            .Configure<KafkaPublisherOptions>(KafkaPublisherOptions.Queue,
+                configuration.GetSection("KafkaPublisherOptions:Queue"))
+            .Configure<KafkaConsumerOptions>(KafkaConsumerOptions.Points,
+                configuration.GetSection("KafkaConsumerOptions:Points"))
+            .Configure<KafkaConsumerOptions>(KafkaConsumerOptions.Action,
+                configuration.GetSection("KafkaConsumerOptions:Action"));
 
         services
             .AddPersistence(connectionString)
             .AddApplication();
 
-        services.AddKafkaPublisher<long, PointsGoogleKafka>(
-            KafkaPublisherOptions.Points,
-            null,
-            new SystemTextJsonSerializer<PointsGoogleKafka>());
-        services.AddKafkaPublisher<long, QueueKafka>(
-            KafkaPublisherOptions.Queue,
-            null,
-            new SystemTextJsonSerializer<QueueKafka>(new JsonSerializerOptions
-                { Converters = { new JsonStringEnumConverter() } }));
-        // services.AddHostedService<OutboxBackgroundService>();
+        services
+            .AddScoped<ActionHandler>()
+            .AddScoped<PointsGithubHandler>();
+
+        services
+            .AddKafkaHandler<Ignore, ActionKafka>(
+                KafkaConsumerOptions.Action,
+                null,
+                new SystemTextJsonSerializer<ActionKafka>(new JsonSerializerOptions
+                    { Converters = { new JsonStringEnumConverter() } }))
+            .AddKafkaHandler<Ignore, PointsGithubKafka>(
+                KafkaConsumerOptions.Points,
+                null,
+                new SystemTextJsonSerializer<PointsGithubKafka>());
+
+        services
+            .AddKafkaPublisher<long, PointsGoogleKafka>(
+                KafkaPublisherOptions.Points,
+                null,
+                new SystemTextJsonSerializer<PointsGoogleKafka>())
+            .AddKafkaPublisher<long, QueueKafka>(
+                KafkaPublisherOptions.Queue,
+                null,
+                new SystemTextJsonSerializer<QueueKafka>(new JsonSerializerOptions
+                    { Converters = { new JsonStringEnumConverter() } }));
+
+        services
+            .AddHostedService<KafkaBackgroundService>()
+            .AddHostedService<OutboxBackgroundService>();
 
         services.AddGrpcReflection();
     }
@@ -75,6 +91,7 @@ public sealed class Startup(IConfiguration configuration)
             endpoints.MapGrpcService<UsersGrpcService>();
             endpoints.MapGrpcService<AssignmentsGrpcService>();
             endpoints.MapGrpcService<CoursesGrpcService>();
+            endpoints.MapGrpcService<GithubGrpcService>();
             endpoints.MapGrpcReflectionService();
         });
     }

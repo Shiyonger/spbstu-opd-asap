@@ -22,7 +22,7 @@ public class AssignmentsGrpcService(IAssignmentsService assignmentsService) : As
         return new GetAssignmentsResponse { AssignmentsList = { assignments } };
     }
 
-    private static Assignment MapToGrpc(Domain.Models.Assignment.Assignment assignment)
+    private static Assignment MapToGrpc(Domain.Models.Assignment assignment)
     {
         return new Assignment
         {

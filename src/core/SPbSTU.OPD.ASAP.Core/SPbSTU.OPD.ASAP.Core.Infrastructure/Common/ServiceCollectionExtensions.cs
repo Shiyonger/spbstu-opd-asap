@@ -9,21 +9,22 @@ namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddKafkaHandler<TKey, TValue, THandler>(
+    public static IServiceCollection AddKafkaHandler<TKey, TValue>(
         this IServiceCollection services,
+        string topic,
         IDeserializer<TKey>? keyDeserializer,
-        IDeserializer<TValue>? valueDeserializer) where THandler : IHandler<TKey, TValue>
+        IDeserializer<TValue>? valueDeserializer)
     {
         services.AddSingleton<KafkaAsyncConsumer<TKey, TValue>>(
             provider =>
             {
                 var scopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
-                var options = provider.GetRequiredService<IOptions<KafkaConsumerOptions>>();
+                var options = provider.GetRequiredService<IOptionsMonitor<KafkaConsumerOptions>>().Get(topic);
                 var logger = provider.GetRequiredService<ILogger<KafkaAsyncConsumer<TKey, TValue>>>();
 
                 return new KafkaAsyncConsumer<TKey, TValue>(
                     scopeFactory,
-                    options.Value,
+                    options,
                     keyDeserializer,
                     valueDeserializer,
                     logger);

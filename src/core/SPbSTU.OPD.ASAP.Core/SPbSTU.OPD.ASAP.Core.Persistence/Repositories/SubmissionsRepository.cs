@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
-using SPbSTU.OPD.ASAP.Core.Domain.Models.Submission;
 
 namespace SPbSTU.OPD.ASAP.Core.Persistence.Repositories;
 
@@ -47,7 +46,7 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
     //     return submissionsMap;
     // }
 
-    public async Task<Dictionary<(string Username, string Title), Submission>> GetByUsernameAndAssignment(
+    public async Task<Dictionary<(string Username, string Title), Domain.Models.Submission>> GetByUsernameAndAssignment(
         List<string> usernames,
         List<string> assignmentTitles,
         CancellationToken ct)
@@ -78,7 +77,7 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
             """;
 
         await using var connection = await GetConnection();
-        var submissions = await connection.QueryAsync<(string Username, string Title, Submission Submission)>(
+        var submissions = await connection.QueryAsync<(string Username, string Title, Domain.Models.Submission Submission)>(
             new CommandDefinition(
                 sqlQuery,
                 new

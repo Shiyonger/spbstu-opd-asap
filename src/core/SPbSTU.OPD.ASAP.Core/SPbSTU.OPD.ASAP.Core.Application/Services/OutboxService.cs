@@ -1,8 +1,8 @@
 ﻿using System.Transactions;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
+using SPbSTU.OPD.ASAP.Core.Domain.Models;
 using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox;
-using SPbSTU.OPD.ASAP.Core.Domain.Models.Submission;
 
 namespace SPbSTU.OPD.ASAP.Core.Application.Services;
 

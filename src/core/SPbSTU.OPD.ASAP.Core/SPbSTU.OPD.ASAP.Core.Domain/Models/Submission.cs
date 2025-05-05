@@ -1,4 +1,4 @@
-﻿namespace SPbSTU.OPD.ASAP.Core.Domain.Models.Submission;
+﻿namespace SPbSTU.OPD.ASAP.Core.Domain.Models;
 
 public record Submission(
     long Id,

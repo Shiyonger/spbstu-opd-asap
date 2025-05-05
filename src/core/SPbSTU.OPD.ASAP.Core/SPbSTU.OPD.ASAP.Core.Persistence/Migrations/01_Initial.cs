@@ -63,6 +63,12 @@ public class Initial : SqlMigration
             mentor_id bigint references mentors (id)
         );
         
+        create table google_positions (
+            id bigserial primary key,
+            cell varchar not null,
+            spreadsheet_id varchar not null
+        );
+        
         create table google (
             id bigserial primary key,
             student_id bigint references students (id),
@@ -70,12 +76,6 @@ public class Initial : SqlMigration
             assignment_id bigint references assignments (id),
             assignment_position_id bigint references google_positions (id),
             student_position_id bigint references google_positions(id)
-        );
-
-        create table google_positions (
-            id bigserial primary key,
-            cell varchar not null,
-            spreadsheet_id varchar not null
         );
         
         create table repositories (

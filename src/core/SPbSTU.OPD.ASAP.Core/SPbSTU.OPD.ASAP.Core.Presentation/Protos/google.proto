@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "SPbSTU.OPD.ASAP.Core.Presentation";
+
+package google_grpc;
+
+service SpreadSheetsService {
+  rpc CreateSpreadSheets (CreateSpreadSheetsRequest) returns (CreateSpreadSheetsResponse);
+}
+
+message CourseGrpc {
+  int64 id = 1;
+  string title = 2;
+}
+
+message StudentGrpc {
+  int64 id = 1;
+  string name = 2;
+  repeated CourseGrpc course_list = 3;
+}
+
+message AssignmentGrpc {
+  int64 id = 1;
+  string title = 2;
+  CourseGrpc course = 3;
+}
+
+message CoursePositionGrpc {
+  CourseGrpc course = 1;
+  string cell = 2;
+}
+
+message StudentPositionGrpc {
+  int64 id = 1;
+  string name = 2;
+  repeated CoursePositionGrpc course_position_list = 3;
+}
+
+message AssignmentPositionGrpc {
+  int64 id = 1;
+  string title = 2;
+  CoursePositionGrpc course_position = 3;
+}
+
+message CreateSpreadSheetsRequest {
+  repeated StudentGrpc student_list = 1;
+  repeated AssignmentGrpc assignment_list = 2;
+}
+
+message CreateSpreadSheetsResponse {
+  repeated StudentPositionGrpc student_position_list = 1;
+  repeated AssignmentPositionGrpc assignment_position_list = 2;
+}

@@ -1,4 +1,4 @@
-﻿namespace SPbSTU.OPD.ASAP.Core.Domain.Models.Assignment;
+﻿namespace SPbSTU.OPD.ASAP.Core.Domain.Models;
 
 public record Assignment(
     long Id,

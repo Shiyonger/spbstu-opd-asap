@@ -1,5 +1,5 @@
 ﻿using SPbSTU.OPD.ASAP.Core.Domain.Enums;
-using SPbSTU.OPD.ASAP.Core.Domain.Models.Assignment;
+using SPbSTU.OPD.ASAP.Core.Domain.Models;
 
 namespace SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 

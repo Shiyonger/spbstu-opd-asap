@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Presentation;
-using User = SPbSTU.OPD.ASAP.Core.Domain.Models.User.User;
+using User = SPbSTU.OPD.ASAP.Core.Domain.Models.User;
 using Role = SPbSTU.OPD.ASAP.Core.Domain.Enums.Role;
 using UserGrpc = SPbSTU.OPD.ASAP.Core.Presentation.User;
 using RoleGrpc = SPbSTU.OPD.ASAP.Core.Presentation.Role;

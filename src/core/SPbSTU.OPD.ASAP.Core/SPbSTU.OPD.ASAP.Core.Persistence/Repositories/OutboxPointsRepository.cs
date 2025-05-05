@@ -43,8 +43,10 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
                  , points
                  , date
                  , course_id
-                 , student_position
-                 , assignment_position
+                 , student_position_cell
+                 , student_position_spreadsheet_id
+                 , assignment_position_cell
+                 , assignment_position_spreadsheet_id
                  , is_sent
               from outbox_points
              where is_sent = false;
@@ -60,30 +62,18 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
 
     public async Task UpdateSent(List<long> sentPointsIds, CancellationToken token)
     {
-        var sqlQuery =
+        const string sqlQuery =
             """
             update outbox_points
                set is_sent = true
+             where id = ANY(@SentIds)
             """;
 
-        var conditions = new List<string>();
-        var @params = new DynamicParameters();
-
-        if (sentPointsIds.Count != 0)
-        {
-            sentPointsIds.Sort();
-            conditions.Add($"id = ANY(@SentIds) WHERE ");
-            @params.Add($"SentIds", sentPointsIds);
-        }
-
-        var cmd = new CommandDefinition(
-            sqlQuery + $"{string.Join(" AND ", conditions)} ",
-            @params,
-            commandTimeout: DefaultTimeoutInSeconds,
-            cancellationToken: token);
-
         await using var connection = await GetConnection();
-        await connection.ExecuteAsync(cmd);
+        await connection.ExecuteAsync(new CommandDefinition(
+            sqlQuery,
+            new { SentIds = sentPointsIds },
+            cancellationToken: token));
     }
 
     private static OutboxPointsEntityV1 MapToEntity(OutboxPointsCreateModel pointsCreateModel)

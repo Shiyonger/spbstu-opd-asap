@@ -41,7 +41,7 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
             select q.id as id
                  , q.link as link
                  , q.mentor_id as mentor_id
-                 , m.name as mentor_name
+                 , u.name as mentor_name
                  , q.assignment_id as assignment_id
                  , a.title as assignment_title
                  , q.submission_id as submission_id
@@ -49,6 +49,7 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
                  , q.action
               from outbox_queue q
               join mentors m on q.mentor_id = m.id
+              join users u on u.id = m.user_id
               join assignments a on q.assignment_id = a.id
               join submissions s on q.submission_id = s.id
              where is_sent = false;
@@ -64,30 +65,18 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
 
     public async Task UpdateSent(List<long> queueQueryIds, CancellationToken token)
     {
-        var sqlQuery =
+        const string sqlQuery = 
             """
             update outbox_queue
                set is_sent = true
+             where id = ANY(@SentIds);
             """;
 
-        var conditions = new List<string>();
-        var @params = new DynamicParameters();
-
-        if (queueQueryIds.Count != 0)
-        {
-            queueQueryIds.Sort();
-            conditions.Add($"id = ANY(@SentIds) ");
-            @params.Add($"SentIds", queueQueryIds);
-        }
-
-        var cmd = new CommandDefinition(
-            sqlQuery + $"WHERE {string.Join(" AND ", conditions)} ",
-            @params,
-            commandTimeout: DefaultTimeoutInSeconds,
-            cancellationToken: token);
-
         await using var connection = await GetConnection();
-        await connection.ExecuteAsync(cmd);
+        await connection.ExecuteAsync(new CommandDefinition(
+            sqlQuery,
+            new { SentIds = queueQueryIds },
+            cancellationToken: token));
     }
 
     private static OutboxQueueEntityV1 MapToEntity(OutboxQueueCreateModel queueCreateModelQuery)
