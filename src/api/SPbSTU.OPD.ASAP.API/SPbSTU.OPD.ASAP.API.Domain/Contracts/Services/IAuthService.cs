@@ -2,7 +2,7 @@
 
 namespace SPbSTU.OPD.ASAP.API.Domain.Contracts.Services;
 
-public interface IUsersService
+public interface IAuthService
 {
     Task Register(string name, string login, string password, string email, string role, string githubLink, CancellationToken ct);
     

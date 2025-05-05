@@ -10,7 +10,7 @@ public class GithubRepository(string connectionString) : PgRepository(connection
     {
         const string sqlQuery =
             """
-            select u.github_username
+            select distinct u.github_username
               from courses c 
               join student_courses sc on sc.course_id = c.id
               join students s on s.id = sc.student_id
@@ -51,7 +51,7 @@ public class GithubRepository(string connectionString) : PgRepository(connection
         var usernames = await connection.QueryAsync<string>(
             new CommandDefinition(
                 sqlQuery,
-                new { Organization = githubOrganization },
+                new { AssignmentTitle = assignmentTitle, Organization = githubOrganization },
                 cancellationToken: ct));
         return usernames.ToList();
         ;
@@ -74,7 +74,7 @@ public class GithubRepository(string connectionString) : PgRepository(connection
                             and c.github_organization = ip.organization_name
               join assignments a on a.course_id = c.id
                                 and a.title = ip.title
-            returning id
+            returning id;
             """;
 
         await using var connection = await GetConnection();
@@ -83,10 +83,10 @@ public class GithubRepository(string connectionString) : PgRepository(connection
                 sqlQuery,
                 new
                 {
-                    Usernames = repositories.Select(r => r.GithubUsername),
-                    Organizations = repositories.Select(r => r.GithubOrganizationName),
-                    AssignmentTitles = repositories.Select(r => r.AssignmentTitle),
-                    Links = repositories.Select(r => r.RepositoryLink)
+                    Usernames = repositories.Select(r => r.GithubUsername).ToList(),
+                    Organizations = repositories.Select(r => r.GithubOrganizationName).ToList(),
+                    AssignmentTitles = repositories.Select(r => r.AssignmentTitle).ToList(),
+                    Links = repositories.Select(r => r.RepositoryLink).ToList()
                 },
                 cancellationToken: ct));
         return ids.ToList();

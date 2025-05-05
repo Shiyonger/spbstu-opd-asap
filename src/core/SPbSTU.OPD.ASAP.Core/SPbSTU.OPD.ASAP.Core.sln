@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Core.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Core.Persistence", "SPbSTU.OPD.ASAP.Core.Persistence\SPbSTU.OPD.ASAP.Core.Persistence.csproj", "{5F1633B9-2BD9-4415-A714-10C57F7F1F62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPbSTU.OPD.ASAP.Core.TestGenerator", "SPbSTU.OPD.ASAP.Core.TestGenerator\SPbSTU.OPD.ASAP.Core.TestGenerator.csproj", "{BA672AF7-CB2B-414D-8BE3-DED97A3E4526}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +45,9 @@ Global
 		{5F1633B9-2BD9-4415-A714-10C57F7F1F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1633B9-2BD9-4415-A714-10C57F7F1F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F1633B9-2BD9-4415-A714-10C57F7F1F62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA672AF7-CB2B-414D-8BE3-DED97A3E4526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA672AF7-CB2B-414D-8BE3-DED97A3E4526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA672AF7-CB2B-414D-8BE3-DED97A3E4526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA672AF7-CB2B-414D-8BE3-DED97A3E4526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.Extensions.Options;
 using SPbSTU.OPD.ASAP.API.Application.Extensions;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Grpc;
 using SPbSTU.OPD.ASAP.API.Extensions;
 using SPbSTU.OPD.ASAP.API.Infrastructure;
 using SPbSTU.OPD.ASAP.API.Infrastructure.Extensions;
+using SPbSTU.OPD.ASAP.API.Infrastructure.Grpc;
 using SPbSTU.OPD.ASAP.API.Infrastucture.Settings;
 
 namespace SPbSTU.OPD.ASAP.API;
@@ -37,7 +39,7 @@ public sealed class Startup(IConfiguration configuration)
             .AddApplicationsServices();
 
         services.AddControllers();
-        
+
         services.AddValidatorsFromAssemblyContaining<Program>();
 
         services.AddEndpointsApiExplorer();

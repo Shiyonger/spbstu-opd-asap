@@ -8,7 +8,7 @@ using SPbSTU.OPD.ASAP.API.Domain.Results;
 
 namespace SPbSTU.OPD.ASAP.API.Application.Services;
 
-public class UsersService(IPasswordHasher passwordHasher, IUsersGrpcService usersGrpcService, IJwtProvider jwtProvider) : IUsersService
+public class AuthService(IPasswordHasher passwordHasher, IUsersGrpcService usersGrpcService, IJwtProvider jwtProvider) : IAuthService
 {
     private readonly IPasswordHasher _passwordHasher = passwordHasher;
     private readonly IUsersGrpcService _usersGrpcService = usersGrpcService;

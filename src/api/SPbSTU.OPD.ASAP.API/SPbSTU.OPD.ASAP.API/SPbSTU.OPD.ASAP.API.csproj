@@ -17,9 +17,15 @@
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
         <Protobuf Include="**\*.proto"/>
-        <Protobuf Include="..\SPbSTU.OPD.ASAP.API.Infrastructure\Protos\users.proto" ProtoRoot="..\SPbSTU.OPD.ASAP.API.Infrastructure" GrpcServices="Client"/>
-        <Protobuf Include="..\SPbSTU.OPD.ASAP.API.Infrastructure\Protos\courses.proto" ProtoRoot="..\SPbSTU.OPD.ASAP.API.Infrastructure" GrpcServices="Client"/>
-        <Protobuf Include="..\SPbSTU.OPD.ASAP.API.Infrastructure\Protos\assignments.proto" ProtoRoot="..\SPbSTU.OPD.ASAP.API.Infrastructure" GrpcServices="Client"/>
+        <Protobuf Update="Protos\assignments.proto">
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Update="Protos\courses.proto">
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Update="Protos\users.proto">
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
     </ItemGroup>
 
     <ItemGroup>

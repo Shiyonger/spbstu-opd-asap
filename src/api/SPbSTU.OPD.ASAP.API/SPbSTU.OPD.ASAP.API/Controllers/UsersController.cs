@@ -9,9 +9,9 @@ namespace SPbSTU.OPD.ASAP.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UsersController(IUsersService userService, UserRegisterValidator registerValidator) : Controller
+public class UsersController(IAuthService authService, UserRegisterValidator registerValidator) : Controller
 {
-    private readonly IUsersService _userService = userService;
+    private readonly IAuthService _authService = authService;
     private readonly UserRegisterValidator _registerValidator = registerValidator;
 
     [HttpGet]
@@ -28,7 +28,7 @@ public class UsersController(IUsersService userService, UserRegisterValidator re
         if (!validationResult.IsValid)
             return BadRequest(validationResult.Errors.Select(error => error.ErrorMessage));
         
-        await _userService.Register(userRegister.Name, userRegister.Login, userRegister.Password, userRegister.Email,
+        await _authService.Register(userRegister.Name, userRegister.Login, userRegister.Password, userRegister.Email,
             userRegister.Role, userRegister.GithubLink, ct);
 
         return Ok();
@@ -37,7 +37,7 @@ public class UsersController(IUsersService userService, UserRegisterValidator re
     [HttpPost("[action]")]
     public async Task<IActionResult> Login(UserLoginDto userLogin, CancellationToken ct)
     {
-        var result = await _userService.Login(userLogin.Login, userLogin.Password, ct);
+        var result = await _authService.Login(userLogin.Login, userLogin.Password, ct);
         
         if (!result.IsSuccessful)
             return BadRequest(new { message = result.ErrorMessage });

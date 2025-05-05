@@ -45,7 +45,7 @@ public class Initial : SqlMigration
         );
         
         create table students (
-            id bigint primary key,
+            id bigserial primary key,
             group_id bigint references groups (id),
             user_id bigint references users (id)
         );
