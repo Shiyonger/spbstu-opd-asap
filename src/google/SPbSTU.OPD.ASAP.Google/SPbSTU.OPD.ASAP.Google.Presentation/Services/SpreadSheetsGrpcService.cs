@@ -8,6 +8,7 @@ public class SpreadSheetsGrpcService : SpreadSheetsService.SpreadSheetsServiceBa
     // TODO: write grpc service
     public override Task<CreateSpreadSheetsResponse> CreateSpreadSheets(CreateSpreadSheetsRequest request, ServerCallContext context)
     {
+        Console.WriteLine("1");
         return base.CreateSpreadSheets(request, context);
     }
 }
