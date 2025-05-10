@@ -51,5 +51,6 @@ body {
 
 /* Ховер для "Выйти" */
 .logout-btn:hover {
-    background-color: #1B365C; /* Темнее голубой */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }

@@ -65,8 +65,13 @@
 
 /* Стили для кнопки "Перейти к курсу" */
 .view-btn {
+    font-size: 1rem;
     display: inline-block; /* Отображается как инлайн-блок для корректного позиционирования */
     margin-top: 0.5rem; /* Отступ сверху 15px */
     color: #1B365C;
     text-decoration: none; /* Убирает подчёркивание ссылки */
+}
+
+.view-btn:hover {
+    color: #28518A;
 }
