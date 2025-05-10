@@ -1,12 +1,10 @@
 import React from 'react';
 import './LoginPage.css';
 import '../App.css';
-import HeaderButtons from '../components/HeaderButtons.js';
 
 function LoginPage() {
     return (
         <>
-            <HeaderButtons />
             <div className="login-container">
                 <div className="login-card">
                     <form className="login-form">

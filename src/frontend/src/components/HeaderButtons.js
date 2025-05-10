@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../App.css'; // Убедимся, что стили импортируются
 
 function HeaderButtons() {
@@ -13,7 +13,6 @@ function HeaderButtons() {
 
     return (
         <div className="header-buttons">
-            <Link to="/courses" className="nav-btn">Все курсы</Link>
             <button onClick={handleLogout} className="logout-btn">Выйти</button>
         </div>
     );
