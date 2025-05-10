@@ -1,22 +1,23 @@
 .courses-background {
     min-height: 100vh; /* Минимальная высота равна высоте видимой области экрана */
-    background: linear-gradient(135deg, #f5f7fa 0%, #736993 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     padding: 40px 20px 20px; /* Внутренние отступы: 30px сверху, 20px по бокам и снизу */
     box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте */
+    position: relative;
 }
 
 .courses-title { /* Заголовок "Доступные курсы" */
     text-align: center;
-    font-size: 3rem; /* Размер шрифта 3rem (48px при стандартном font-size 16px) */
-    color: #212529;
+    font-size: 2.5rem; /* Размер шрифта 3rem (48px при стандартном font-size 16px) */
+    color: #1B365C;
     margin-bottom: 2rem; /* Отступ снизу 2rem (32px) */
 }
 
 .course-title { /* Заголовок в карточке курса */
     text-align: left;
-    font-size: 2rem;
-    color: #212529;
-    margin-bottom: 1rem; /* Отступ снизу 2rem (32px) */
+    font-size: 1.75rem;
+    color: #1B365C;
+    margin-bottom: 1rem; /* Отступ снизу 1rem */
 }
 
 .courses-list {
@@ -66,6 +67,6 @@
 .view-btn {
     display: inline-block; /* Отображается как инлайн-блок для корректного позиционирования */
     margin-top: 0.5rem; /* Отступ сверху 15px */
-    color: #0366d6;
+    color: #1B365C;
     text-decoration: none; /* Убирает подчёркивание ссылки */
 }

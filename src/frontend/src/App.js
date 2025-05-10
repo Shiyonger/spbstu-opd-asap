@@ -3,7 +3,6 @@ import React from 'react';
 import LoginPage from './pages/LoginPage';
 import CoursesPage from './pages/CoursesPage';
 import CourseDetailsPage from './pages/CourseDetailsPage';
-import Navbar from './components/Navbar';
 
 function App() {
     return React.createElement(
@@ -13,7 +12,6 @@ function App() {
             'div',
             { className: 'App' },
             [
-                React.createElement(Navbar, null),
                 React.createElement(
                     Routes,
                     null,

@@ -2,53 +2,54 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     line-height: 1.6;
-    color: #495057;
+    color: #1B365C;
 }
 
-/* Header */
-.app-header {
-    background: #495057;
-    color: white;
-    padding: 15px 20px;
-}
-
-.app-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.nav-links {
+/* Контейнер для кнопок в правом верхнем углу */
+.header-buttons {
+    position: absolute; /* Важно для кнопок в шапке */
+    top: 15px;
+    right: 20px;
+    z-index: 1000; /* Чтобы кнопки были поверх фона */
+    background: transparent;
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-.logout-btn {
-    background: none;
-    border: none;
-    color: white;
+/* Стили для кнопки "Все курсы" */
+.nav-btn {
+    color: #ffffff; /* Белый текст */
+    background-color: #1B365C; /* Голубой фон */
+    padding: 8px 16px; /* Отступы внутри кнопки */
+    border-radius: 10px; /* Скругленные углы */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: 550;
     font-size: 1rem;
-    font-weight: 500;
-    margin-left: 20px;
-    cursor: pointer;
-    transition: color 0.3s;
+    transition: background-color 0.3s; /* Плавное изменение фона */
 }
 
+/* Ховер для "Все курсы" */
+.nav-btn:hover {
+    background-color: #1B365C; /* Темнее голубой */
+}
+
+/* Стили для кнопки "Выйти" */
+.logout-btn {
+    color: #ffffff; /* Белый текст */
+    background-color: #1B365C; /* Голубой фон */
+    padding: 8px 16px; /* Отступы внутри кнопки */
+    border: none; /* Без границы */
+    border-radius: 8px; /* Скругленные углы */
+    font-weight: 550;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Плавное изменение фона */
+}
+
+/* Ховер для "Выйти" */
 .logout-btn:hover {
-    color: #d1d5db; /* Светло-серый оттенок для ховера */
+    background-color: #1B365C; /* Темнее голубой */
 }

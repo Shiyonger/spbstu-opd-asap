@@ -1,4 +1,5 @@
 import { format } from 'date-fns'; // Установите date-fns: npm install date-fns
+import '../App.css';
 
 function AssignmentItem({ assignment }) {
     return (

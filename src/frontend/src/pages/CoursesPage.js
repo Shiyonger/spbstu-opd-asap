@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getCourses } from '../api/api';
 import CourseCard from '../components/CourseCard';
+import HeaderButtons from '../components/HeaderButtons';
 import './CoursesPage.css';
+import '../App.css';
 
 function CoursesPage() {
     const [courses, setCourses] = useState([]);
@@ -34,6 +36,7 @@ function CoursesPage() {
         'div',
         { className: 'courses-background' },
         [
+            React.createElement(HeaderButtons, { key: 'header-buttons' }),
             React.createElement('h2', { className: 'courses-title', key: 'title' }, 'Доступные курсы'),
             React.createElement(
                 'div',

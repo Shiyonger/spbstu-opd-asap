@@ -2,7 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getCourseDetails } from '../api/api';
 import AssignmentItem from '../components/AssignmentItem';
+import HeaderButtons from '../components/HeaderButtons';
 import './CourseDetailsPage.css';
+import '../App.css';
 
 function CourseDetailsPage() {
     const { courseId } = useParams();
@@ -28,6 +30,7 @@ function CourseDetailsPage() {
 
     return (
         <div className="course-details-background">
+            <HeaderButtons />
             <h2 className="course-title1">{course.name}</h2>
             <div className="course-links">
                 <a href={course.googleLink} target="_blank" rel="noopener noreferrer">

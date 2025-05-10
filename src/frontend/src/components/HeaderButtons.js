@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import '../App.css'; // Убедимся, что стили импортируются
 
-function Navbar() {
+function HeaderButtons() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -12,18 +12,11 @@ function Navbar() {
     };
 
     return (
-        <header className="app-header">
-            <nav>
-                <Link to="/" className="logo">CoursesApp</Link>
-                <div className="nav-links">
-                    <Link to="/courses">All Courses</Link>
-                    <button onClick={handleLogout} className="logout-btn">
-                        Выйти
-                    </button>
-                </div>
-            </nav>
-        </header>
+        <div className="header-buttons">
+            <Link to="/courses" className="nav-btn">Все курсы</Link>
+            <button onClick={handleLogout} className="logout-btn">Выйти</button>
+        </div>
     );
 }
 
-export default Navbar;
+export default HeaderButtons;
