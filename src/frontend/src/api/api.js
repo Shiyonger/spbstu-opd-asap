@@ -2,22 +2,14 @@
 const coursesData = [
     {
         id: 'is-oop-y25',
-        name: 'Object-Oriented Programming',
-        description: 'Learn OOP principles and design patterns',
-        minPoints: 0,
-        maxPoints: 100
+        name: 'Объектно-ориентированное программирование',
     },
     {
         id: 'web-dev-2023',
-        name: 'Modern Web Development',
-        description: 'Full-stack development with React and Node.js',
-        minPoints: 0,
-        maxPoints: 120
+        name: 'Modern Web Development'
     },
     {   id: 'data-science-2023',
-        name: 'Data Science Fundamentals',    description: 'Introduction to data analysis and machine learning',
-        minPoints: 0,
-        maxPoints: 150
+        name: 'Data Science Fundamentals'
     }
 ];
 
@@ -30,7 +22,7 @@ const courseDetails = {
                 id: 'assignment-1',
                 title: 'ISU',
                 description: 'Individual student project',
-                points: 4,
+                deadline: '2025-05-20T23:59:00Z',
                 githubLink: 'https://github.com/oop-course/isu',
                 googleSheetLink: "https://docs.google.com/spreadsheets/d/..."
             },
@@ -38,7 +30,7 @@ const courseDetails = {
                 id: 'assignment-2',
                 title: 'Shops System',
                 description: 'E-commerce simulation',
-                points: 8,
+                deadline: '2025-05-20T23:59:00Z',
                 githubLink: 'https://github.com/oop-course/shops',
                 googleSheetLink: "https://docs.google.com/spreadsheets/d/..."
             }

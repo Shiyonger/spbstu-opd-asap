@@ -1,87 +1,105 @@
 .course-details-background {
-    min-height: 100vh;
-    padding: 2rem 1.5rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    box-sizing: border-box;
+    min-height: 100vh; /* Минимальная высота равна высоте видимой области экрана */
+    padding: 2rem 1.5rem; /* Внутренние отступы: 2rem сверху/снизу, 1.5rem по бокам */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Градиентный фон от светло-серого к светло-фиолетовому */
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте */
 }
 
+/* Стили для заголовка курса (название курса) */
 .course-title1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #212529;
+    text-align: center; /* Выравнивание текста по центру */
+    font-size: 2rem; /* Размер шрифта 2rem (32px при стандартном font-size 16px) */
+    margin-bottom: 1.5rem; /* Отступ снизу 1.5rem (24px) */
+    color: #212529; /* Тёмно-серый цвет текста */
 }
 
+/* Стили для контейнера ссылок (Google Sheets и GitHub) */
 .course-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    display: flex; /* Flexbox для горизонтального расположения ссылок */
+    justify-content: center; /* Центрирование ссылок по горизонтали */
+    gap: 2rem; /* Отступ 2rem (32px) между ссылками */
+    margin-bottom: 2rem; /* Отступ снизу 2rem (32px) */
 }
 
+/* Стили для ссылок в контейнере course-links */
 .course-links a {
-    color: #000000; /* Черный цвет для ссылок */
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s;
+    color: #000000; /* Чёрный цвет текста ссылок */
+    font-weight: 600; /* Полужирный шрифт */
+    text-decoration: none; /* Убирает подчёркивание ссылок */
+    transition: color 0.3s; /* Плавное изменение цвета при наведении за 0.3 секунды */
 }
 
+/* Эффект наведения на ссылки в course-links */
 .course-links a:hover {
-    color: #333333; /* Легкое затемнение при наведении */
+    color: #333333; /* Лёгкое затемнение (тёмно-серый) при наведении */
 }
 
+/* Стили для заголовка секции заданий */
 .assignments-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: #333;
+    font-size: 1.5rem; /* Размер шрифта 1.5rem (24px) */
+    margin-bottom: 1rem; /* Отступ снизу 1rem (16px) */
+    text-align: center; /* Выравнивание текста по центру */
+    color: #333; /* Тёмно-серый цвет текста */
 }
 
 .assignments-list {
-    display: grid;
-    gap: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
+    display: grid; /* Использует CSS Grid для расположения карточек заданий */
+    gap: 1rem; /* Отступ 1rem (16px) между карточками */
+    max-width: 800px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера по горизонтали */
 }
 
+/* Стили для карточки задания */
 .assignment-card {
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 15px;
+    border: 2px solid #ffffff; /* Белая граница толщиной 2px */
+    background-color: white;
+    border-radius: 20px; /* Скругление углов на 20px */
+    padding: 0 20px 20px; /* Внутренние отступы 20px со всех сторон */
+    transition: all 0.3s; /* Плавная анимация изменений за 0.3 секунды */
+    box-sizing: border-box;
 }
 
+/* Эффект наведения на карточку задания */
+.assignment-card:hover {
+    transform: translateY(-2px); /* Поднимает карточку на 2px вверх */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Добавляет тень для эффекта подсветки */
+}
+
+/* Стили для метаданных задания (очки и ссылки) */
 .assignment-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    color: #586069;
+    display: flex; /* Flexbox для горизонтального расположения содержимого */
+    justify-content: space-between; /* Размещает элементы по краям контейнера */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    margin-top: 10px; /* Отступ сверху 10px */
+    color: #586069; /* Серый цвет текста */
 }
 
+/* Стили для ссылок в метаданных задания */
 .assignment-meta a {
-    color: #000000; /* Черный цвет для ссылок */
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 1rem; /* Отступ между ссылками */
-    transition: color 0.3s;
+    color: #000000; /* Чёрный цвет текста ссылок */
+    text-decoration: none; /* Убирает подчёркивание */
+    font-weight: 500; /* Средняя толщина шрифта */
+    margin-left: 1rem; /* Отступ слева 1rem (16px) между ссылками */
+    transition: color 0.3s; /* Плавное изменение цвета при наведении */
 }
 
+/* Эффект наведения на ссылки в метаданных */
 .assignment-meta a:hover {
-    color: #333333; /* Легкое затемнение при наведении */
+    color: #333333; /* Лёгкое затемнение при наведении */
 }
 
-/* Контейнер для ссылок, чтобы они были горизонтально */
+/* Стили для контейнера ссылок в метаданных (для горизонтального расположения) */
 .assignment-meta .links-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* Расстояние между ссылками GitHub и Google Sheets */
+    display: flex; /* Flexbox для горизонтального расположения ссылок */
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 1rem; /* Отступ 1rem (16px) между ссылками */
 }
 
+/* Стили для сообщений о загрузке и ошибке */
 .course-loading,
 .course-error {
-    text-align: center;
-    padding: 3rem;
-    font-size: 1.25rem;
-    color: #444;
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 3rem; /* Внутренние отступы 3rem (48px) */
+    font-size: 1.25rem; /* Размер шрифта 1.25rem (20px) */
+    color: #444; /* Тёмно-серый цвет текста */
 }
