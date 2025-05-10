@@ -1,6 +1,6 @@
 .course-details-background {
     min-height: 100vh; /* Минимальная высота равна высоте видимой области экрана */
-    padding: 2rem 1.5rem; /* Внутренние отступы: 2rem сверху/снизу, 1.5rem по бокам */
+    padding: 40px 1.5rem; /* Внутренние отступы: 2rem сверху/снизу, 1.5rem по бокам */
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Градиентный фон от светло-серого к светло-фиолетовому */
     box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте */
     position: relative;
@@ -99,6 +99,11 @@
     color: #28518A; /* Лёгкое затемнение при наведении */
 }
 
+.assignment-deadline {
+    font-size: 1rem;
+    color: #1B365C;
+}
+
 /* Стили для контейнера ссылок в метаданных (для горизонтального расположения) */
 .assignment-meta .links-container {
     display: flex; /* Flexbox для горизонтального расположения ссылок */
@@ -118,4 +123,65 @@
 .assignment-card p {
     font-size: 1rem;
     color: #1B365C;
+}
+
+@media (max-width: 576px) {
+    .course-details-background {
+        padding: 40px 0.5rem;
+    }
+
+    .course-title1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .assignments-title {
+        font-size: 1.5rem;
+    }
+
+    .assignment-card {
+        padding: 0 15px 15px;
+    }
+
+    .assignments-list {
+        grid-template-columns: 1fr; /* Одна колонка */
+        width: 100%;
+        gap: 0.8rem;
+    }
+
+    .assignment-card h4 {
+        font-size: 1.25rem;
+    }
+
+    .assignment-card p {
+        font-size: 0.9rem;
+    }
+
+    .assignment-deadline {
+        font-size: 0.9rem;
+    }
+
+    .course-links a {
+        font-size: 1rem;
+    }
+
+    .assignment-meta a {
+        font-size: 0.9rem;
+    }
+
+    .assignment-meta {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .assignment-meta .links-container {
+        gap: 0.75rem;
+    }
+
+    .course-loading,
+    .course-error {
+        padding: 2rem;
+        font-size: 1rem;
+    }
 }

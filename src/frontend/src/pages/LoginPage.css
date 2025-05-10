@@ -25,7 +25,7 @@
 
 .login-form {
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -81,7 +81,8 @@
 
 @media (max-width: 576px) {
     .login-card {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1rem;
+        margin: 0 1rem;
     }
 
     .login-title {
@@ -90,5 +91,14 @@
 
     .input-field, .login-btn {
         padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .input-group label {
+        font-size: 0.9rem;
+    }
+
+    .login-form {
+        padding: 0 1rem;
     }
 }

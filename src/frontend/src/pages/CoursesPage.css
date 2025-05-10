@@ -38,12 +38,30 @@
 
 /* Адаптация под мобильные устройства */
 @media (max-width: 576px) {
-    .course-card {
-        padding: 2rem 1.5rem; /* Уменьшенные внутренние отступы: 2rem сверху/снизу, 1.5rem по бокам */
+    .courses-background {
+        padding: 40px 10px 10px;
     }
 
     .courses-title {
-        font-size: 1.5rem; /* Уменьшенный размер шрифта до 1.5rem (24px) */
+        font-size: 1.75rem;
+    }
+
+    .courses-list {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+        width: 100%; /* На всю ширину экрана */
+        gap: 0.8rem;
+    }
+
+    .course-card {
+        padding: 1rem;
+    }
+
+    .course-title {
+        font-size: 1.25rem;
+    }
+
+    .view-btn {
+        font-size: 0.9rem;
     }
 }
 

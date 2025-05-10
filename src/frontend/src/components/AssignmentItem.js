@@ -7,7 +7,9 @@ function AssignmentItem({ assignment }) {
             <h4>{assignment.title}</h4>
             <p>{assignment.description}</p>
             <div className="assignment-meta">
-                <span>Deadline: {format(new Date(assignment.deadline), 'dd.MM.yyyy HH:mm')}</span>
+                <span className="assignment-deadline">
+                    Deadline: {format(new Date(assignment.deadline), 'dd.MM.yyyy HH:mm')}
+                </span>
                 <div className="links-container">
                     {assignment.googleSheetLink && (
                         <a href={assignment.googleSheetLink} target="_blank" rel="noopener noreferrer">
