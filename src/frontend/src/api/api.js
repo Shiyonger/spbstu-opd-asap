@@ -31,14 +31,16 @@ const courseDetails = {
                 title: 'ISU',
                 description: 'Individual student project',
                 points: 4,
-                githubLink: 'https://github.com/oop-course/isu'
+                githubLink: 'https://github.com/oop-course/isu',
+                googleSheetLink: "https://docs.google.com/spreadsheets/d/..."
             },
             {
                 id: 'assignment-2',
                 title: 'Shops System',
                 description: 'E-commerce simulation',
                 points: 8,
-                githubLink: 'https://github.com/oop-course/shops'
+                githubLink: 'https://github.com/oop-course/shops',
+                googleSheetLink: "https://docs.google.com/spreadsheets/d/..."
             }
         ]
     }

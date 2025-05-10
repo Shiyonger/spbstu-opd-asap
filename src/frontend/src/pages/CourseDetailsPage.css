@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-.course-title {
+.course-title1 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -20,14 +20,14 @@
 }
 
 .course-links a {
-    color: #4a63dd;
+    color: #000000; /* Черный цвет для ссылок */
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .course-links a:hover {
-    color: #2b3cbf;
+    color: #333333; /* Легкое затемнение при наведении */
 }
 
 .assignments-title {
@@ -54,8 +54,28 @@
 .assignment-meta {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
     color: #586069;
+}
+
+.assignment-meta a {
+    color: #000000; /* Черный цвет для ссылок */
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 1rem; /* Отступ между ссылками */
+    transition: color 0.3s;
+}
+
+.assignment-meta a:hover {
+    color: #333333; /* Легкое затемнение при наведении */
+}
+
+/* Контейнер для ссылок, чтобы они были горизонтально */
+.assignment-meta .links-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Расстояние между ссылками GitHub и Google Sheets */
 }
 
 .course-loading,

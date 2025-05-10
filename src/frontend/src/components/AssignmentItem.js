@@ -5,11 +5,18 @@ function AssignmentItem({ assignment }) {
             <p>{assignment.description}</p>
             <div className="assignment-meta">
                 <span>Points: {assignment.points}</span>
-                {assignment.githubLink && (
-                    <a href={assignment.githubLink} target="_blank" rel="noopener noreferrer">
-                        View on GitHub
-                    </a>
-                )}
+                <div className="links-container">
+                    {assignment.githubLink && (
+                        <a href={assignment.githubLink} target="_blank" rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                    )}
+                    {assignment.googleSheetLink && (
+                        <a href={assignment.googleSheetLink} target="_blank" rel="noopener noreferrer">
+                            Google Sheets
+                        </a>
+                    )}
+                </div>
             </div>
         </div>
     );

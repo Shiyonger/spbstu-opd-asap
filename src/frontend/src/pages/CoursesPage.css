@@ -5,9 +5,16 @@
     box-sizing: border-box;
 }
 
-.courses-title {
+.courses-title { /* Заголовок "Доступные курсы" */
     text-align: center;
     font-size: 3rem;
+    color: #212529;
+    margin-bottom: 2rem;
+}
+
+.course-title { /* Заголовок в карточке курса */
+    text-align: left;
+    font-size: 2rem;
     color: #212529;
     margin-bottom: 2rem;
 }

@@ -15,7 +15,7 @@ function CourseDetailsPage() {
                 const data = await getCourseDetails(courseId);
                 setCourse(data);
             } catch (error) {
-                console.error('Failed to load course:', error);
+                console.error('Не удалось загрузить курс', error);
             } finally {
                 setLoading(false);
             }
@@ -28,13 +28,13 @@ function CourseDetailsPage() {
 
     return (
         <div className="course-details-background">
-            <h2 className="course-title">{course.name}</h2>
+            <h2 className="course-title1">{course.name}</h2>
             <div className="course-links">
                 <a href={course.googleLink} target="_blank" rel="noopener noreferrer">
-                    Google Таблица курса
+                    Google Sheets
                 </a>
                 <a href={course.githubLink} target="_blank" rel="noopener noreferrer">
-                    GitHub курса
+                    GitHub
                 </a>
             </div>
 
