@@ -28,6 +28,8 @@ message AssignmentGrpc {
 message CoursePositionGrpc {
   CourseGrpc course = 1;
   string cell = 2;
+  string spreadsheet_id = 3;
+  string points_spreadsheet_link = 4;
 }
 
 message StudentPositionGrpc {
@@ -40,6 +42,7 @@ message AssignmentPositionGrpc {
   int64 id = 1;
   string title = 2;
   CoursePositionGrpc course_position = 3;
+  string queue_spreadsheet_link = 4;
 }
 
 message CreateSpreadSheetsRequest {
