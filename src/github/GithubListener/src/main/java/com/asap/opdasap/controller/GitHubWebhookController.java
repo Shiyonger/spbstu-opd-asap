@@ -22,20 +22,19 @@ public class GitHubWebhookController {
     }
 
     @PostMapping
-    public ResponseEntity<String> handleWebhook(
+    public ResponseEntity<?> handleWebhook(
             @RequestBody String payload,
             @RequestHeader("X-GitHub-Event") String eventType,
             @RequestHeader(value = "X-Hub-Signature-256", required = false) String signature
     ) {
         logger.info("Received GitHub event: {}", eventType);
-
         if (signature != null && !signatureVerifier.verifySignature(payload, signature)) {
             logger.warn("Invalid GitHub signature");
             return ResponseEntity.status(401).body("Invalid signature");
         }
 
         try {
-            String response = switch (eventType) {
+            Object response = switch (eventType) {
                 case "push" -> eventService.handlePushEvent(payload);
                 case "pull_request" -> eventService.handlePullRequestEvent(payload);
                 default -> throw new IllegalArgumentException("Unsupported event type: " + eventType);

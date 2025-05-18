@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option java_package = "com.asap.opdasap.grpc";
+option java_outer_classname = "GithubProto";
+option java_multiple_files = true;
+
+package github_grpc;
+
+service GithubService {
+  rpc GetUsersToInvite (GetUsersToInviteRequest) returns (GetUsersToInviteResponse);
+  rpc GetUsersToCreateRepository (GetUsersToCreateRepositoryRequest) returns (GetUsersToCreateRepositoryResponse);
+  rpc CreateRepositories (CreateRepositoriesRequest) returns (CreateRepositoriesResponse);
+  rpc MarkInvited (MarkInvitedRequest) returns (MarkInvitedResponse);
+}
+
+message GetUsersToInviteRequest {
+  string github_organization_name = 1;
+}
+
+// background job которая раз в день будет вызывать метод  GetUsersToInvite через grpc client
+// потом в markInvited передает все username
+// вызывает getUsersToCreateREpostory, дальше создаем репозитории и вызываем cCreateRepositories со всеми полученным ссылками
+
+message GetUsersToInviteResponse {
+  repeated string usernames = 1;
+}
+
+message GetUsersToCreateRepositoryRequest {
+  string github_organization_name = 1;
+  string assignment_title = 2;
+}
+
+message GetUsersToCreateRepositoryResponse {
+  repeated string usernames = 1;
+}
+
+message Repository {
+  string username = 1;
+  string github_organization_name = 2;
+  string assignment_title = 3;
+  string repository_link = 4;
+}
+
+message CreateRepositoriesRequest {
+  repeated Repository repositories = 1;
+}
+
+message CreateRepositoriesResponse {
+  repeated int64 repository_ids = 1;
+}
+
+message MarkInvitedRequest {
+  repeated string usernames = 1;
+}
+
+message MarkInvitedResponse {
+
+}
+
+
+
+
+

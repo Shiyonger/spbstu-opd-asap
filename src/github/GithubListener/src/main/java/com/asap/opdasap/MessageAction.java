@@ -7,15 +7,54 @@ import java.util.Date;
 
 public final class MessageAction implements Serializable {
 
-    @JsonProperty("nickname")
-    public String nickname;
+    @JsonProperty("username")
+    private String username;
 
     @JsonProperty("date")
-    public Date date;
+    private Date date;
 
-    @JsonProperty("assignment_name")
-    public String assignmentName;   // Название репозитория
+    @JsonProperty("assignment_title")
+    private String assignmentTitle;
 
-    // Посмотреть можем ли понять создан или обновлен pull request
+    @JsonProperty("action")
+    private ActionType action;
 
+    public enum ActionType {
+        @JsonProperty("Create") CREATE,
+        @JsonProperty("Update") UPDATE,
+        @JsonProperty("Delete") DELETE
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getAssignmentTitle() {
+        return assignmentTitle;
+    }
+
+    public void setAssignmentTitle(String assignmentTitle) {
+        this.assignmentTitle = assignmentTitle;
+    }
+
+    public ActionType getAction() {
+        return action;
+    }
+
+    public void setAction(ActionType action) {
+        this.action = action;
+    }
 }
+
