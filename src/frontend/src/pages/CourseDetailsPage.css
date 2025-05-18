@@ -1,0 +1,187 @@
+.course-details-background {
+    min-height: 100vh; /* Минимальная высота равна высоте видимой области экрана */
+    padding: 40px 1.5rem; /* Внутренние отступы: 2rem сверху/снизу, 1.5rem по бокам */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Градиентный фон от светло-серого к светло-фиолетовому */
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте */
+    position: relative;
+}
+
+/* Стили для заголовка курса (название курса) */
+.course-title1 {
+    text-align: center; /* Выравнивание текста по центру */
+    font-size: 2.5rem; /* Размер шрифта */
+    margin-bottom: 1.5rem; /* Отступ снизу 1.5rem (24px) */
+    color: #1B365C; /* Тёмно-серый цвет текста */
+}
+
+/* Стили для контейнера ссылок (Google Sheets и GitHub) */
+.course-links {
+    display: flex; /* Flexbox для горизонтального расположения ссылок */
+    justify-content: center; /* Центрирование ссылок по горизонтали */
+    gap: 2rem; /* Отступ 2rem (32px) между ссылками */
+    margin-bottom: 2rem; /* Отступ снизу 2rem (32px) */
+}
+
+/* Стили для ссылок в контейнере course-links */
+.course-links a {
+    font-size: 1.25rem;
+    color: #1B365C;
+    font-weight: 550; /* Полужирный шрифт */
+    text-decoration: none; /* Убирает подчёркивание ссылок */
+    transition: color 0.3s; /* Плавное изменение цвета при наведении за 0.3 секунды */
+}
+
+/* Эффект наведения на ссылки в course-links */
+.course-links a:hover {
+    color: #28518A;
+}
+
+/* Стили для заголовка секции заданий */
+.assignments-title {
+    font-size: 1.75rem; /* Размер шрифта 1.5rem (24px) */
+    margin-bottom: 1rem; /* Отступ снизу 1rem (16px) */
+    text-align: center; /* Выравнивание текста по центру */
+    color: #1B365C; /* Тёмно-серый цвет текста */
+}
+
+.assignments-list {
+    display: grid; /* Использует CSS Grid для расположения карточек заданий */
+    gap: 1rem; /* Отступ 1rem (16px) между карточками */
+    max-width: 800px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+/* Стили для карточки задания */
+.assignment-card {
+    border: 2px solid #ffffff; /* Белая граница толщиной 2px */
+    background-color: white;
+    border-radius: 20px; /* Скругление углов на 20px */
+    padding: 0 20px 20px; /* Внутренние отступы 20px со всех сторон */
+    transition: all 0.3s; /* Плавная анимация изменений за 0.3 секунды */
+    box-sizing: border-box;
+}
+
+/* Стили для заголовка в карточке задания */
+.assignment-card h4 {
+    text-align: left;
+    font-size: 1.5rem;
+    color: #1B365C;
+    margin-bottom: 1rem; /* Отступ снизу 1rem */
+}
+
+/* Эффект наведения на карточку задания */
+.assignment-card:hover {
+    transform: translateY(-2px); /* Поднимает карточку на 2px вверх */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Добавляет тень для эффекта подсветки */
+}
+
+/* Стили для метаданных задания (очки и ссылки) */
+.assignment-meta {
+    display: flex; /* Flexbox для горизонтального расположения содержимого */
+    justify-content: space-between; /* Размещает элементы по краям контейнера */
+    align-items: center; /* Выравнивание элементов по вертикали */
+    margin-top: 10px; /* Отступ сверху 10px */
+    color: #1B365C; /* Серый цвет текста */
+}
+
+/* Стили для ссылок в метаданных задания */
+.assignment-meta a {
+    color: #1B365C;
+    font-size: 1rem;
+    text-decoration: none; /* Убирает подчёркивание */
+    font-weight: 500; /* Средняя толщина шрифта */
+    margin-left: 1rem; /* Отступ слева 1rem (16px) между ссылками */
+    transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+/* Эффект наведения на ссылки в метаданных */
+.assignment-meta a:hover {
+    color: #28518A; /* Лёгкое затемнение при наведении */
+}
+
+.assignment-deadline {
+    font-size: 1rem;
+    color: #1B365C;
+}
+
+/* Стили для контейнера ссылок в метаданных (для горизонтального расположения) */
+.assignment-meta .links-container {
+    display: flex; /* Flexbox для горизонтального расположения ссылок */
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 1rem; /* Отступ 1rem (16px) между ссылками */
+}
+
+/* Стили для сообщений о загрузке и ошибке */
+.course-loading,
+.course-error {
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 3rem; /* Внутренние отступы 3rem (48px) */
+    font-size: 1.25rem; /* Размер шрифта 1.25rem (20px) */
+    color: #1B365C; /* Тёмно-серый цвет текста */
+}
+
+.assignment-card p {
+    font-size: 1rem;
+    color: #1B365C;
+}
+
+@media (max-width: 576px) {
+    .course-details-background {
+        padding: 40px 0.5rem;
+    }
+
+    .course-title1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .assignments-title {
+        font-size: 1.5rem;
+    }
+
+    .assignment-card {
+        padding: 0 15px 15px;
+    }
+
+    .assignments-list {
+        grid-template-columns: 1fr; /* Одна колонка */
+        width: 100%;
+        gap: 0.8rem;
+    }
+
+    .assignment-card h4 {
+        font-size: 1.25rem;
+    }
+
+    .assignment-card p {
+        font-size: 0.9rem;
+    }
+
+    .assignment-deadline {
+        font-size: 0.9rem;
+    }
+
+    .course-links a {
+        font-size: 1rem;
+    }
+
+    .assignment-meta a {
+        font-size: 0.9rem;
+    }
+
+    .assignment-meta {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .assignment-meta .links-container {
+        gap: 0.75rem;
+    }
+
+    .course-loading,
+    .course-error {
+        padding: 2rem;
+        font-size: 1rem;
+    }
+}
