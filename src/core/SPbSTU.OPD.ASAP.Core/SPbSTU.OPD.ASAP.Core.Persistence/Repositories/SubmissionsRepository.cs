@@ -54,13 +54,14 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
         const string sqlQuery =
             """
             with input_pairs(username, title) as (
-                select * from unnest(@Usernames, @AssignmentTitles)
+                select unnest(@Usernames) as username
+                     , unnest(@AssignmentTitles) as title
             )
             select 
                 u.github_username as username,
                 a.title as title,
                 sb.id as id,
-                sb.student_id as student_id
+                sb.student_id as student_id,
                 scg.mentor_id as mentor_id,
                 a.id as assignment_id,
                 r.link as repository_link,
@@ -73,11 +74,12 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
             join assignments a on sb.assignment_id = a.id and a.title = ip.title
             join repositories r on r.id = sb.repository_id
             join groups g on g.id = s.group_id
-            join subject_course_groups scg on scg.group_id = g.id;
+            join subject_course_groups scg on scg.group_id = g.id
+                                          and scg.course_id=a.course_id;
             """;
 
         await using var connection = await GetConnection();
-        var submissions = await connection.QueryAsync<(string Username, string Title, Domain.Models.Submission Submission)>(
+        var submissionsRaw = await connection.QueryAsync(
             new CommandDefinition(
                 sqlQuery,
                 new
@@ -86,6 +88,22 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
                     AssignmentTitles = assignmentTitles.ToArray()
                 },
                 cancellationToken: ct));
+
+        var submissions = submissionsRaw.Select(row => (
+            Username: (string)row.username,
+            Title: (string)row.title,
+            Submission: new Domain.Models.Submission
+            (
+                row.id,
+                row.student_id,
+                row.mentor_id,
+                row.assignment_id,
+                row.repository_link,
+                row.created_at,
+                row.updated_at
+            )
+        ));
+
 
         return submissions.ToDictionary(
             s => (s.Username, s.Title),
@@ -100,11 +118,12 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
         const string sqlQuery =
             """
             with input_pairs(username, title) as (
-                select * from unnest(@Usernames, @AssignmentTitles)
+                select unnest(@Usernames) as username
+                     , unnest(@AssignmentTitles) as title
             )
             insert into submissions (student_id, assignment_id, repository_id, created_at, updated_at)
             select 
-                s.student_id as student_id
+                s.id as student_id,
                 a.id as assignment_id,
                 r.id as repository_id,
                 now() as created_at,
@@ -114,7 +133,7 @@ public class SubmissionsRepository(string connectionString) : PgRepository(conne
             join students s on s.user_id = u.id
             join assignments a on a.title = ip.title
             join repositories r on r.student_id = s.id
-                               and r.assignment_id = a.id;
+                               and r.assignment_id = a.id
             returning id;
             """;
 

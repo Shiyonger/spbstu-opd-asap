@@ -4,33 +4,34 @@ using SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Core.TestGenerator;
 
 const string bootstrapServers = "localhost:9092";
-const string topicName = "orderevents";
+const string topicName1 = "points-github";
+const string topicName2 = "action";
 const int eventsCount = 100000;
 const int timeoutMs = 5 * 60 * 1000;
 
 using var cts = new CancellationTokenSource(timeoutMs);
-var publisher1 = new KafkaPublisher<(string, string), ActionKafka>(
+var publisher1 = new KafkaPublisher<string, ActionKafka>(
     bootstrapServers,
-    topicName,
-    keySerializer: null,
+    topicName2,
+    new SystemTextJsonSerializer<string>(),
     new SystemTextJsonSerializer<ActionKafka>(new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } }));
 
 
 var messages1 = ActionKafkaGenerator
     .Generate(eventsCount).ToList()
-    .Select(e => ((e.Username, e.AssignmentTitle), e));
+    .Select(e => (e.Username + e.AssignmentTitle, e));
 
 await publisher1.Publish(messages1, cts.Token);
-var publisher2 = new KafkaPublisher<(string, string), PointsGithubKafka>(
+var publisher2 = new KafkaPublisher<string, PointsGithubKafka>(
     bootstrapServers,
-    topicName,
+    topicName1,
     keySerializer: null,
     new SystemTextJsonSerializer<PointsGithubKafka>(new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } }));
 
 
 var messages2 = PointsGithubKafkaGenerator
     .Generate(eventsCount).ToList()
-    .Select(e => ((e.Username, e.AssignmentTitle), e));
+    .Select(e => (e.Username + e.AssignmentTitle, e));
 
 await publisher2.Publish(messages2, cts.Token);
 
@@ -43,15 +44,18 @@ public static class ActionKafkaGenerator
 
     public static IEnumerable<ActionKafka> Generate(int count)
     {
-        for (int i = 0; i < count; i++)
+        foreach (var username in _usernames)
         {
-            yield return new ActionKafka
+            foreach (var title in _titles)
             {
-                Username = _usernames[_random.Next(_usernames.Length)],
-                Date = RandomDate(),
-                AssignmentTitle = _titles[_random.Next(_titles.Length)],
-                Action = (ActionKafka.ActionType)_random.Next(3)
-            };
+                yield return new ActionKafka
+                {
+                    Username = username,
+                    Date = RandomDate(),
+                    AssignmentTitle = title,
+                    Action = (ActionKafka.ActionType.Create)
+                };
+            }
         }
     }
 
@@ -73,16 +77,19 @@ public static class PointsGithubKafkaGenerator
 
     public static IEnumerable<PointsGithubKafka> Generate(int count)
     {
-        for (int i = 0; i < count; i++)
+        foreach (var username in _usernames)
         {
-            yield return new PointsGithubKafka
+            foreach (var assignmentTitle in _assignmentTitles)
             {
-                Username = _usernames[_random.Next(_usernames.Length)],
-                AssignmentTitle = _assignmentTitles[_random.Next(_assignmentTitles.Length)],
-                CourseTitle = _courseTitles[_random.Next(_courseTitles.Length)],
-                Date = RandomDate(),
-                Points = _random.Next(0, 101) // 0 to 100 points
-            };
+                yield return new PointsGithubKafka
+                {
+                    Username = username,
+                    AssignmentTitle = assignmentTitle,
+                    CourseTitle = _courseTitles.First(),
+                    Date = RandomDate(),
+                    Points = _random.Next(0, 101) // 0 to 100 points
+                };
+            }
         }
     }
 

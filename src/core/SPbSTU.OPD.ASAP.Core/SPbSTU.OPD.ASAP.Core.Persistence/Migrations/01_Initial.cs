@@ -131,19 +131,21 @@ public class Initial : SqlMigration
 
     protected override string GetDownSql(IServiceProvider services) =>
         """
+        drop table actions;
+        drop table outbox_queue;
+        drop table outbox_points;
+        drop table student_courses;
         drop table submissions;
-        drop table assignments;
-        drop table subjects;
-        drop table courses;
-        drop table groups;
-        drop table students;
+        drop table repositories;
+        drop table google;
+        drop table google_positions;
         drop table subject_course_groups;
         drop table mentors;
+        drop table students;
         drop table users;
-        drop table google;
-        drop table repositories;
-        drop table student_courses;
-        drop table outbox_points;
-        drop table outbox_queue;
+        drop table groups;
+        drop table assignments;
+        drop table courses;
+        drop table subjects;
         """;
 }

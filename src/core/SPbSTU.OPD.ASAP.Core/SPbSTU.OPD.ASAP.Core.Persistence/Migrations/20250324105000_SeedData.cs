@@ -38,11 +38,11 @@ public class SeedData : SqlMigration
         values (513090330002);
 
         insert into users (name, login, password, email, role, github_username) 
-        values ('Александр_Градов', 'gradov.al', '$2a$11$21ty390G7LblWUlIcNpBDuEkFb0nVVzt32ONrfWCXMCsrDb1.qMFu', 'gradov.al@edu.spbstu.ru', 'mentor', 'Shiyonger')
-             , ('Тимур_Хасанов', 'hasanov.ta', '$2a$11$21ty390G7LblWUlIcNpBDuEkFb0nVVzt32ONrfWCXMCsrDb1.qMFu', 'hasanov.ta@edu.spbstu.ru', 'student', 'HasanovTimur9')
-             , ('Илья_Болтышев', 'boltyshev.ip', '$2a$11$21ty390G7LblWUlIcNpBDuEkFb0nVVzt32ONrfWCXMCsrDb1.qMFu', 'boltyshev.ip@edu.spbstu.ru', 'student', 'Ilya')
-             , ('Елизавета_Ковкова', 'kovkova.ea', '$2a$11$21ty390G7LblWUlIcNpBDuEkFb0nVVzt32ONrfWCXMCsrDb1.qMFu', 'kovkova.ea@edu.spbstu.ru', 'student', 'zkmmhn')
-             , ('Анна_Малышева', 'malysheva6.aa', '$2a$11$21ty390G7LblWUlIcNpBDuEkFb0nVVzt32ONrfWCXMCsrDb1.qMFu', 'malysheva6.aa@edu.spbstu.ru', 'student', 'MalyAnya');
+        values ('Александр_Градов', 'gradov.al', 'password', 'gradov.al@edu.spbstu.ru', 'mentor', 'Shiyonger')
+             , ('Тимур_Хасанов', 'hasanov.ta', 'password', 'hasanov.ta@edu.spbstu.ru', 'student', 'HasanovTimur9')
+             , ('Илья_Болтышев', 'boltyshev.ip', 'password', 'boltyshev.ip@edu.spbstu.ru', 'student', 'Ilya')
+             , ('Елизавета_Ковкова', 'kovkova.ea', 'password', 'kovkova.ea@edu.spbstu.ru', 'student', 'zkmmhn')
+             , ('Анна_Малышева', 'malysheva6.aa', 'password', 'malysheva6.aa@edu.spbstu.ru', 'student', 'MalyAnya');
 
         insert into students (group_id, user_id) 
         values (513090330002, 2)
@@ -52,6 +52,36 @@ public class SeedData : SqlMigration
 
         insert into mentors (department, user_id) 
         values ('ИКНК', 1);
+
+        insert into repositories (student_id, assignment_id, link)
+        values (1, 1, 'test')
+             , (1, 2, 'test')
+             , (1, 3, 'test')
+             , (1, 4, 'test')
+             , (1, 5, 'test')
+             , (1, 6, 'test')
+             , (1, 7, 'test')
+             , (2, 1, 'test')
+             , (2, 2, 'test')
+             , (2, 3, 'test')
+             , (2, 4, 'test')
+             , (2, 5, 'test')
+             , (2, 6, 'test')
+             , (2, 7, 'test')
+             , (3, 1, 'test')
+             , (3, 2, 'test')
+             , (3, 3, 'test')
+             , (3, 4, 'test')
+             , (3, 5, 'test')
+             , (3, 6, 'test')
+             , (3, 7, 'test')
+             , (4, 1, 'test')
+             , (4, 2, 'test')
+             , (4, 3, 'test')
+             , (4, 4, 'test')
+             , (4, 5, 'test')
+             , (4, 6, 'test')
+             , (4, 7, 'test');
 
         insert into subject_course_groups (course_id, group_id, mentor_id) 
         values (1, 513090330002, 1)

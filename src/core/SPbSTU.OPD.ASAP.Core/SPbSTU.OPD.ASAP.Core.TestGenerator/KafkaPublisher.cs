@@ -10,8 +10,8 @@ internal sealed class KafkaPublisher<TKey, TValue> : IDisposable
     public KafkaPublisher(
         string bootstrapServers,
         string topic,
-        ISerializer<TKey>? keySerializer,
-        ISerializer<TValue>? valueSerializer)
+        ISerializer<TKey>? keySerializer = null,
+        ISerializer<TValue>? valueSerializer = null)
     {
         _topic = topic;
 

@@ -4,7 +4,7 @@ namespace SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 
 public interface IGoogleRepository
 {
-    Task<Dictionary<string, Position>> GetStudentsPositions(List<string> githubUsernames, CancellationToken ct);
+    Task<Dictionary<(string, long), Position>> GetStudentsPositions(List<(string, long)> githubUsernamesAndCourses, CancellationToken ct);
     
-    Task<Dictionary<string, Position>> GetAssignmentsPositions(List<string> titles, CancellationToken ct);
+    Task<Dictionary<(string, long), Position>> GetAssignmentsPositions(List<(string, long)> titlesAndCourses, CancellationToken ct);
 }

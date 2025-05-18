@@ -25,6 +25,6 @@ public sealed class PointsGoogleKafka
         public string Cell { get; set; } = null!;
 
         [JsonPropertyName("spreadsheet_id")]
-        public string SpreadSheetId { get; set; }
+        public string SpreadSheetId { get; set; } = null!;
     }
 }

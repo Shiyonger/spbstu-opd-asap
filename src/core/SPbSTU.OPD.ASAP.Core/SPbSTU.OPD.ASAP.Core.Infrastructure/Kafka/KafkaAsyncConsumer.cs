@@ -67,8 +67,8 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
 
     public Task Consume(CancellationToken token)
     {
-        var handle = HandleCore(token);
         var consume = ConsumeCore(token);
+        var handle = HandleCore(token);
 
         return Task.WhenAll(handle, consume);
     }
@@ -90,7 +90,7 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
                     .Handle<Exception>()
                     .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromMilliseconds(20));
                 
-                while (!token.IsCancellationRequested)
+                if (!token.IsCancellationRequested)
                 {
                     using var scope = _scopeFactory.CreateScope();
                     var handler = scope.ServiceProvider.GetRequiredService<IHandler<TKey, TValue>>();

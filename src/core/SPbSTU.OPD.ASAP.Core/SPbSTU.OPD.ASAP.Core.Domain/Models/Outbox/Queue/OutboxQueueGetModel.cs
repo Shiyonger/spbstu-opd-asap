@@ -4,6 +4,9 @@ public record OutboxQueueGetModel
 {
     public long Id { get; init; }
     public string Link { get; init; } = null!;
+    public long StudentId { get; init; }
+    public string StudentName { get; init; } = null!;
+    public long GroupId { get; init; }
     public long MentorId { get; init; }
     public string MentorName { get; init; } = null!;
     public long AssignmentId { get; init; }

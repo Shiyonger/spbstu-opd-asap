@@ -51,8 +51,8 @@ public sealed class Startup(IConfiguration configuration)
             .AddApplication();
 
         services
-            .AddScoped<ActionHandler>()
-            .AddScoped<PointsGithubHandler>();
+            .AddScoped<IHandler<Ignore, ActionKafka>, ActionHandler>()
+            .AddScoped<IHandler<Ignore, PointsGithubKafka>, PointsGithubHandler>();
 
         services
             .AddKafkaHandler<Ignore, ActionKafka>(

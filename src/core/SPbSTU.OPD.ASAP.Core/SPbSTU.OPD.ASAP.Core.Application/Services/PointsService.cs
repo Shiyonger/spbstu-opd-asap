@@ -54,17 +54,19 @@ public class PointsService(
             (await _coursesRepository.GetCoursesByTitles(pointsGithub.Select(p => p.CourseTitle).ToList(), token))
             .ToDictionary(c => c.Title);
         var studentsPositions =
-            await _googleRepository.GetStudentsPositions(pointsGithub.Select(p => p.Username).ToList(), token);
+            await _googleRepository.GetStudentsPositions(
+                pointsGithub.Select(p => (p.Username, coursesMap[p.CourseTitle].Id)).ToList(), token);
         var assignmentsPositions =
-            await _googleRepository.GetAssignmentsPositions(pointsGithub.Select(p => p.Username).ToList(), token);
+            await _googleRepository.GetAssignmentsPositions(
+                pointsGithub.Select(p => (p.AssignmentTitle, coursesMap[p.CourseTitle].Id)).ToList(), token);
 
         return pointsGithub.Select(p =>
                 new OutboxPointsCreateModel(
                     p.Points,
                     p.Date,
                     coursesMap[p.CourseTitle].Id,
-                    studentsPositions[p.Username],
-                    assignmentsPositions[p.AssignmentTitle]))
+                    studentsPositions[(p.Username, coursesMap[p.CourseTitle].Id)],
+                    assignmentsPositions[(p.AssignmentTitle, coursesMap[p.CourseTitle].Id)]))
             .ToList();
     }
 }

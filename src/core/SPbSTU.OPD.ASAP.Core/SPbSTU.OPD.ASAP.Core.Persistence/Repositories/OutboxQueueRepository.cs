@@ -14,8 +14,8 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
     {
         const string sqlQuery =
             """
-            insert into outbox_queue (link, mentor_id, assignment_id, submission_id, is_sent)
-            select link, mentor_id, assignment_id, submission_id, is_sent
+            insert into outbox_queue (link, mentor_id, assignment_id, submission_id, action, is_sent)
+            select link, mentor_id, assignment_id, submission_id, action, is_sent
               from unnest(@QueueQueries)
             returning id;
             """;
@@ -40,6 +40,9 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
             """
             select q.id as id
                  , q.link as link
+                 , st.id as student_id
+                 , u2.name as student_name
+                 , st.group_id as group_id
                  , q.mentor_id as mentor_id
                  , u.name as mentor_name
                  , q.assignment_id as assignment_id
@@ -52,6 +55,8 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
               join users u on u.id = m.user_id
               join assignments a on q.assignment_id = a.id
               join submissions s on q.submission_id = s.id
+              join students st on st.id = s.student_id
+              join users u2 on u2.id = st.user_id
              where is_sent = false;
             """;
 

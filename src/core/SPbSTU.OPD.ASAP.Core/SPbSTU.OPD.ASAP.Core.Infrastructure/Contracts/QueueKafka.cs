@@ -10,6 +10,15 @@ public sealed class QueueKafka
     [JsonPropertyName("link")]
     public string Link { get; set; } = null!;
 
+    [JsonPropertyName("student_id")]
+    public long StudentId { get; set; }
+
+    [JsonPropertyName("student_name")]
+    public string StudentName { get; set; } = null!;
+
+    [JsonPropertyName("group_id")]
+    public long GroupId { get; set; }
+
     [JsonPropertyName("mentor_id")]
     public long MentorId { get; set; }
 

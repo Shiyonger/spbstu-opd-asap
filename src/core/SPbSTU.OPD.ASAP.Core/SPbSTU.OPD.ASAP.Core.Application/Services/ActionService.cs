@@ -14,8 +14,13 @@ public class ActionService(
     {
         using var transaction = CreateTransactionScope();
 
-        await CreateSubmissions(actionGithubs.Where(a => a.Action == Domain.ValueObjects.Action.Create).ToList(), token);
-        await UpdateSubmissions(actionGithubs.Where(a => a.Action == Domain.ValueObjects.Action.Update).ToList(), token);
+        var actionsToCreate = actionGithubs.Where(a => a.Action == Domain.ValueObjects.Action.Create).ToList();
+        if (actionsToCreate.Count != 0)
+            await CreateSubmissions(actionsToCreate, token);
+
+        var actionsToUpdate = actionGithubs.Where(a => a.Action == Domain.ValueObjects.Action.Update).ToList();
+        if (actionsToUpdate.Count != 0)
+            await UpdateSubmissions(actionsToUpdate, token);
 
         var submissions = await GetSubmissions(actionGithubs, token);
         var queueModels = actionGithubs.Select(a =>

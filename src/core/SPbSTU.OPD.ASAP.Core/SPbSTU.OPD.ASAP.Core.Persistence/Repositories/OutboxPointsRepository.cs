@@ -21,7 +21,7 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
             returning id;
             """;
 
-        var pointsEntity = points.Select(MapToEntity).ToList();
+        var pointsEntity = points.Select(MapToEntity).ToArray();
 
         await using var connection = await GetConnection();
         var ids = await connection.QueryAsync<long>(
