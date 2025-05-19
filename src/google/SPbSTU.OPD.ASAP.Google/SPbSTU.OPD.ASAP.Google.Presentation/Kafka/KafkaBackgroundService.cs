@@ -5,7 +5,7 @@ using SPbSTU.OPD.ASAP.Google.Infrastructure.Kafka;
 namespace SPbSTU.OPD.ASAP.Google.Kafka;
 
 public class KafkaBackgroundService(
-    KafkaAsyncConsumer<Ignore, PointsKafka> pointsConsumer,
+    KafkaAsyncConsumer<Ignore, PointsGoogleKafka> pointsConsumer,
     KafkaAsyncConsumer<Ignore, QueueKafka> queueConsumer,
     ILogger<KafkaBackgroundService> logger)
     : BackgroundService
