@@ -6,30 +6,20 @@ using SPbSTU.OPD.ASAP.Google.Domain.ValueObjects;
 
 namespace SPbSTU.OPD.ASAP.Google.Application.Services;
 
-public sealed class SpreadSheetService : ISpreadSheetService
+public sealed class SpreadSheetService(ISpreadSheetBuilder builder) : ISpreadSheetService
 {
-    private readonly ISpreadSheetBuilder _builder;
-
-    public SpreadSheetService(
-        ISpreadSheetBuilder builder)
-    {
-        _builder = builder;
-    }
-
     public async Task<CreateSpreadSheetsResult> CreateSpreadSheetsAsync(
         CreateSpreadSheetsCommand command,
         CancellationToken cancellationToken)
     {
-        SpreadSheetResult sheetResult = await _builder.BuildAsync(
-            command.Students,
-            command.Assignments,
-            cancellationToken);
+        var coursePositions = new List<CoursePosition>();
 
-        return new CreateSpreadSheetsResult(
-            sheetResult.StudentPositions
-                .ToArray(),
-            sheetResult.AssignmentPositions
-                .ToArray()
-        );
+        foreach (var course in command.Courses)
+        {
+            var coursePosition = await builder.BuildAsync(course, cancellationToken);
+            coursePositions.Add(coursePosition);
+        }
+
+        return new CreateSpreadSheetsResult(coursePositions);
     }
 }

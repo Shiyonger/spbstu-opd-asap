@@ -5,8 +5,7 @@ namespace SPbSTU.OPD.ASAP.Google.Domain.Interfaces;
 
 public interface ISpreadSheetBuilder
 {
-    Task<SpreadSheetResult> BuildAsync(
-        IReadOnlyList<Student> students,
-        IReadOnlyList<Assignment> assignments,
+    Task<CoursePosition> BuildAsync(
+        Course course,
         CancellationToken cancellationToken);
 }

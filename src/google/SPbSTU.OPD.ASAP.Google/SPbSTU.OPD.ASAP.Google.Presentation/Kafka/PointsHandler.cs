@@ -1,12 +1,13 @@
 ﻿using Confluent.Kafka;
+using SPbSTU.OPD.ASAP.Google.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Google.Infrastructure.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Google.Kafka;
 
-public class PointsHandler(ILogger<PointsHandler> logger) : IHandler<Ignore, string>
+public class PointsHandler(ILogger<PointsHandler> logger) : IHandler<Ignore, PointsGoogleKafka>
 {
     // TODO: write proper handler
-    public Task Handle(IReadOnlyCollection<ConsumeResult<Ignore, string>> messages, CancellationToken token)
+    public Task Handle(IReadOnlyCollection<ConsumeResult<Ignore, PointsGoogleKafka>> messages, CancellationToken token)
     {
         Task.Delay(100, token);
         logger.LogInformation("Handled {Count} messages", messages.Count);

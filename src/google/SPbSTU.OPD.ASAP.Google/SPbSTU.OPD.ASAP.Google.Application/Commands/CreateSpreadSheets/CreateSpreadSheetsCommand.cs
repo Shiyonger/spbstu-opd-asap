@@ -4,6 +4,5 @@ namespace SPbSTU.OPD.ASAP.Google.Application.Commands.CreateSpreadSheets;
 
 public sealed class CreateSpreadSheetsCommand
 {
-    public IReadOnlyList<Student> Students { get; init; } = [];
-    public IReadOnlyList<Assignment> Assignments { get; init; } = [];
+    public IReadOnlyList<Course> Courses { get; init; } = [];
 }
