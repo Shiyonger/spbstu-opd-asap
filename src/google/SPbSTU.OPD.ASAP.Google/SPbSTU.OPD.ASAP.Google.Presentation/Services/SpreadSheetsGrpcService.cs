@@ -7,20 +7,14 @@ using SPbSTU.OPD.ASAP.Google.Presentation;
 
 namespace SPbSTU.OPD.ASAP.Google.Services;
 
-public class SpreadSheetsGrpcService : SpreadSheetsService.SpreadSheetsServiceBase
+public class SpreadSheetsGrpcService(ISpreadSheetService spreadSheetService)
+    : SpreadSheetsService.SpreadSheetsServiceBase
 {
-    private readonly ISpreadSheetService _spreadSheetService;
-
-    public SpreadSheetsGrpcService(ISpreadSheetService spreadSheetService)
-    {
-        _spreadSheetService = spreadSheetService;
-    }
-
     public override async Task<CreateSpreadSheetsResponse> CreateSpreadSheets(CreateSpreadSheetsRequest request, ServerCallContext context)
     {
         CreateSpreadSheetsCommand command = MapToDomain(request);
 
-        CreateSpreadSheetsResult result = await _spreadSheetService.CreateSpreadSheetsAsync(command, context.CancellationToken);
+        CreateSpreadSheetsResult result = await spreadSheetService.CreateSpreadSheetsAsync(command, context.CancellationToken);
 
         return MapToGrpc(result);
     }

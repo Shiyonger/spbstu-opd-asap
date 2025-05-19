@@ -20,7 +20,7 @@ public sealed class QueueKafka
     public long GroupId { get; set; }
 
     [JsonPropertyName("spreadsheet_id")]
-    public long SpreadsheetId { get; set; }
+    public string SpreadsheetId { get; set; } = null!;
 
     [JsonPropertyName("submission_date")]
     public DateTime SubmissionDate { get; set; }
