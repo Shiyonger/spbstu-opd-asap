@@ -1,6 +1,6 @@
 package com.asap.opdasap.service;
 
-import com.asap.opdasap.KafkaPublisher;
+import com.asap.opdasap.kafka.KafkaPublisher;
 import com.asap.opdasap.MessageAction;
 import com.asap.opdasap.MessagePoints;
 import com.asap.opdasap.event.GitHubPullRequestEvent;
@@ -33,7 +33,7 @@ public class GitHubEventService {
         action.setDate(new Date());
         action.setAction(MessageAction.ActionType.UPDATE); // Для push события используем "Update"
 
-        kafkaPublisher.publish("action", action);
+        //kafkaPublisher.publish("action", action);
         return action;
     }
 
@@ -59,7 +59,7 @@ public class GitHubEventService {
         action.setDate(new Date());
         action.setAction(mapActionType(actionType));
 
-        kafkaPublisher.publish("action", action);
+        //kafkaPublisher.publish("action", action);
 
         if ("closed".equalsIgnoreCase(actionType)) {
             try {

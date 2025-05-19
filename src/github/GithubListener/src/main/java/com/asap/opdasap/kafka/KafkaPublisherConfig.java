@@ -1,4 +1,4 @@
-package com.asap.opdasap;
+package com.asap.opdasap.kafka;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;

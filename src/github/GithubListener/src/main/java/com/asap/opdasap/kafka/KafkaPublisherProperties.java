@@ -1,4 +1,4 @@
-package com.asap.opdasap;
+package com.asap.opdasap.kafka;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

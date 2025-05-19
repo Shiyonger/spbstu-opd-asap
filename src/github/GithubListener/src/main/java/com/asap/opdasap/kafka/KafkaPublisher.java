@@ -1,4 +1,4 @@
-package com.asap.opdasap;
+package com.asap.opdasap.kafka;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.RecordMetadata;
