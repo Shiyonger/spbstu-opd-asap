@@ -35,7 +35,8 @@ public sealed class Startup(IConfiguration configuration)
             services.AddScoped<IGoogleClientFactory, GoogleClientFactory>();
             services.Configure<GoogleOptions>(
                 configuration.GetSection(GoogleOptions.SectionName));
-        
+            services.AddScoped<ISheetUpdater, SheetUpdater>();
+            services.AddScoped<IUpdateSheetService, UpdateSheetService>();
         //
         services.AddScoped<IHandler<Ignore, PointsGoogleKafka>, PointsHandler>();
         services.AddKafkaHandler<Ignore, PointsGoogleKafka>(

@@ -16,5 +16,11 @@ public sealed class UpdateSheetService(ISheetUpdater sheetUpdater) : IUpdateShee
         }
     }
 
-    
+    public async Task UpdateQueueAsync(IReadOnlyCollection<QueueMessage> messages, CancellationToken cancellationToken)
+    {
+        foreach (var message in messages)
+        {
+            await sheetUpdater.UpdateQueueAsync(message, cancellationToken);
+        }
+    }
 }

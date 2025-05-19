@@ -5,4 +5,5 @@ namespace SPbSTU.OPD.ASAP.Google.Application.Interfaces;
 public interface IUpdateSheetService
 {
     Task UpdatePointsAsync(IReadOnlyCollection<PointsMessage> messages, CancellationToken cancellationToken);
+    Task UpdateQueueAsync(IReadOnlyCollection<QueueMessage> messages, CancellationToken cancellationToken);
 }
