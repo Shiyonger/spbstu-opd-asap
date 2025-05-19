@@ -7,10 +7,7 @@ public record OutboxQueueGetModel
     public long StudentId { get; init; }
     public string StudentName { get; init; } = null!;
     public long GroupId { get; init; }
-    public long MentorId { get; init; }
-    public string MentorName { get; init; } = null!;
-    public long AssignmentId { get; init; }
-    public string AssignmentTitle { get; init; } = null!;
+    public string SpreadsheetId { get; init; } = null!;
     public long SubmissionId { get; init; }
     public DateTime SubmissionDate { get; init; }
     public int Action { get; init; }

@@ -7,4 +7,8 @@ public interface IAssignmentsRepository
     Task<List<Assignment>> GetByCourseIdForMentor(long userId, long courseId, CancellationToken ct);
     
     Task<List<Assignment>> GetByCourseIdForStudent(long userId, long courseId, CancellationToken ct);
+    
+    Task<List<Assignment>> GetByCourseId(long courseId, CancellationToken ct);
+    
+    Task UpdateSpreadSheet(List<Assignment> assignments, CancellationToken ct);
 }

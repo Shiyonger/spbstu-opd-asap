@@ -25,14 +25,14 @@ public class SeedData : SqlMigration
              , ('АиП-2023-осень', 3, 'test', 'test')
              , ('АиП-2024-весна', 3, 'test', 'test');
 
-        insert into assignments (course_id, title, description, max_points, due_to) 
-        values (1, 'Наследование_в_C++', '', 100, now())
-             , (1, 'Лямбда-функции', '', 100, now())
-             , (2, 'Сплайн-интерполяция', '', 100, now())
-             , (2, 'Линейная_алгебра', '', 100, now())
-             , (3, 'Методы_оптимизации', '', 100, now())
-             , (4, 'Курьер_в_газпроме', '', 100, now())
-             , (5, 'Ханойские_башни', '', 100, now());
+        insert into assignments (course_id, title, description, max_points, due_to, spreadsheet_id, spreadsheet_link) 
+        values (1, 'Наследование_в_C++', '', 100, now(), 'test', 'test')
+             , (1, 'Лямбда-функции', '', 100, now(), 'test', 'test')
+             , (2, 'Сплайн-интерполяция', '', 100, now(), 'test', 'test')
+             , (2, 'Линейная_алгебра', '', 100, now(), 'test', 'test')
+             , (3, 'Методы_оптимизации', '', 100, now(), 'test', 'test')
+             , (4, 'Курьер_в_газпроме', '', 100, now(), 'test', 'test')
+             , (5, 'Ханойские_башни', '', 100, now(), 'test', 'test');
 
         insert into groups (id)
         values (513090330002);

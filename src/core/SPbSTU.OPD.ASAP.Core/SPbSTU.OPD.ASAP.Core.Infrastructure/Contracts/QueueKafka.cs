@@ -19,17 +19,8 @@ public sealed class QueueKafka
     [JsonPropertyName("group_id")]
     public long GroupId { get; set; }
 
-    [JsonPropertyName("mentor_id")]
-    public long MentorId { get; set; }
-
-    [JsonPropertyName("mentor_name")]
-    public string MentorName { get; set; } = null!;
-
-    [JsonPropertyName("assignment_id")]
-    public long AssignmentId { get; set; }
-
-    [JsonPropertyName("assignment_title")]
-    public string AssignmentTitle { get; set; } = null!;
+    [JsonPropertyName("spreadsheet_id")]
+    public string SpreadsheetId { get; set; } = null!;
 
     [JsonPropertyName("submission_date")]
     public DateTime SubmissionDate { get; set; }

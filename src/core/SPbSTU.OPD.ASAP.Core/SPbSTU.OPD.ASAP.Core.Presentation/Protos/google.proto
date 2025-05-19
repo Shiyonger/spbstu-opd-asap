@@ -45,6 +45,7 @@ message AssignmentPositionGrpc {
   string title = 2;
   string cell = 3;
   string queue_spreadsheet_link = 4;
+  string queue_spreadsheet_id = 5;
 }
 
 message CreateSpreadSheetsRequest {

@@ -22,7 +22,7 @@ public class KafkaBackgroundService(
         try
         {
             var queue = actionConsumer.Consume(stoppingToken);
-            // await Task.Delay(2000, stoppingToken).WaitAsync(stoppingToken);
+            await Task.Delay(2000, stoppingToken).WaitAsync(stoppingToken);
             var points = pointsConsumer.Consume(stoppingToken);
             await Task.WhenAll(points, queue);
         }

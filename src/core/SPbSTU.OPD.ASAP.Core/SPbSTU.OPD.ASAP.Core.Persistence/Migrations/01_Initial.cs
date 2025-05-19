@@ -18,7 +18,7 @@ public class Initial : SqlMigration
             title varchar not null,
             subject_id bigint references subjects (id),
             github_organization varchar not null,
-            google_spreadsheet varchar not null
+            google_spreadsheet varchar
         );
         
         create table assignments (
@@ -27,7 +27,9 @@ public class Initial : SqlMigration
             title varchar not null,
             description varchar,
             max_points int not null,
-            due_to timestamptz not null
+            due_to timestamptz not null,
+            spreadsheet_id varchar,
+            spreadsheet_link varchar
         );
         
         create table groups (

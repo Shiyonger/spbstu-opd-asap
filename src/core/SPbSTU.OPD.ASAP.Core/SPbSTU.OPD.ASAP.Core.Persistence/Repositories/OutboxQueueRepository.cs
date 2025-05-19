@@ -43,10 +43,7 @@ public class OutboxQueueRepository(string connectionString) : PgRepository(conne
                  , st.id as student_id
                  , u2.name as student_name
                  , st.group_id as group_id
-                 , q.mentor_id as mentor_id
-                 , u.name as mentor_name
-                 , q.assignment_id as assignment_id
-                 , a.title as assignment_title
+                 , a.spreadsheet_id as spreadsheet_id
                  , q.submission_id as submission_id
                  , s.updated_at as submission_date
                  , q.action

@@ -78,9 +78,8 @@ public class OutboxBackgroundService(
         return new QueueKafka
         {
             Id = queue.Id, Link = queue.Link, StudentId = queue.StudentId, StudentName = queue.StudentName,
-            GroupId = queue.GroupId, MentorId = queue.MentorId, MentorName = queue.MentorName,
-            AssignmentId = queue.AssignmentId, AssignmentTitle = queue.AssignmentTitle,
-            SubmissionDate = queue.SubmissionDate, Action = (QueueKafka.ActionType)queue.Action
+            GroupId = queue.GroupId, SpreadsheetId = queue.SpreadsheetId, SubmissionDate = queue.SubmissionDate,
+            Action = (QueueKafka.ActionType)queue.Action
         };
     }
 

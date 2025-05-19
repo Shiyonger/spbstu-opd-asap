@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
 
         mapper.MapComposite<OutboxPointsEntityV1>("outbox_points_v1", Translator);
         mapper.MapComposite<OutboxQueueEntityV1>("outbox_queue_v1", Translator);
+        mapper.MapComposite<GoogleEntityV1>("google_entity_v1", Translator);
     }
 
     public static IServiceCollection AddFluentMigrator(

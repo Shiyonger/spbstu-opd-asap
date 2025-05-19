@@ -29,6 +29,9 @@ public sealed class Startup(IConfiguration configuration)
             .AddLogging()
             .AddGrpc();
 
+        services.AddGrpcClient<SpreadSheetsService.SpreadSheetsServiceClient>(o =>
+            o.Address = new Uri(configuration["GrpcGoogleUri"]!));
+
         var connectionString = configuration["PostgresConnectionString"]!;
 
         services.MapCompositeTypes();
@@ -78,7 +81,8 @@ public sealed class Startup(IConfiguration configuration)
 
         services
             .AddHostedService<KafkaBackgroundService>()
-            .AddHostedService<OutboxBackgroundService>();
+            .AddHostedService<OutboxBackgroundService>()
+            .AddHostedService<SpreadSheetsBackgroundService>();
 
         services.AddGrpcReflection();
     }

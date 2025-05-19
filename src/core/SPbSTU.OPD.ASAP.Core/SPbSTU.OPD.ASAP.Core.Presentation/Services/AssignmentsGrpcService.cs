@@ -27,7 +27,7 @@ public class AssignmentsGrpcService(IAssignmentsService assignmentsService) : As
         return new Assignment
         {
             Id = assignment.Id, Title = assignment.Title, Description = assignment.Description,
-            MaxPoints = assignment.MaxPoints, DueTo = Timestamp.FromDateTimeOffset(assignment.DueTo),
+            MaxPoints = assignment.MaxPoints!.Value, DueTo = Timestamp.FromDateTimeOffset(assignment.DueTo!.Value),
             Link = assignment.Link
         };
     }
