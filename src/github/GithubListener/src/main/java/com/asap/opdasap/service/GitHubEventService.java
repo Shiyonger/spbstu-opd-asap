@@ -19,7 +19,7 @@ public class GitHubEventService {
 
     private final ObjectMapper objectMapper;
     private final GitHubCommentParserService commentParserService;
-    private final KafkaPublisher kafkaPublisher;
+    //private final KafkaPublisher kafkaPublisher;
 
     public MessageAction handlePushEvent(String payload) throws Exception {
         GitHubPushEvent event = objectMapper.readValue(payload, GitHubPushEvent.class);
@@ -68,7 +68,8 @@ public class GitHubEventService {
                 );
 
                 if (points != null) {
-                    kafkaPublisher.publish("points", points);
+                    //kafkaPublisher.publish("points", points);
+                    log.info("Баллы {}", points.getPoints());
                 } else {
                     log.warn("Баллы не найдены в комментариях для PR #{} в {}/{}", prNumber, owner, repo);
                 }

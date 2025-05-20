@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/organization")
 @RequiredArgsConstructor
 public class OrganizationController {
-
     private static final Logger logger = LoggerFactory.getLogger(OrganizationController.class);
 
     private final GitHubOrganizationService gitHubOrganizationService;

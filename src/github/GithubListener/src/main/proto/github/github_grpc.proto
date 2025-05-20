@@ -7,19 +7,24 @@ option java_multiple_files = true;
 package github_grpc;
 
 service GithubService {
+  rpc GetOrganizations (GetOrganizationsRequest) returns (GetOrganizationsResponse);
   rpc GetUsersToInvite (GetUsersToInviteRequest) returns (GetUsersToInviteResponse);
   rpc GetUsersToCreateRepository (GetUsersToCreateRepositoryRequest) returns (GetUsersToCreateRepositoryResponse);
   rpc CreateRepositories (CreateRepositoriesRequest) returns (CreateRepositoriesResponse);
   rpc MarkInvited (MarkInvitedRequest) returns (MarkInvitedResponse);
 }
 
+message GetOrganizationsRequest {
+
+}
+
+message GetOrganizationsResponse {
+  repeated string organizations = 1;
+}
+
 message GetUsersToInviteRequest {
   string github_organization_name = 1;
 }
-
-// background job которая раз в день будет вызывать метод  GetUsersToInvite через grpc client
-// потом в markInvited передает все username
-// вызывает getUsersToCreateREpostory, дальше создаем репозитории и вызываем cCreateRepositories со всеми полученным ссылками
 
 message GetUsersToInviteResponse {
   repeated string usernames = 1;
@@ -56,6 +61,7 @@ message MarkInvitedRequest {
 message MarkInvitedResponse {
 
 }
+
 
 
 

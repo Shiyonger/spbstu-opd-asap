@@ -23,6 +23,14 @@ public class GithubGrpcClient {
         return response.getUsernamesList();
     }
 
+    public List<String> getOrganizations() {
+        var response = stub.getOrganizations(
+                GetOrganizationsRequest.newBuilder()
+                        .build()
+        );
+        return response.getOrganizationsList();
+    }
+
     public void markInvited(List<String> usernames) {
         stub.markInvited(
                 MarkInvitedRequest.newBuilder()

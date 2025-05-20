@@ -53,11 +53,10 @@ public class GitHubCommentParserService {
 
         for (JsonNode comment : response.getBody()) {
             String body = comment.get("body").asText();
-            Matcher matcher = Pattern.compile("\\b(\\d{1,3})\\b").matcher(body); // просто число, например "21"
-
+            Matcher matcher = Pattern.compile("/rate \\b(\\d{1,3})\\b").matcher(body); // просто число, например "21"
+           // todo баллы меньше 0 и больше 100
             if (matcher.find()) {
                 int points = Integer.parseInt(matcher.group(1));
-
                 MessagePoints result = new MessagePoints();
                 result.setPoints(points);
                 result.setDate(new Date());
