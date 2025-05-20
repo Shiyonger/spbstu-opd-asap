@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SPbSTU.OPD.ASAP.API.Domain.Contracts;
+using SPbSTU.OPD.ASAP.API.Domain.Contracts.Auth;
 using SPbSTU.OPD.ASAP.API.Infrastucture.Settings;
 
 namespace SPbSTU.OPD.ASAP.API.Infrastructure.Authorization;

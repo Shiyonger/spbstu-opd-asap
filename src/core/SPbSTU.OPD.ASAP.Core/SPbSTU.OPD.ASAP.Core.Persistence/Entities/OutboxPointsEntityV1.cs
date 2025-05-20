@@ -6,7 +6,9 @@ public record OutboxPointsEntityV1()
     public int Points { get; init; }
     public DateTime Date { get; init; }
     public long CourseId { get; init; }
-    public string StudentPosition { get; init; } = null!;
-    public string AssignmentPosition { get; init; } = null!;
+    public string StudentPositionCell { get; init; } = null!;
+    public string StudentPositionSpreadsheetId { get; init; } = null!;
+    public string AssignmentPositionCell { get; init; } = null!;
+    public string AssignmentPositionSpreadsheetId { get; init; } = null!;
     public bool IsSent { get; init; }
 }

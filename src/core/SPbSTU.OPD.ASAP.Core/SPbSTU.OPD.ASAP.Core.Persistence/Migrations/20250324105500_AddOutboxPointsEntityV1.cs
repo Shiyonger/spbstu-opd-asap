@@ -16,8 +16,10 @@ public class AddOutboxPointsEntityV1 : SqlMigration {
                         , points integer
                         , date timestamp with time zone
                         , course_id bigint
-                        , student_position varchar
-                        , assignment_position varchar
+                        , student_position_cell varchar
+                        , student_position_spreadsheet_id varchar
+                        , assignment_position_cell varchar
+                        , assignment_position_spreadsheet_id varchar
                         , is_sent boolean
                     );
                 END IF;

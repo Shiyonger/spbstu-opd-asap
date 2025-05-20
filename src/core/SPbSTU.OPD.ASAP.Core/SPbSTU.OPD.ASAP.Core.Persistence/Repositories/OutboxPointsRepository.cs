@@ -2,6 +2,8 @@
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox.Points;
 using SPbSTU.OPD.ASAP.Core.Domain.ValueObjects;
 using SPbSTU.OPD.ASAP.Core.Persistence.Entities;
 
@@ -13,13 +15,13 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
     {
         const string sqlQuery =
             """
-            insert into outbox_points (points, date, course_id, student_position, assignment_position, is_sent)
-            select points, date, course_id, student_position, assignment_position, is_sent
+            insert into outbox_points (points, date, course_id, student_position_cell, student_position_spreadsheet_id, assignment_position_cell, assignment_position_spreadsheet_id, is_sent)
+            select points, date, course_id, student_position_cell, student_position_spreadsheet_id, assignment_position_cell, assignment_position_spreadsheet_id, is_sent
               from unnest(@Points)
             returning id;
             """;
 
-        var pointsEntity = points.Select(MapToEntity).ToList();
+        var pointsEntity = points.Select(MapToEntity).ToArray();
 
         await using var connection = await GetConnection();
         var ids = await connection.QueryAsync<long>(
@@ -41,8 +43,10 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
                  , points
                  , date
                  , course_id
-                 , student_position
-                 , assignment_position
+                 , student_position_cell
+                 , student_position_spreadsheet_id
+                 , assignment_position_cell
+                 , assignment_position_spreadsheet_id
                  , is_sent
               from outbox_points
              where is_sent = false;
@@ -58,30 +62,18 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
 
     public async Task UpdateSent(List<long> sentPointsIds, CancellationToken token)
     {
-        var sqlQuery =
+        const string sqlQuery =
             """
             update outbox_points
                set is_sent = true
+             where id = ANY(@SentIds)
             """;
 
-        var conditions = new List<string>();
-        var @params = new DynamicParameters();
-
-        if (sentPointsIds.Count != 0)
-        {
-            sentPointsIds.Sort();
-            conditions.Add($"id = ANY(@SentIds) WHERE ");
-            @params.Add($"SentIds", sentPointsIds);
-        }
-
-        var cmd = new CommandDefinition(
-            sqlQuery + $"{string.Join(" AND ", conditions)} ",
-            @params,
-            commandTimeout: DefaultTimeoutInSeconds,
-            cancellationToken: token);
-
         await using var connection = await GetConnection();
-        await connection.ExecuteAsync(cmd);
+        await connection.ExecuteAsync(new CommandDefinition(
+            sqlQuery,
+            new { SentIds = sentPointsIds },
+            cancellationToken: token));
     }
 
     private static OutboxPointsEntityV1 MapToEntity(OutboxPointsCreateModel pointsCreateModel)
@@ -90,15 +82,17 @@ public class OutboxPointsRepository(string connectionString) : PgRepository(conn
         {
             Id = 0, Points = pointsCreateModel.Points, Date = pointsCreateModel.Date,
             CourseId = pointsCreateModel.CourseId,
-            StudentPosition = pointsCreateModel.StudentPosition.Cell,
-            AssignmentPosition = pointsCreateModel.AssignmentPosition.Cell, IsSent = false
+            StudentPositionCell = pointsCreateModel.StudentPosition.Cell,
+            StudentPositionSpreadsheetId = pointsCreateModel.StudentPosition.SpreadSheetId,
+            AssignmentPositionCell = pointsCreateModel.AssignmentPosition.Cell,
+            AssignmentPositionSpreadsheetId = pointsCreateModel.AssignmentPosition.SpreadSheetId, IsSent = false
         };
     }
 
     private static OutboxPointsGetModel MapToModel(OutboxPointsEntityV1 points)
     {
         return new OutboxPointsGetModel(points.Id, points.Points, points.Date, points.CourseId,
-            new Position(points.StudentPosition, points.CourseId),
-            new Position(points.AssignmentPosition, points.CourseId));
+            new Position(points.StudentPositionCell, points.StudentPositionSpreadsheetId),
+            new Position(points.AssignmentPositionCell, points.AssignmentPositionSpreadsheetId));
     }
 }

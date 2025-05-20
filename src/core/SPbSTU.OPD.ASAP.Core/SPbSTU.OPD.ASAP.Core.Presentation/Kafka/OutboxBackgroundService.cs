@@ -1,6 +1,6 @@
-﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
-using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
-using SPbSTU.OPD.ASAP.Core.Domain.Models;
+﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox.Points;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox.Queue;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Contracts;
 using SPbSTU.OPD.ASAP.Core.Infrastructure.Kafka;
 
@@ -8,14 +8,16 @@ namespace SPbSTU.OPD.ASAP.Core.Kafka;
 
 public class OutboxBackgroundService(
     IServiceScopeFactory scopeFactory,
-    KafkaPublisher<long, PointsKafka> pointsPublisher,
-    KafkaPublisher<long, QueueKafka> queuePublisher)
+    KafkaPublisher<long, PointsGoogleKafka> pointsPublisher,
+    KafkaPublisher<long, QueueKafka> queuePublisher,
+    ILogger<OutboxBackgroundService> logger)
     : IHostedService, IDisposable
 {
     private Timer? _timer;
     private readonly IServiceScopeFactory _scopeFactory = scopeFactory;
-    private readonly KafkaPublisher<long, PointsKafka> _pointsPublisher = pointsPublisher;
+    private readonly KafkaPublisher<long, PointsGoogleKafka> _pointsPublisher = pointsPublisher;
     private readonly KafkaPublisher<long, QueueKafka> _queuePublisher = queuePublisher;
+    private readonly ILogger<OutboxBackgroundService> _logger = logger;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -26,40 +28,44 @@ public class OutboxBackgroundService(
 
     private async void DoWork(object? state)
     {
-        using var scope = _scopeFactory.CreateScope();
-        var outboxService = scope.ServiceProvider.GetRequiredService<IOutboxService>();
-        using var cts = new CancellationTokenSource();
-        var token = cts.Token;
+        try
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var pointsService = scope.ServiceProvider.GetRequiredService<IPointsService>();
+            var actionService = scope.ServiceProvider.GetRequiredService<IActionService>();
+            using var cts = new CancellationTokenSource();
+            var token = cts.Token;
 
-        var points = outboxService.GetNotSentPoints(token);
-        var queue = outboxService.GetNotSentQueue(token);
-        await Task.WhenAll(points, queue);
+            var points = pointsService.GetNotSentPoints(token);
+            var queue = actionService.GetNotSentQueue(token);
+            await Task.WhenAll(points, queue);
 
-        var pointsPublish = _pointsPublisher.Publish(points.Result.Select(
-            p => (p.Id, MapPointsToKafka(p))), token);
-        var queuePublish = _queuePublisher.Publish(queue.Result.Select(
-            q => (q.Id, MapQueueToKafka(q))), token);
-        await Task.WhenAll(pointsPublish, queuePublish);
+            var pointsPublish = _pointsPublisher.Publish(points.Result.Select(p => (p.Id, MapPointsToKafka(p))), token);
+            var queuePublish = _queuePublisher.Publish(queue.Result.Select(q => (q.Id, MapQueueToKafka(q))), token);
+            await Task.WhenAll(pointsPublish, queuePublish);
 
-        var pointsUpdate = outboxService.UpdateSentPoints(points.Result.Select(
-            p => p.Id).ToList(), token);
-        var queueUpdate = outboxService.UpdateSentPoints(queue.Result.Select(
-            q => q.Id).ToList(), token);
-        await Task.WhenAll(pointsUpdate, queueUpdate);
+            var pointsUpdate = pointsService.UpdateSentPoints(points.Result.Select(p => p.Id).ToList(), token);
+            var queueUpdate = actionService.UpdateSentQueue(queue.Result.Select(q => q.Id).ToList(), token);
+            await Task.WhenAll(pointsUpdate, queueUpdate);
+        }
+        catch (Exception e)
+        {
+            _logger.LogCritical(e.Message);
+        }
     }
 
-    private static PointsKafka MapPointsToKafka(OutboxPointsGetModel points)
+    private static PointsGoogleKafka MapPointsToKafka(OutboxPointsGetModel points)
     {
-        return new PointsKafka
+        return new PointsGoogleKafka
         {
             Id = points.Id, Points = points.Points, Date = points.Date,
             StudentPosition =
-                new PointsKafka.Position
+                new PointsGoogleKafka.Position
                 {
                     Cell = points.StudentPosition.Cell,
                     SpreadSheetId = points.StudentPosition.SpreadSheetId
                 },
-            AssignmentPosition = new PointsKafka.Position
+            AssignmentPosition = new PointsGoogleKafka.Position
             {
                 Cell = points.AssignmentPosition.Cell,
                 SpreadSheetId = points.AssignmentPosition.SpreadSheetId
@@ -71,9 +77,9 @@ public class OutboxBackgroundService(
     {
         return new QueueKafka
         {
-            Id = queue.Id, Link = queue.Link, MentorId = queue.MentorId, MentorName = queue.MentorName,
-            AssignmentId = queue.AssignmentId, AssignmentTitle = queue.AssignmentTitle,
-            SubmissionDate = queue.SubmissionDate, Action = (QueueKafka.ActionType)queue.Action
+            Id = queue.Id, Link = queue.Link, StudentId = queue.StudentId, StudentName = queue.StudentName,
+            GroupId = queue.GroupId, SpreadsheetId = queue.SpreadsheetId, SubmissionDate = queue.SubmissionDate,
+            Action = (QueueKafka.ActionType)queue.Action
         };
     }
 

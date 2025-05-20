@@ -1,44 +1,48 @@
-﻿using SPbSTU.OPD.ASAP.Core.Domain.Contracts;
+﻿using System.Transactions;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Repositories;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Domain.Models;
+using SPbSTU.OPD.ASAP.Core.Domain.Models.Outbox;
 
 namespace SPbSTU.OPD.ASAP.Core.Application.Services;
 
-// Может потом заменить, сделать частью другого сервиса
-public class OutboxService(IOutboxPointsRepository pointsRepository, IOutboxQueueRepository queueRepository)
+public class OutboxService(
+    ISubmissionsRepository submissionsRepository)
     : IOutboxService
 {
-    private readonly IOutboxPointsRepository _pointsRepository = pointsRepository;
-    private readonly IOutboxQueueRepository _queueRepository = queueRepository;
+    protected readonly ISubmissionsRepository SubmissionsRepository = submissionsRepository;
 
-    public Task<List<long>> CreatePoints(List<OutboxPointsCreateModel> points, CancellationToken token)
+    protected Task<Dictionary<(string Username, string Title), Submission>> GetSubmissions<T>(List<T> input,
+        CancellationToken token) where T : Github
     {
-        return _pointsRepository.Create(points, token);
+        var (usernames, assignmentTitles) = GetUsernamesAndTitles(input);
+        return SubmissionsRepository.GetByUsernameAndAssignment(usernames, assignmentTitles, token);
     }
 
-    public Task<List<OutboxPointsGetModel>> GetNotSentPoints(CancellationToken token)
+    protected static (List<string> usernames, List<string> assignmentTitles) GetUsernamesAndTitles<T>(List<T> input)
+        where T : Github
     {
-        return _pointsRepository.GetNotSent(token);
+        var usernames = new List<string>();
+        var assignmentTitles = new List<string>();
+        foreach (var p in input)
+        {
+            usernames.Add(p.Username);
+            assignmentTitles.Add(p.AssignmentTitle);
+        }
+
+        return (usernames, assignmentTitles);
     }
 
-    public Task UpdateSentPoints(List<long> sentPointsIds, CancellationToken token)
+    protected static TransactionScope CreateTransactionScope(
+        IsolationLevel level = IsolationLevel.ReadCommitted)
     {
-        return _pointsRepository.UpdateSent(sentPointsIds, token);
-    }
-
-    public Task<List<long>> CreateQueue(List<OutboxQueueCreateModel> queueQuery, CancellationToken token)
-    {
-        return _queueRepository.Create(queueQuery, token);
-    }
-
-    public Task<List<OutboxQueueGetModel>> GetNotSentQueue(CancellationToken token)
-    {
-        return _queueRepository.GetNotSent(token);
-    }
-
-    public Task UpdateSentQueue(List<long> queueQueryIds, CancellationToken token)
-    {
-        return _queueRepository.UpdateSent(queueQueryIds, token);
+        return new TransactionScope(
+            TransactionScopeOption.Required,
+            new TransactionOptions
+            {
+                IsolationLevel = level,
+                Timeout = TimeSpan.FromSeconds(5)
+            },
+            TransactionScopeAsyncFlowOption.Enabled);
     }
 }

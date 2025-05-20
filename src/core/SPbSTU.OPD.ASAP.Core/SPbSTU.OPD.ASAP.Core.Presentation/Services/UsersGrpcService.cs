@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using SPbSTU.OPD.ASAP.Core.Domain.Contracts.Services;
 using SPbSTU.OPD.ASAP.Core.Presentation;
-using User = SPbSTU.OPD.ASAP.Core.Domain.Models.User.User;
+using User = SPbSTU.OPD.ASAP.Core.Domain.Models.User;
 using Role = SPbSTU.OPD.ASAP.Core.Domain.Enums.Role;
 using UserGrpc = SPbSTU.OPD.ASAP.Core.Presentation.User;
 using RoleGrpc = SPbSTU.OPD.ASAP.Core.Presentation.Role;
@@ -32,7 +32,7 @@ public class UsersGrpcService(IUsersService usersService) : UsersService.UsersSe
 
     private static User MapToDomain(UserGrpc user)
     {
-        return new User(0, user.Name, user.Login, user.Password, user.Email, (Role)(int)user.Role, user.GithubLink);
+        return new User(0, user.Name, user.Login, user.Password, user.Email, (Role)(int)user.Role, user.GithubUsername);
     }
 
     private static UserGrpc MapToGrpc(User user)
@@ -40,7 +40,7 @@ public class UsersGrpcService(IUsersService usersService) : UsersService.UsersSe
         return new UserGrpc
         {
             Name = user.Name, Login = user.Login, Password = user.Password, Email = user.Email,
-            Role = (RoleGrpc)(int)user.Role, GithubLink = user.GithubLink
+            Role = (RoleGrpc)(int)user.Role, GithubUsername = user.GithubUsername
         };
     }
 }

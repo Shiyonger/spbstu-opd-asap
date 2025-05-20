@@ -11,43 +11,47 @@ service SpreadSheetsService {
 message CourseGrpc {
   int64 id = 1;
   string title = 2;
+  repeated StudentGrpc student_list = 3;
+  repeated AssignmentGrpc assignment_list = 4;
 }
 
 message StudentGrpc {
   int64 id = 1;
   string name = 2;
-  repeated CourseGrpc course_list = 3;
 }
 
 message AssignmentGrpc {
   int64 id = 1;
   string title = 2;
-  CourseGrpc course = 3;
 }
 
 message CoursePositionGrpc {
-  CourseGrpc course = 1;
-  string cell = 2;
+  int64 id = 1;
+  string title = 2;
+  string spreadsheet_id = 3;
+  string points_spreadsheet_link = 4;
+  repeated StudentPositionGrpc student_position_list = 5;
+  repeated AssignmentPositionGrpc assignment_position_list = 6;
 }
 
 message StudentPositionGrpc {
   int64 id = 1;
   string name = 2;
-  repeated CoursePositionGrpc course_position_list = 3;
+  string cell = 3;
 }
 
 message AssignmentPositionGrpc {
   int64 id = 1;
   string title = 2;
-  CoursePositionGrpc course_position = 3;
+  string cell = 3;
+  string queue_spreadsheet_link = 4;
+  string queue_spreadsheet_id = 5;
 }
 
 message CreateSpreadSheetsRequest {
-  repeated StudentGrpc student_list = 1;
-  repeated AssignmentGrpc assignment_list = 2;
+  repeated CourseGrpc course_list = 1;
 }
 
 message CreateSpreadSheetsResponse {
-  repeated StudentPositionGrpc student_position_list = 1;
-  repeated AssignmentPositionGrpc assignment_position_list = 2;
+  repeated CoursePositionGrpc course_position_list = 1;
 }
