@@ -11,7 +11,7 @@ public class AssignmentsGrpcService(AssignmentsService.AssignmentsServiceClient 
     public async Task<List<Domain.Models.Assignment>> GetAssignments(long userId, long courseId, Domain.Enums.Role role, CancellationToken ct)
     {
         var result = await _assignmentsClient.GetAssignmentsAsync(
-            new GetAssignmentsRequest { UserId = userId, CourseId = courseId },
+            new GetAssignmentsRequest { UserId = userId, CourseId = courseId, Role = (Role)(int)role },
             cancellationToken: ct);
         if (result is null) 
             return [];

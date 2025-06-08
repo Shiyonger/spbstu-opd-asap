@@ -5,10 +5,19 @@ option csharp_namespace = "SPbSTU.OPD.ASAP.Core.Presentation";
 package github_grpc;
 
 service GithubService {
+  rpc GetOrganizations (GetOrganizationsRequest) returns (GetOrganizationsResponse);
   rpc GetUsersToInvite (GetUsersToInviteRequest) returns (GetUsersToInviteResponse);
   rpc GetUsersToCreateRepository (GetUsersToCreateRepositoryRequest) returns (GetUsersToCreateRepositoryResponse);
   rpc CreateRepositories (CreateRepositoriesRequest) returns (CreateRepositoriesResponse);
   rpc MarkInvited (MarkInvitedRequest) returns (MarkInvitedResponse);
+}
+
+message GetOrganizationsRequest {
+  
+}
+
+message GetOrganizationsResponse {
+  repeated string organizations = 1;
 }
 
 message GetUsersToInviteRequest {

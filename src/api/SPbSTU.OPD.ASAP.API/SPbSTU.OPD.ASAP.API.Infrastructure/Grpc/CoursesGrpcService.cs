@@ -20,6 +20,6 @@ public class CoursesGrpcService(CoursesService.CoursesServiceClient coursesClien
     private static Domain.Models.Course MapToDomain(Course courseGrpc)
     {
         return new Domain.Models.Course(courseGrpc.Id, courseGrpc.Title, courseGrpc.SubjectTitle,
-            courseGrpc.GithubOrganizationLink);
+            courseGrpc.GithubOrganizationLink, courseGrpc.GoogleSpreadsheetLink);
     }
 }

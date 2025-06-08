@@ -6,19 +6,15 @@ function AssignmentItem({ assignment }) {
         <div className="assignment-card">
             <h4>{assignment.title}</h4>
             <p>{assignment.description}</p>
+            <p>Максимум баллов: {assignment.maxPoints}</p>
             <div className="assignment-meta">
                 <span className="assignment-deadline">
-                    Deadline: {format(new Date(assignment.deadline), 'dd.MM.yyyy HH:mm')}
+                    Deadline: {format(new Date(assignment.dueTo), 'dd.MM.yyyy HH:mm')}
                 </span>
                 <div className="links-container">
-                    {assignment.googleSheetLink && (
-                        <a href={assignment.googleSheetLink} target="_blank" rel="noopener noreferrer">
-                            Google Sheets
-                        </a>
-                    )}
-                    {assignment.githubLink && (
-                        <a href={assignment.githubLink} target="_blank" rel="noopener noreferrer">
-                            GitHub
+                    {assignment.link && (
+                        <a href={assignment.link} target="_blank" rel="noopener noreferrer">
+                            Перейти к заданию
                         </a>
                     )}
                 </div>

@@ -5,8 +5,15 @@ namespace SPbSTU.OPD.ASAP.API.Infrastructure.Authorization;
 
 public class PasswordHasher : IPasswordHasher
 {
-    public string Generate(string password) => BCrypt.Net.BCrypt.EnhancedHashPassword(password);
+    public string Generate(string password)
+    {
+        // return BCrypt.Net.BCrypt.EnhancedHashPassword(password);
+        return password;
+    }
 
-    public bool Verify(string providedPassword, string hashedPassword) =>
-        BCrypt.Net.BCrypt.EnhancedVerify(providedPassword, hashedPassword);
+    public bool Verify(string providedPassword, string hashedPassword)
+    {
+        // return BCrypt.Net.BCrypt.EnhancedVerify(providedPassword, hashedPassword);
+        return providedPassword == hashedPassword;
+    }
 }

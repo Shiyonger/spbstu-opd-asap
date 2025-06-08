@@ -19,6 +19,6 @@ public class ActionHandler(IActionService actionService) : IHandler<Ignore, Acti
 
     private static ActionGithub MapToDomain(ActionKafka action)
     {
-        return new ActionGithub(action.Username, action.Date, action.AssignmentTitle, (Action)(int)action.Action);
+        return new ActionGithub(action.Username, DateTime.Now, action.AssignmentTitle, (Action)(int)action.Action);
     }
 }

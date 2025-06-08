@@ -20,7 +20,7 @@ public class PointsGithubHandler(IPointsService pointsService) : IHandler<Ignore
     private static PointsGithub MapToDomain(PointsGithubKafka pointsGithub)
     {
         return new PointsGithub(pointsGithub.AssignmentTitle, pointsGithub.CourseTitle, pointsGithub.Username,
-            pointsGithub.Date,
+            DateTime.UtcNow, 
             pointsGithub.Points);
     }
 }

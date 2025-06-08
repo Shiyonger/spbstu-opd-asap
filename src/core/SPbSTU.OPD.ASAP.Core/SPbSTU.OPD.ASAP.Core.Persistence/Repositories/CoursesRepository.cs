@@ -14,11 +14,12 @@ public class CoursesRepository(string connectionString) : PgRepository(connectio
                  , c.title as title
                  , s.title as subject_title
                  , c.github_organization as github_organization_link
-              from students st
-              join student_courses sc on st.user_id = sc.student_id
+                 , c.google_spreadsheet as google_spreadsheet_link
+              from users u
+              join student_courses sc on sc.user_id = u.id
               join courses c on c.id = sc.course_id
               join subjects s on s.id = c.subject_id
-             where st.user_id = @UserId;
+             where u.id = @UserId;
             """;
 
         await using var connection = await GetConnection();
@@ -38,6 +39,7 @@ public class CoursesRepository(string connectionString) : PgRepository(connectio
                  , c.title as title
                  , s.title as subject_title
                  , c.github_organization as github_organization_link
+                 , c.google_spreadsheet as google_spreadsheet_link
               from courses c
               join subjects s on s.id = c.subject_id
              where c.title = ANY(@Titles);
@@ -83,7 +85,7 @@ public class CoursesRepository(string connectionString) : PgRepository(connectio
                      , unnest(@Spreadsheets) as spreadsheet
             )
             update courses c
-               set c.google_spreadsheet = ip.spreadsheet
+               set google_spreadsheet = ip.spreadsheet
               from input_pairs ip
              where c.id = ip.course_id;
             """;

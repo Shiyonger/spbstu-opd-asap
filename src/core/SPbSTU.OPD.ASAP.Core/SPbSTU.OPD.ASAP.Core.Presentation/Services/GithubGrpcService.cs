@@ -9,6 +9,13 @@ public class GithubGrpcService(IGithubService githubService) : GithubService.Git
 {
     private readonly IGithubService _githubService = githubService;
 
+    public override async Task<GetOrganizationsResponse> GetOrganizations(GetOrganizationsRequest request,
+        ServerCallContext context)
+    {
+        var organizations = await _githubService.GetOrganizations(context.CancellationToken);
+        return new GetOrganizationsResponse { Organizations = { organizations } };
+    }
+
     public override async Task<GetUsersToInviteResponse> GetUsersToInvite(GetUsersToInviteRequest request,
         ServerCallContext context)
     {

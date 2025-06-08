@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './LoginPage.css';
 import '../App.css';
-import { useNavigate } from 'react-router-dom';
-import { Login } from '../api/api';
+import {useNavigate} from 'react-router-dom';
+import {Login} from '../api/api';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -11,13 +11,13 @@ function LoginPage() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const result = await Login(username, password);
-        if (result===true)
+        try {
+            const result = await Login(username, password);
             navigate('/courses');
-         else {
-        alert('Неверный логин или пароль');
-    }
-};
+        } catch (error) {
+            alert('Неверный логин или пароль');
+        }
+    };
     return (
         <>
             <div className="login-container">

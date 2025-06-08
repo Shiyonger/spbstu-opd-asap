@@ -16,17 +16,22 @@ public sealed class Startup(IConfiguration configuration)
     public void ConfigureServices(IServiceCollection services)
     {
         services
-            .AddLogging();
-        services.AddGrpc();
+            .AddLogging()
+            .AddCors()
+            .AddGrpc();
 
-        services.AddGrpcClient<UsersService.UsersServiceClient>(
-                o => { o.Address = new Uri(configuration["GrpcUri"]!); })
+        services
+            .AddGrpcClient<UsersService.UsersServiceClient>(o => { o.Address = new Uri(configuration["GrpcUri"]!); })
             .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
-        services.AddGrpcClient<CoursesService.CoursesServiceClient>(
-                o => { o.Address = new Uri(configuration["GrpcUri"]!); })
+        services.AddGrpcClient<CoursesService.CoursesServiceClient>(o =>
+            {
+                o.Address = new Uri(configuration["GrpcUri"]!);
+            })
             .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
-        services.AddGrpcClient<AssignmentsService.AssignmentsServiceClient>(
-                o => { o.Address = new Uri(configuration["GrpcUri"]!); })
+        services.AddGrpcClient<AssignmentsService.AssignmentsServiceClient>(o =>
+            {
+                o.Address = new Uri(configuration["GrpcUri"]!);
+            })
             .EnableCallContextPropagation(o => o.SuppressContextNotFoundErrors = true);
 
         services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
@@ -48,9 +53,10 @@ public sealed class Startup(IConfiguration configuration)
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-
         app.UseRouting();
+        app.UseCors(x =>
+            x.WithOrigins(configuration["FrontendUri"]!).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+
         if (env.IsDevelopment())
         {
             app.UseSwagger();

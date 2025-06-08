@@ -34,8 +34,4 @@
       <ProjectReference Include="..\SPbSTU.OPD.ASAP.Google.Infrastructure\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Configs\" />
-    </ItemGroup>
-
 </Project>

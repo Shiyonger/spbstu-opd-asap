@@ -7,10 +7,10 @@ using SPbSTU.OPD.ASAP.Google.Infrastructure.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Google.Kafka;
 
-public class PointsHandler() : IHandler<Ignore, PointsGoogleKafka>
+public class PointsHandler : IHandler<Ignore, PointsGoogleKafka>
 {
     private readonly IUpdateSheetService _updateSheetService;
-    public PointsHandler(IUpdateSheetService updateSheetService) : this()
+    public PointsHandler(IUpdateSheetService updateSheetService)
     {
         _updateSheetService = updateSheetService;
     }

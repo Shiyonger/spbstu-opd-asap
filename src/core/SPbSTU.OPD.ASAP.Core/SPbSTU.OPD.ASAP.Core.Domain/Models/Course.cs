@@ -14,11 +14,12 @@ public class Course
     {
     }
 
-    public Course(long id, string title, string subjectTitle, string githubOrganizationLink)
+    public Course(long id, string title, string subjectTitle, string githubOrganizationLink, string googleSpreadsheetLink)
     {
         Id = id;
         Title = title;
         SubjectTitle = subjectTitle;
         GithubOrganizationLink = githubOrganizationLink;
+        GoogleSpreadSheetLink = googleSpreadsheetLink;
     }
 }

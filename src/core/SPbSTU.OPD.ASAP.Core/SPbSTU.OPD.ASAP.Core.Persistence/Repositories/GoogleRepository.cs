@@ -87,16 +87,24 @@ public class GoogleRepository(string connectionString) : PgRepository(connection
     {
         const string positionsSqlQuery =
             """
-            with input_pairs(cell, spreadsheet_id, id) as (
-                select unnest(@Cells) as cell
-                     , unnest(@Spreadsheets) as spreadsheet_id
-                     , unnest(@Ids) as id
-            )
-            insert into google_positions (cell, spreadsheet_id)
-            select cell
-                 , spreadsheet_id
-              from input_pairs ip
-            returning (id, ip.id);
+            WITH input_pairs(cell, spreadsheet_id, id) AS (
+                SELECT unnest(@Cells) AS cell,
+                       unnest(@Spreadsheets) AS spreadsheet_id,
+                       unnest(@Ids) AS id
+            ),
+                 to_insert AS (
+                     SELECT cell, spreadsheet_id, id
+                     FROM input_pairs
+                 )
+            INSERT INTO google_positions (cell, spreadsheet_id)
+            SELECT cell, spreadsheet_id
+            FROM to_insert
+            RETURNING id,
+                (SELECT id FROM to_insert
+                 WHERE to_insert.cell = google_positions.cell
+                   AND to_insert.spreadsheet_id = google_positions.spreadsheet_id
+                 LIMIT 1) AS id_t;
+            
             """;
         const string googleSqlQuery =
             """

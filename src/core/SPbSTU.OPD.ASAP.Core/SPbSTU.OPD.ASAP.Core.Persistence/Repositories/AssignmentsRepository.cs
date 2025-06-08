@@ -17,8 +17,7 @@ public class AssignmentsRepository(string connectionString) : PgRepository(conne
                  , a.due_to as due_to
                  , a.spreadsheet_link as link
               from users u
-              join students s on s.user_id = u.id
-              join student_courses sc on sc.student_id = s.id
+              join student_courses sc on sc.user_id = u.id
               join courses c on c.id = sc.course_id
               join assignments a on a.course_id = c.id
              where u.id = @UserId
@@ -46,7 +45,7 @@ public class AssignmentsRepository(string connectionString) : PgRepository(conne
                  , r.link as link
               from users u
               join students s on s.user_id = u.id
-              join student_courses sc on sc.student_id = s.id
+              join student_courses sc on sc.user_id = u.id
               join courses c on c.id = sc.course_id
               join assignments a on a.course_id = c.id
               join repositories r on r.assignment_id = a.id 
@@ -98,8 +97,8 @@ public class AssignmentsRepository(string connectionString) : PgRepository(conne
                      , unnest(@SpreadsheetLinks) as spreadsheet_link
             )
             update assignments a
-               set a.spreadsheet_id = ip.spreadsheet_id
-                 , a.spreadsheet_link = ip.spreadsheet_link
+               set spreadsheet_id = ip.spreadsheet_id
+                 , spreadsheet_link = ip.spreadsheet_link
               from input_pairs ip
              where a.id = ip.assignment_id;
             """;
@@ -108,7 +107,7 @@ public class AssignmentsRepository(string connectionString) : PgRepository(conne
         await connection.ExecuteAsync(new CommandDefinition(sqlQuery,
             new
             {
-                CourseIds = assignments.Select(a => a.Id).ToArray(),
+                AssignmentIds = assignments.Select(a => a.Id).ToArray(),
                 SpreadsheetIds = assignments.Select(a => a.SpreadSheetId).ToArray(),
                 SpreadsheetLinks = assignments.Select(a => a.Link).ToArray()
             }, cancellationToken: ct));

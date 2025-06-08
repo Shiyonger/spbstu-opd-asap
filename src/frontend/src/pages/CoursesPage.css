@@ -18,6 +18,14 @@
     font-size: 1.75rem;
     color: #1B365C;
     margin-bottom: 1rem; /* Отступ снизу 1rem */
+    margin-top: 0;
+}
+
+.subject-title { /* Заголовок в карточке курса */
+    text-align: left;
+    font-size: 1.25rem;
+    color: #1B365C;
+    margin-bottom: 0;
 }
 
 .courses-list {
@@ -58,6 +66,10 @@
 
     .course-title {
         font-size: 1.25rem;
+    }
+
+    .subject-title {
+        font-size: 1rem;
     }
 
     .view-btn {

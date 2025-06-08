@@ -27,4 +27,9 @@ public class GithubService(IGithubRepository githubRepository) : IGithubService
     {
         return _githubRepository.MarkInvited(usernames, ct);
     }
+
+    public Task<List<string>> GetOrganizations(CancellationToken ct)
+    {
+        return _githubRepository.GetOrganizations(ct);
+    }
 }

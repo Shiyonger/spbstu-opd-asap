@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SPbSTU.OPD.ASAP.API.Domain.Contracts.Grpc;
 
@@ -7,11 +8,12 @@ namespace SPbSTU.OPD.ASAP.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[EnableCors]
 public class CoursesController(ICoursesGrpcService coursesService) : Controller
 {
     private readonly ICoursesGrpcService _coursesService = coursesService;
 
-    [HttpGet("[action]")]
+    [HttpGet]
     [Authorize]
     public async Task<IActionResult> GetCourses(CancellationToken ct)
     {

@@ -12,4 +12,6 @@ public interface IGithubRepository
     Task<List<long>> CreateRepositories(List<Repository> repositories, CancellationToken ct);
     
     Task MarkInvited(List<string> usernames, CancellationToken ct);
+    
+    Task<List<string>> GetOrganizations(CancellationToken ct);
 }

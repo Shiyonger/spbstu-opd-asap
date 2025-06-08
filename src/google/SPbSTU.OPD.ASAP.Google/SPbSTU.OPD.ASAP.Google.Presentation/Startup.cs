@@ -28,16 +28,14 @@ public sealed class Startup(IConfiguration configuration)
         services.Configure<KafkaOptions>(KafkaOptions.Queue,
             configuration.GetSection("KafkaOptions:Queue"));
         
-        //--------------------------------------------------------------
+        services.AddScoped<ISpreadSheetService, SpreadSheetService>();
+        services.AddScoped<ISpreadSheetBuilder, SpreadSheetBuilder>();
+        services.AddScoped<IGoogleClientFactory, GoogleClientFactory>();
+        services.Configure<GoogleOptions>(
+            configuration.GetSection(GoogleOptions.SectionName));
+        services.AddScoped<ISheetUpdater, SheetUpdater>();
+        services.AddScoped<IUpdateSheetService, UpdateSheetService>();
         
-            services.AddScoped<ISpreadSheetService, SpreadSheetService>();
-            services.AddScoped<ISpreadSheetBuilder, SpreadSheetBuilder>();
-            services.AddScoped<IGoogleClientFactory, GoogleClientFactory>();
-            services.Configure<GoogleOptions>(
-                configuration.GetSection(GoogleOptions.SectionName));
-            services.AddScoped<ISheetUpdater, SheetUpdater>();
-            services.AddScoped<IUpdateSheetService, UpdateSheetService>();
-        //
         services.AddScoped<IHandler<Ignore, PointsGoogleKafka>, PointsHandler>();
         services.AddKafkaHandler<Ignore, PointsGoogleKafka>(
             KafkaOptions.Points,
@@ -51,7 +49,7 @@ public sealed class Startup(IConfiguration configuration)
             new SystemTextJsonSerializer<QueueKafka>(new JsonSerializerOptions
                 { Converters = { new JsonStringEnumConverter() } }));
 
-        // services.AddHostedService<KafkaBackgroundService>();
+        services.AddHostedService<KafkaBackgroundService>();
 
         services.AddGrpcReflection();
     }

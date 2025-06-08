@@ -65,6 +65,8 @@ public static class ServiceCollectionExtensions
             new SubmissionsRepository(connectionString));
         services.AddScoped<IGithubRepository, GithubRepository>(_ => 
             new GithubRepository(connectionString));
+        services.AddScoped<IStudentRepository, StudentRepository>(_ => 
+            new StudentRepository(connectionString));
 
         return services;
     }

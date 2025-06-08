@@ -19,7 +19,7 @@ public class SpreadSheetsBackgroundService(
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
 
         return Task.CompletedTask;
     }
@@ -34,8 +34,11 @@ public class SpreadSheetsBackgroundService(
             var token = cts.Token;
 
             var courses = await coursesService.GetForCreateSpreadSheet(token);
+            if (courses.Count == 0)
+                return;
+            
             var result = await _client.CreateSpreadSheetsAsync(new CreateSpreadSheetsRequest
-                { CourseList = { courses.Select(MapToGrpc).ToList() } });
+                { CourseList = { courses.Take(1).Select(MapToGrpc).ToList() } });
 
             var coursesResult = result.CoursePositionList.Select(MapToDomain).ToList();
             await coursesService.UpdateSpreadSheets(coursesResult, token);

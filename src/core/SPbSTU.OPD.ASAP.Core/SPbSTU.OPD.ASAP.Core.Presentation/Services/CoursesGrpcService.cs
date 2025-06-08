@@ -21,7 +21,7 @@ public class CoursesGrpcService(ICoursesService coursesService) : CoursesService
         return new Course
         {
             Id = course.Id, Title = course.Title, SubjectTitle = course.SubjectTitle,
-            GithubOrganizationLink = course.GithubOrganizationLink
+            GithubOrganizationLink = course.GithubOrganizationLink, GoogleSpreadsheetLink = course.GoogleSpreadSheetLink
         };
     }
 }

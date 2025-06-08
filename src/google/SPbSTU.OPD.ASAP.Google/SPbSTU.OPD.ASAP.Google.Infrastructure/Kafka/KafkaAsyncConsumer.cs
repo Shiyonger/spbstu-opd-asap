@@ -90,7 +90,7 @@ public sealed class KafkaAsyncConsumer<TKey, TValue> : IDisposable
                     .Handle<Exception>()
                     .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromMilliseconds(20));
 
-                while (!token.IsCancellationRequested)
+                if (!token.IsCancellationRequested)
                 {
                     using var scope = _scopeFactory.CreateScope();
                     var handler = scope.ServiceProvider.GetRequiredService<IHandler<TKey, TValue>>();

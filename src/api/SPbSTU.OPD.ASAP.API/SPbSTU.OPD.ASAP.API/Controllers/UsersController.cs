@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SPbSTU.OPD.ASAP.API.Domain.Contracts;
 using SPbSTU.OPD.ASAP.API.Domain.Contracts.Services;
@@ -8,18 +9,12 @@ using SPbSTU.OPD.ASAP.API.Validators;
 namespace SPbSTU.OPD.ASAP.API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("auth")]
+[EnableCors]
 public class UsersController(IAuthService authService, UserRegisterValidator registerValidator) : Controller
 {
     private readonly IAuthService _authService = authService;
     private readonly UserRegisterValidator _registerValidator = registerValidator;
-
-    [HttpGet]
-    [Authorize]
-    public IActionResult Get()
-    {
-        return Ok();
-    }
 
     [HttpPost("[action]")]
     public async Task<IActionResult> Register(UserRegisterDto userRegister, CancellationToken ct)
@@ -44,6 +39,13 @@ public class UsersController(IAuthService authService, UserRegisterValidator reg
         
         HttpContext.Response.Cookies.Append("tasty-cookies", result.Token);
         
+        return Ok();
+    }
+
+    [HttpPost("[action]")]
+    public IActionResult Logout(CancellationToken ct)
+    {
+        HttpContext.Response.Cookies.Delete("tasty-cookies");
         return Ok();
     }
 }

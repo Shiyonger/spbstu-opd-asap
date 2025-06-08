@@ -40,7 +40,7 @@ public static class ActionKafkaGenerator
     private static readonly Random _random = new();
 
     private static readonly string[] _usernames = { "HasanovTimur9", "Ilya", "zkmmhn", "MalyAnya" };
-    private static readonly string[] _titles = { "Наследование_в_C++", "Лямбда-функции", "Сплайн-интерполяция", "Линейная_алгебра", "Методы_оптимизации" };
+    private static readonly string[] _titles = { "Наследование_в_C++", "Лямбда-функции" };
 
     public static IEnumerable<ActionKafka> Generate(int count)
     {
@@ -51,7 +51,6 @@ public static class ActionKafkaGenerator
                 yield return new ActionKafka
                 {
                     Username = username,
-                    Date = RandomDate(),
                     AssignmentTitle = title,
                     Action = (ActionKafka.ActionType.Create)
                 };
@@ -86,7 +85,6 @@ public static class PointsGithubKafkaGenerator
                     Username = username,
                     AssignmentTitle = assignmentTitle,
                     CourseTitle = _courseTitles.First(),
-                    Date = RandomDate(),
                     Points = _random.Next(0, 101) // 0 to 100 points
                 };
             }

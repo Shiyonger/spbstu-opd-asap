@@ -8,19 +8,23 @@ namespace SPbSTU.OPD.ASAP.Google.Application.Services;
 
 public sealed class UpdateSheetService(ISheetUpdater sheetUpdater) : IUpdateSheetService
 {
-    public async Task UpdatePointsAsync(IReadOnlyCollection<PointsMessage> messages, CancellationToken cancellationToken)
+    public Task UpdatePointsAsync(IReadOnlyCollection<PointsMessage> messages, CancellationToken cancellationToken)
     {
         foreach (var message in messages)
         {
-            await sheetUpdater.UpdatePointsAsync(message, cancellationToken);
+            sheetUpdater.UpdatePoints(message);
         }
+
+        return Task.CompletedTask;
     }
 
-    public async Task UpdateQueueAsync(IReadOnlyCollection<QueueMessage> messages, CancellationToken cancellationToken)
+    public Task UpdateQueueAsync(IReadOnlyCollection<QueueMessage> messages, CancellationToken cancellationToken)
     {
         foreach (var message in messages)
         {
-            await sheetUpdater.UpdateQueueAsync(message, cancellationToken);
+            sheetUpdater.UpdateQueue(message);
         }
+
+        return Task.CompletedTask;
     }
 }

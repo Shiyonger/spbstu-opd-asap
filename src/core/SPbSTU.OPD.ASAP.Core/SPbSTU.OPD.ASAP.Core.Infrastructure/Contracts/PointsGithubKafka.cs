@@ -13,9 +13,6 @@ public sealed class PointsGithubKafka
     [JsonPropertyName("username")]
     public string Username { get; set; } = null!;
 
-    [JsonPropertyName("date")]
-    public DateTime Date { get; set; }
-
     [JsonPropertyName("points")]
     public int Points { get; set; }
 }

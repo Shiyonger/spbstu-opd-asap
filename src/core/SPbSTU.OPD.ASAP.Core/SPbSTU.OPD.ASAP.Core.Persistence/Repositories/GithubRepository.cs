@@ -13,8 +13,7 @@ public class GithubRepository(string connectionString) : PgRepository(connection
             select distinct u.github_username
               from courses c 
               join student_courses sc on sc.course_id = c.id
-              join students s on s.id = sc.student_id
-              join users u on u.id = s.user_id
+              join users u on u.id = sc.user_id
              where c.github_organization = @Organization
                and sc.is_invited = false;
             """;
@@ -37,8 +36,8 @@ public class GithubRepository(string connectionString) : PgRepository(connection
               from assignments a 
               join courses c on c.id = a.course_id
               join student_courses sc on sc.course_id = c.id
-              join students s on s.id = sc.student_id
-              join users u on u.id = s.user_id
+              join users u on u.id = sc.user_id
+              join students s on s.user_id = u.id
              where a.title = @AssignmentTitle
                and c.github_organization = @Organization
                and (s.id, a.id) not in 
@@ -111,5 +110,21 @@ public class GithubRepository(string connectionString) : PgRepository(connection
                 sqlQuery,
                 new { Usernames = usernames },
                 cancellationToken: ct));
+    }
+
+    public async Task<List<string>> GetOrganizations(CancellationToken ct)
+    {
+        const string sqlQuery = 
+            """
+            select c.github_organization
+              from courses c;
+            """;
+        
+        await using var connection = await GetConnection();
+        var organizations = await connection.QueryAsync<string>(
+            new CommandDefinition(
+                sqlQuery,
+                cancellationToken: ct));
+        return organizations.ToList();
     }
 }

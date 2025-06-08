@@ -1,14 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import '../App.css'; // Убедимся, что стили импортируются
+import '../App.css';
+import {Logout} from "../api/api"; // Убедимся, что стили импортируются
 
 function HeaderButtons() {
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        // Здесь можно добавить логику для очистки токена или состояния авторизации
-        // Например, очистка localStorage, если используется
-        localStorage.removeItem('authToken'); // Пример, если используется токен
-        navigate('/'); // Перенаправление на страницу логина
+    const handleLogout = async () => {
+        await Logout();
+        navigate('/');
     };
 
     return (

@@ -13,8 +13,8 @@ public class StudentRepository(string connectionString) : PgRepository(connectio
             select s.id as id
                  , u.name as name
               from student_courses sc
-              join students s on s.id = sc.student_id
-              join users u on u.id = s.user_id
+              join users u on u.id = sc.user_id
+              join students s on s.user_id = u.id
              where sc.course_id = @CourseId;
             """;
         

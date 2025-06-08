@@ -6,8 +6,9 @@ using SPbSTU.OPD.ASAP.Google.Infrastructure.Kafka;
 
 namespace SPbSTU.OPD.ASAP.Google.Kafka;
 
-public class QueueHandler(IUpdateSheetService _updateSheetService) : IHandler<Ignore, QueueKafka>
+public class QueueHandler(IUpdateSheetService updateSheetService) : IHandler<Ignore, QueueKafka>
 {
+    private readonly IUpdateSheetService _updateSheetService = updateSheetService;
 
     public async Task Handle(IReadOnlyCollection<ConsumeResult<Ignore, QueueKafka>> messages, CancellationToken token)
     {
@@ -15,7 +16,7 @@ public class QueueHandler(IUpdateSheetService _updateSheetService) : IHandler<Ig
             .Select(m => MapToDomain(m.Message.Value))
             .ToList();
 
-        await _updateSheetService.UpdateQueueAsync(queueMessages, token);
+        await _updateSheetService.UpdateQueueAsync(queueMessages.ToList(), token);
     }
     
     private static QueueMessage MapToDomain(QueueKafka kafka)
@@ -27,7 +28,7 @@ public class QueueHandler(IUpdateSheetService _updateSheetService) : IHandler<Ig
             kafka.StudentName,
             kafka.GroupId,
             kafka.SpreadsheetId,
-            kafka.SubmissionDate,
+            kafka.SubmissionDate.ToLocalTime(),
             kafka.Action.ToString() 
         );
     }

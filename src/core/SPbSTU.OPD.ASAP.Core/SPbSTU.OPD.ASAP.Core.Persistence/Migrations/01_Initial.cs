@@ -98,7 +98,7 @@ public class Initial : SqlMigration
 
         create table student_courses (
             id bigserial primary key,
-            student_id bigint references students (id),
+            user_id bigint references users (id),
             course_id bigint references courses (id),
             is_invited boolean not null
         );
