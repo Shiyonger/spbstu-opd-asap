@@ -27,8 +27,7 @@ public class GitHubCommentParserService {
     @Value("${github.api.url:https://api.github.com}")
     private String githubApiUrl;
 
-    @Value("${google.sheet.id}") // spreadsheetId из настроек
-    private String spreadsheetId;
+    private final String courseTitle = "opd-asap-test";
 
     public MessagePoints extractPointsFromPullRequestComments(
             String owner,
@@ -53,26 +52,20 @@ public class GitHubCommentParserService {
 
         for (JsonNode comment : response.getBody()) {
             String body = comment.get("body").asText();
-            Matcher matcher = Pattern.compile("/rate \\b(\\d{1,3})\\b").matcher(body); // просто число, например "21"
-           // todo баллы меньше 0 и больше 100
+            Matcher matcher = Pattern.compile("/rate\\s+(-?\\d{1,4})").matcher(body); // Поддержка отрицательных чисел
             if (matcher.find()) {
-                int points = Integer.parseInt(matcher.group(1));
+                int rawPoints = Integer.parseInt(matcher.group(1));
+                int points = Math.max(0, Math.min(rawPoints, 100)); // Нормализация: [0; 100]
+
+                if (points != rawPoints) {
+                    log.warn("Обрезка баллов: указано {}, приведено к {}", rawPoints, points);
+                }
+
                 MessagePoints result = new MessagePoints();
                 result.setPoints(points);
-                result.setDate(new Date());
-                result.setAssignmentName(assignmentName); // repo
-                result.setCourseTitle(owner);             // organization
-
-                MessagePoints.Position studentPos = new MessagePoints.Position();
-                studentPos.setCell(nickname);
-                studentPos.setSpreadsheetId(spreadsheetId);
-
-                MessagePoints.Position assignmentPos = new MessagePoints.Position();
-                assignmentPos.setCell(assignmentName);
-                assignmentPos.setSpreadsheetId(spreadsheetId);
-
-                result.setStudentPosition(studentPos);
-                result.setAssignmentPosition(assignmentPos);
+                result.setAssignmentTitle(assignmentName);
+                result.setCourseTitle(courseTitle);
+                result.setUsername(nickname);
 
                 return result;
             }

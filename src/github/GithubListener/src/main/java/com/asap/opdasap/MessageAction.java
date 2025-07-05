@@ -10,9 +10,6 @@ public final class MessageAction implements Serializable {
     @JsonProperty("username")
     private String username;
 
-    @JsonProperty("date")
-    private Date date;
-
     @JsonProperty("assignment_title")
     private String assignmentTitle;
 
@@ -31,14 +28,6 @@ public final class MessageAction implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getAssignmentTitle() {

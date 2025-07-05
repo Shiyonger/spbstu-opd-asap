@@ -1,0 +1,13 @@
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.deps.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.AssemblyInfo.cs
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.sourcelink.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\refint\SPbSTU.OPD.ASAP.Core.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Domain\obj\Debug\net8.0\ref\SPbSTU.OPD.ASAP.Core.Domain.dll

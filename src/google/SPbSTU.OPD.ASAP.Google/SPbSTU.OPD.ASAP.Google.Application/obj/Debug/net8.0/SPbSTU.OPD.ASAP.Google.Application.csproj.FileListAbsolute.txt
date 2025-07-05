@@ -1,0 +1,16 @@
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.deps.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.AssemblyInfo.cs
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.sourcelink.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\refint\SPbSTU.OPD.ASAP.Google.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\ref\SPbSTU.OPD.ASAP.Google.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Domain.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Google.Application.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\google\SPbSTU.OPD.ASAP.Google\SPbSTU.OPD.ASAP.Google.Application\obj\Debug\net8.0\SPbSTU.O.112164C6.Up2Date

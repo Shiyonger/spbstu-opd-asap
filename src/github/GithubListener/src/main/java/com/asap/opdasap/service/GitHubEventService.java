@@ -19,7 +19,7 @@ public class GitHubEventService {
 
     private final ObjectMapper objectMapper;
     private final GitHubCommentParserService commentParserService;
-    //private final KafkaPublisher kafkaPublisher;
+    private final KafkaPublisher kafkaPublisher;
 
     public MessageAction handlePushEvent(String payload) throws Exception {
         GitHubPushEvent event = objectMapper.readValue(payload, GitHubPushEvent.class);
@@ -30,10 +30,9 @@ public class GitHubEventService {
         MessageAction action = new MessageAction();
         action.setUsername(owner);
         action.setAssignmentTitle(repoName);
-        action.setDate(new Date());
         action.setAction(MessageAction.ActionType.UPDATE); // Для push события используем "Update"
 
-        //kafkaPublisher.publish("action", action);
+        kafkaPublisher.publish("action", action);
         return action;
     }
 
@@ -56,10 +55,10 @@ public class GitHubEventService {
         MessageAction action = new MessageAction();
         action.setUsername(nickname);
         action.setAssignmentTitle(repo);
-        action.setDate(new Date());
         action.setAction(mapActionType(actionType));
 
-        //kafkaPublisher.publish("action", action);
+        if ("opened".equalsIgnoreCase(actionType))
+            kafkaPublisher.publish("action", action);
 
         if ("closed".equalsIgnoreCase(actionType)) {
             try {
@@ -68,7 +67,7 @@ public class GitHubEventService {
                 );
 
                 if (points != null) {
-                    //kafkaPublisher.publish("points", points);
+                    kafkaPublisher.publish("points-github", points);
                     log.info("Баллы {}", points.getPoints());
                 } else {
                     log.warn("Баллы не найдены в комментариях для PR #{} в {}/{}", prNumber, owner, repo);

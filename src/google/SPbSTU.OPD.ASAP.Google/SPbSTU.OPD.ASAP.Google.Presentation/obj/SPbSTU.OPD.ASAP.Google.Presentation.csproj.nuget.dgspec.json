@@ -1,0 +1,408 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Presentation\\SPbSTU.OPD.ASAP.Google.Presentation.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Application\\SPbSTU.OPD.ASAP.Google.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Application\\SPbSTU.OPD.ASAP.Google.Application.csproj",
+        "projectName": "SPbSTU.OPD.ASAP.Google.Application",
+        "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Application\\SPbSTU.OPD.ASAP.Google.Application.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj": {
+                "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj",
+        "projectName": "SPbSTU.OPD.ASAP.Google.Domain",
+        "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Google.Apis.Drive.v3": {
+              "target": "Package",
+              "version": "[1.69.0.3740, )"
+            },
+            "Google.Apis.Sheets.v4": {
+              "target": "Package",
+              "version": "[1.69.0.3757, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            },
+            "System.Linq.Async": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Infrastructure\\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Infrastructure\\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj",
+        "projectName": "SPbSTU.OPD.ASAP.Google.Infrastructure",
+        "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Infrastructure\\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj": {
+                "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Domain\\SPbSTU.OPD.ASAP.Google.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Presentation\\SPbSTU.OPD.ASAP.Google.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Presentation\\SPbSTU.OPD.ASAP.Google.Presentation.csproj",
+        "projectName": "SPbSTU.OPD.ASAP.Google.Presentation",
+        "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Presentation\\SPbSTU.OPD.ASAP.Google.Presentation.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Presentation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Application\\SPbSTU.OPD.ASAP.Google.Application.csproj": {
+                "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Application\\SPbSTU.OPD.ASAP.Google.Application.csproj"
+              },
+              "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Infrastructure\\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\google\\SPbSTU.OPD.ASAP.Google\\SPbSTU.OPD.ASAP.Google.Infrastructure\\SPbSTU.OPD.ASAP.Google.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.57.0, )"
+            },
+            "Grpc.AspNetCore.Server.Reflection": {
+              "target": "Package",
+              "version": "[2.70.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            },
+            "System.Linq.Async": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

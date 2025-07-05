@@ -1,0 +1,16 @@
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.deps.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.AssemblyInfo.cs
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.sourcelink.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.O.ECB56D83.Up2Date
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\refint\SPbSTU.OPD.ASAP.Core.Persistence.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Persistence.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Persistence\obj\Debug\net8.0\ref\SPbSTU.OPD.ASAP.Core.Persistence.dll
