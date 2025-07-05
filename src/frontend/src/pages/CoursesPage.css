@@ -1,0 +1,107 @@
+.courses-background {
+    min-height: 100vh; /* Минимальная высота равна высоте видимой области экрана */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 40px 20px 20px; /* Внутренние отступы: 30px сверху, 20px по бокам и снизу */
+    box-sizing: border-box; /* Учитывает padding и border в общей ширине и высоте */
+    position: relative;
+}
+
+.courses-title { /* Заголовок "Доступные курсы" */
+    text-align: center;
+    font-size: 2.5rem; /* Размер шрифта 3rem (48px при стандартном font-size 16px) */
+    color: #1B365C;
+    margin-bottom: 2rem; /* Отступ снизу 2rem (32px) */
+}
+
+.course-title { /* Заголовок в карточке курса */
+    text-align: left;
+    font-size: 1.75rem;
+    color: #1B365C;
+    margin-bottom: 1rem; /* Отступ снизу 1rem */
+    margin-top: 0;
+}
+
+.subject-title { /* Заголовок в карточке курса */
+    text-align: left;
+    font-size: 1.25rem;
+    color: #1B365C;
+    margin-bottom: 0;
+}
+
+.courses-list {
+    display: grid; /* Использует CSS Grid для расположения карточек */
+    gap: 1rem; /* Отступ 20px между карточками */
+    width: 800px; /* Фиксированная ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+.courses-loading {
+    min-height: 100vh; /* Минимальная высота равна высоте экрана */
+    display: flex; /* Flexbox для центрирования содержимого */
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 576px) {
+    .courses-background {
+        padding: 40px 10px 10px;
+    }
+
+    .courses-title {
+        font-size: 1.75rem;
+    }
+
+    .courses-list {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+        width: 100%; /* На всю ширину экрана */
+        gap: 0.8rem;
+    }
+
+    .course-card {
+        padding: 1rem;
+    }
+
+    .course-title {
+        font-size: 1.25rem;
+    }
+
+    .subject-title {
+        font-size: 1rem;
+    }
+
+    .view-btn {
+        font-size: 0.9rem;
+    }
+}
+
+/* Courses Page стили для карточки курса*/
+.course-card {
+    border: 2px solid #ffffff; /* Белая граница толщиной 2px */
+    background-color: white;
+    border-radius: 20px; /* Скругление углов на 20px */
+    padding: 0 20px 20px; /* Внутренние отступы 20px со всех сторон */
+    transition: all 0.3s; /* Плавная анимация изменений за 0.3 секунды */
+    box-sizing: border-box;
+}
+
+/* Стили при наведении на карточку */
+.course-card:hover {
+    transform: translateY(-2px); /* Поднимает карточку на 2px вверх */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Добавляет тень*/
+}
+
+/* Стили для кнопки "Перейти к курсу" */
+.view-btn {
+    font-size: 1rem;
+    display: inline-block; /* Отображается как инлайн-блок для корректного позиционирования */
+    margin-top: 0.5rem; /* Отступ сверху 15px */
+    color: #1B365C;
+    text-decoration: none; /* Убирает подчёркивание ссылки */
+}
+
+.view-btn:hover {
+    color: #28518A;
+}

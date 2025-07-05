@@ -1,0 +1,2 @@
+obj\Debug\net8.0\protos/Users.cs \
+obj\Debug\net8.0\protos/UsersGrpc.cs: ../SPbSTU.OPD.ASAP.API.Infrastructure/Protos/users.proto

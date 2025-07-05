@@ -1,0 +1,16 @@
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.deps.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\bin\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Domain.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.AssemblyInfo.cs
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.sourcelink.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.O.A95DFF20.Up2Date
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\refint\SPbSTU.OPD.ASAP.Core.Application.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\SPbSTU.OPD.ASAP.Core.Application.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\core\SPbSTU.OPD.ASAP.Core\SPbSTU.OPD.ASAP.Core.Application\obj\Debug\net8.0\ref\SPbSTU.OPD.ASAP.Core.Application.dll

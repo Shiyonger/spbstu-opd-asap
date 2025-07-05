@@ -1,0 +1,4 @@
+obj\Debug\net8.0\protos/Assignments.cs \
+obj\Debug\net8.0\protos/AssignmentsGrpc.cs: C:/Users/alexa/.nuget/packages/grpc.tools/2.57.0/build/native/include/google/protobuf/timestamp.proto\
+ ../SPbSTU.OPD.ASAP.API.Infrastructure/Protos/users.proto\
+ ../SPbSTU.OPD.ASAP.API.Infrastructure/Protos/assignments.proto

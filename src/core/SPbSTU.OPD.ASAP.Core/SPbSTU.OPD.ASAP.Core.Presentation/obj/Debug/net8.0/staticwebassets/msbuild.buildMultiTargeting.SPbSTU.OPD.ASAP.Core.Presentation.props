@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SPbSTU.OPD.ASAP.Core.Presentation.props" />
+</Project>

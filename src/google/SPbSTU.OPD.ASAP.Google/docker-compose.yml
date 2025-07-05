@@ -1,0 +1,6 @@
+﻿services:
+  spbstu.opd.asap.google:
+    image: spbstu.opd.asap.google
+    build:
+      context: .
+      dockerfile: SPbSTU.OPD.ASAP.Google/Dockerfile

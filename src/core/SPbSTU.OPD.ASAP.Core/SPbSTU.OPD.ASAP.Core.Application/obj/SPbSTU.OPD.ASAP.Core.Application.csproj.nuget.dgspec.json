@@ -1,0 +1,180 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Application\\SPbSTU.OPD.ASAP.Core.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Application\\SPbSTU.OPD.ASAP.Core.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Application\\SPbSTU.OPD.ASAP.Core.Application.csproj",
+        "projectName": "SPbSTU.OPD.ASAP.Core.Application",
+        "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Application\\SPbSTU.OPD.ASAP.Core.Application.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Domain\\SPbSTU.OPD.ASAP.Core.Domain.csproj": {
+                "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Domain\\SPbSTU.OPD.ASAP.Core.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Domain\\SPbSTU.OPD.ASAP.Core.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Domain\\SPbSTU.OPD.ASAP.Core.Domain.csproj",
+        "projectName": "SPbSTU.OPD.ASAP.Core.Domain",
+        "projectPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Domain\\SPbSTU.OPD.ASAP.Core.Domain.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\OneDrive\\Рабочий стол\\Projects\\ASAP\\spbstu-opd-asap\\src\\core\\SPbSTU.OPD.ASAP.Core\\SPbSTU.OPD.ASAP.Core.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
+            },
+            "FluentMigrator": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "FluentMigrator.Runner": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "FluentMigrator.Runner.Postgres": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.5.2, )"
+            },
+            "System.Linq.Async": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

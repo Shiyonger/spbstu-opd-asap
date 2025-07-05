@@ -1,0 +1,6 @@
+﻿services:
+  spbstu.opd.asap.api:
+    image: spbstu.opd.asap.api
+    build:
+      context: .
+      dockerfile: SPbSTU.OPD.ASAP.API/Dockerfile

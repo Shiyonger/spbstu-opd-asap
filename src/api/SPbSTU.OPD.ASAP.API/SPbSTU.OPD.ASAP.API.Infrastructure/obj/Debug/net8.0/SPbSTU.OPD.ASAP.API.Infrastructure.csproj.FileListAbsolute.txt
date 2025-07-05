@@ -1,0 +1,16 @@
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\bin\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.deps.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\bin\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\bin\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\bin\Debug\net8.0\SPbSTU.OPD.ASAP.API.Domain.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\bin\Debug\net8.0\SPbSTU.OPD.ASAP.API.Domain.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.AssemblyInfo.cs
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.sourcelink.json
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.O.6A4667E8.Up2Date
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\refint\SPbSTU.OPD.ASAP.API.Infrastructure.dll
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\SPbSTU.OPD.ASAP.API.Infrastructure.pdb
+C:\Users\alexa\OneDrive\Рабочий стол\Projects\ASAP\spbstu-opd-asap\src\api\SPbSTU.OPD.ASAP.API\SPbSTU.OPD.ASAP.API.Infrastructure\obj\Debug\net8.0\ref\SPbSTU.OPD.ASAP.API.Infrastructure.dll

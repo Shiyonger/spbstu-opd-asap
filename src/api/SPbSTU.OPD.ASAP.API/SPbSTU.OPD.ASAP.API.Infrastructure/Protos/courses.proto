@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "SPbSTU.OPD.ASAP.API.Infrastructure";
+
+package courses_grpc;
+
+service CoursesService {
+  rpc GetCourses (GetCoursesRequest) returns (GetCoursesResponse);
+}
+
+message Course {
+  int64 id = 1;
+  string title = 2;
+  string subject_title = 3;
+  string github_organization_link = 4;
+  string google_spreadsheet_link = 5;
+}
+
+message GetCoursesRequest {
+  int64 user_id = 1;
+}
+
+message GetCoursesResponse {
+  repeated Course courses_list = 1;
+}

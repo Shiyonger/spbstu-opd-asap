@@ -1,0 +1,2 @@
+obj\Debug\net8.0\Proto/Asap.cs \
+obj\Debug\net8.0\Proto/AsapGrpc.cs: Proto/asap.proto

@@ -1,0 +1,2 @@
+obj\Debug\net8.0\protos/Courses.cs \
+obj\Debug\net8.0\protos/CoursesGrpc.cs: ../SPbSTU.OPD.ASAP.API.Infrastructure/Protos/courses.proto

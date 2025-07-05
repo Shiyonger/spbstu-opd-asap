@@ -1,8 +1,4 @@
-﻿using System.Reflection;
-using Confluent.Kafka;
-using FluentMigrator.Runner;
-using FluentMigrator.Runner.Processors;
-using Microsoft.Extensions.Configuration;
+﻿using Confluent.Kafka;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -13,50 +9,45 @@ namespace SPbSTU.OPD.ASAP.Core.Infrastructure.Common;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddFluentMigrator(
+    public static IServiceCollection AddKafkaHandler<TKey, TValue>(
         this IServiceCollection services,
-        string connectionString,
-        Assembly assembly)
+        string topic,
+        IDeserializer<TKey>? keyDeserializer,
+        IDeserializer<TValue>? valueDeserializer)
     {
-        services
-            .AddFluentMigratorCore()
-            .ConfigureRunner(
-                builder => builder
-                    .AddPostgres()
-                    .ScanIn(assembly).For.Migrations())
-            .AddOptions<ProcessorOptions>()
-            .Configure(
-                options =>
-                {
-                    options.ProviderSwitches = "Force Quote=false";
-                    options.Timeout = TimeSpan.FromMinutes(10);
-                    options.ConnectionString = connectionString;
-                });
+        services.AddSingleton<KafkaAsyncConsumer<TKey, TValue>>(
+            provider =>
+            {
+                var scopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
+                var options = provider.GetRequiredService<IOptionsMonitor<KafkaConsumerOptions>>().Get(topic);
+                var logger = provider.GetRequiredService<ILogger<KafkaAsyncConsumer<TKey, TValue>>>();
+
+                return new KafkaAsyncConsumer<TKey, TValue>(
+                    scopeFactory,
+                    options,
+                    keyDeserializer,
+                    valueDeserializer,
+                    logger);
+            });
 
         return services;
     }
     
-    public static IServiceCollection AddKafkaHandler<TKey, TValue, THandler>(
+    public static IServiceCollection AddKafkaPublisher<TKey, TValue>(
         this IServiceCollection services,
-        IConfiguration configuration,
-        IDeserializer<TKey>? keyDeserializer,
-        IDeserializer<TValue>? valueDeserializer) where THandler : IHandler<TKey, TValue>
+        string topic,
+        ISerializer<TKey>? keyDeserializer,
+        ISerializer<TValue>? valueDeserializer)
     {
-        services.Configure<KafkaOptions>(configuration.GetSection(nameof(KafkaOptions)));
-
-        services.AddSingleton<KafkaAsyncConsumer<TKey, TValue>>(
+        services.AddSingleton<KafkaPublisher<TKey, TValue>>(
             provider =>
             {
-                var handler = provider.GetRequiredService<THandler>();
-                var options = provider.GetRequiredService<IOptions<KafkaOptions>>();
-                var logger = provider.GetRequiredService<ILogger<KafkaAsyncConsumer<TKey, TValue>>>();
+                var options = provider.GetRequiredService<IOptionsMonitor<KafkaPublisherOptions>>().Get(topic);
 
-                return new KafkaAsyncConsumer<TKey, TValue>(
-                    handler,
-                    options.Value,
+                return new KafkaPublisher<TKey, TValue>(
+                    options,
                     keyDeserializer,
-                    valueDeserializer,
-                    logger);
+                    valueDeserializer);
             });
 
         return services;
